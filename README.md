@@ -27,7 +27,7 @@ I can register as a restaurant account, then I will be able to add my restaurant
 **As a restaurant**
 
 * I want to create an account.
-* T want to add my restaurant information (photos, description, location)
+* I want to add my restaurant information (photos, description, location)
 * I want to add my restaurant’s menu.
 * I want to edit meals information at any time.
 * I want to add discounts and offers at any time.
