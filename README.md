@@ -2,7 +2,7 @@
 # FoodHub 🍔
 
 ## User Journey :airplane:
-### as a customer:
+### As a customer:
 
 I can signup or/and login to the website and see a variety of restaurants options, based in Gaza. And I can explore all meals the restaurants offer, then I can order any meal I want with the option to pay online or in cash.
 
