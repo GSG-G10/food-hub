@@ -1,5 +1,5 @@
 
-# FoodHub :green_salad: 
+# FoodHub :Hamburger: 
 
 ## User Journey :airplane:
 ### as a customer:
