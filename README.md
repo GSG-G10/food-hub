@@ -1,5 +1,5 @@
 
-# FoodHub :Hamburger: 
+# FoodHub 🍔
 
 ## User Journey :airplane:
 ### as a customer:
