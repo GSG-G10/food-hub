@@ -1,4 +1,3 @@
-<title> FoodHub </title>
 
 # FoodHub :green_salad: 
 
