@@ -1,0 +1,35 @@
+{
+  "name": "food-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:client": "cd client && npm start",
+    "dev:server": "cd server && npm start",
+    "install": "cd client && npm install && cd .. && cd server && npm install",
+    "postinstall": "npx husky install",
+    "rmnm": "rm -rf node_modules && rm -rf client/node_modules && rm -rf server/node_modules",
+    "lint:client": "cd client && npm run lint",
+    "lint:server": "cd server && npm run lint",
+    "lint": "npm run lint:client && npm run lint:server",
+    "lint-fix:client": "cd client && npm run lint-fix",
+    "lint-fix:server": "cd server && npm run lint-fix",
+    "lint-fix": "npm run lint-fix:client && npm run lint-fix:server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-G10/food-hub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSG-G10/food-hub/issues"
+  },
+  "homepage": "https://github.com/GSG-G10/food-hub#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
+    "husky": "^7.0.4"
+  }
+}
