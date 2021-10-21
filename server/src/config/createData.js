@@ -5,4 +5,7 @@ const createRandomData = () => ({});
 
 const data = createRandomData();
 
-writeFileSync(join(__dirname, 'data.json'), JSON.stringify(data, null, '\t'));
+writeFileSync(
+  join(__dirname, 'data.json'),
+  `${JSON.stringify(data, null, '\t')}\n`
+);
