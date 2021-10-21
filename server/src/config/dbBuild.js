@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const data = require('./data.json');
 
 const importDataToDatabase = async () => {
