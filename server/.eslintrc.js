@@ -8,6 +8,7 @@ const prettierOptions = JSON.parse(
 module.exports = {
   extends: ['airbnb-base', 'plugin:prettier/recommended'],
   rules: {
+    'eol-last': 'error',
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': ['error', 'as-needed'],
   },

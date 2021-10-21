@@ -9,6 +9,7 @@ module.exports = {
   env: { browser: true, jest: true },
   extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended'],
   rules: {
+    'eol-last': 'error',
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': ['error', 'as-needed'],
 
