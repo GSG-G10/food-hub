@@ -3,7 +3,20 @@
     "client",
     "server"
   ],
-  "editor.formatOnSave": false,
+  "[javascriptreact]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    }
+  },
+  "[javascript]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    }
+  },
+  // all other files:
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   }
