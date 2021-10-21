@@ -1,0 +1,21 @@
+{
+  "name": "food-hub",
+  "version": "1.0.0",
+  "description": "**As a Customer**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:client": "cd client && npm start",
+    "dev:server": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-G10/food-hub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSG-G10/food-hub/issues"
+  },
+  "homepage": "https://github.com/GSG-G10/food-hub#readme"
+}
