@@ -31,3 +31,33 @@ I can register as a restaurant account, then I will be able to add my restaurant
 - I want to add my restaurant’s menu.
 - I want to edit meals information at any time.
 - I want to add discounts and offers at any time.
+<<<<<<< HEAD
+=======
+
+## Tech Stack
+
+### Frontend
+
+- React
+- Material Ui
+- axios
+- react swiperjs
+- React router
+
+### Backend
+
+- express
+- postgresql
+- sequelize
+- faker
+- firebase auth
+- joi
+
+## Database Schema
+
+(TODO)
+
+## How to run
+
+(TODO)
+>>>>>>> 0aacc1a45845486d35dd2c7dec599fa42e513fb2
