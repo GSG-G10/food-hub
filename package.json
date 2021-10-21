@@ -8,6 +8,7 @@
     "dev:client": "cd client && npm start",
     "dev:server": "cd server && npm start",
     "install": "cd client && npm install && cd .. && cd server && npm install",
+    "postinstall": "npx husky install",
     "rmnm": "rm -rf node_modules && rm -rf client/node_modules && rm -rf server/node_modules",
     "lint:client": "cd client && npm run lint",
     "lint:server": "cd server && npm run lint",
