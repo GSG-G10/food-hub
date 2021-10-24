@@ -91,7 +91,7 @@ const createRandomData = () => {
 
     categories.push({
       id,
-      name: Object.keys(category)[Math.floor(Math.random() * 11)],
+      name: Object.keys(category)[i - 1],
     });
 
     categories[i - 1].imageUrl = category[categories[i - 1].name];
