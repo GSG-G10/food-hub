@@ -25,10 +25,7 @@ const createRandomData = () => {
       'https://images.unsplash.com/photo-1617474019977-0e105d1b430e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHBhc3RhfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
     seafood:
       'https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-    salad:
-      'https://images.unsplash.com/photo-1607532941433-304659e8198a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    shawarma:
-      'https://www.recipetineats.com/wp-content/uploads/2014/12/Chicken-Shawarma_5.jpg',
+    side: 'https://images.unsplash.com/photo-1607532941433-304659e8198a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
     soup: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
     drink:
       'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTh8fGRyaW5rfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
@@ -103,8 +100,8 @@ const createRandomData = () => {
 
     discountCode[i - 1].discountAmount =
       discountCode[i - 1].discountType === 'percentage'
-        ? `${Math.floor(Math.random() * 100)}%`
-        : `${faker.commerce.price()} ₪`;
+        ? `${Math.floor(Math.random() * 100)}`
+        : `${faker.commerce.price()} `;
   }
 
   return { users, customers, restaurant, discountCode, categories };
