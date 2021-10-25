@@ -1,0 +1,1105 @@
+{
+  "seafood": {
+    "image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Baked salmon with fennel & tomatoes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1548772327.jpg"
+      },
+      {
+        "name": "Cajun spiced fish tacos",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"
+      },
+      {
+        "name": "Escovitch Fish",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1520084413.jpg"
+      },
+      {
+        "name": "Fish fofos",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg"
+      },
+      {
+        "name": "Fish pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg"
+      },
+      {
+        "name": "Fish Stew with Rouille",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg"
+      },
+      {
+        "name": "Garides Saganaki",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg"
+      },
+      {
+        "name": "Grilled Portuguese sardines",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg"
+      },
+      {
+        "name": "Honey Teriyaki Salmon",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg"
+      },
+      {
+        "name": "Kedgeree",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg"
+      },
+      {
+        "name": "Kung Po Prawns",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1525873040.jpg"
+      },
+      {
+        "name": "Laksa King Prawn Noodles",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg"
+      },
+      {
+        "name": "Mediterranean Pasta Salad",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg"
+      },
+      {
+        "name": "Mee goreng mamak",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg"
+      },
+      {
+        "name": "Nasi lemak",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg"
+      },
+      {
+        "name": "Portuguese fish stew (Caldeirada de peixe)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg"
+      },
+      {
+        "name": "Recheado Masala Fish",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uwxusv1487344500.jpg"
+      },
+      {
+        "name": "Salmon Avocado Salad",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1549542994.jpg"
+      },
+      {
+        "name": "Salmon Prawn Risotto",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg"
+      },
+      {
+        "name": "Saltfish and Ackee",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vytypy1511883765.jpg"
+      },
+      {
+        "name": "Seafood fideuà",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg"
+      },
+      {
+        "name": "Shrimp Chow Fun",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1529445434.jpg"
+      },
+      {
+        "name": "Sledz w Oleju (Polish Herrings)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/7ttta31593350374.jpg"
+      },
+      {
+        "name": "Spring onion and prawn empanadas",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg"
+      },
+      {
+        "name": "Three Fish Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg"
+      },
+      {
+        "name": "Tuna and Egg Briks",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg"
+      },
+      {
+        "name": "Tuna Nicoise",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg"
+      }
+    ]
+  },
+  "breakfast": {
+    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGJyZWFrZmFzdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Breakfast Potatoes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1550441882.jpg"
+      },
+      {
+        "name": "English Breakfast",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg"
+      },
+      {
+        "name": "Fruit and Cream Cheese Breakfast Pastries",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1543774956.jpg"
+      },
+      {
+        "name": "Full English Breakfast",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sqrtwu1511721265.jpg"
+      },
+      {
+        "name": "Home-made Mandazi",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg"
+      },
+      {
+        "name": "Salmon Eggs Eggs Benedict",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1550440197.jpg"
+      },
+      {
+        "name": "Smoked Haddock Kedgeree",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1550441275.jpg"
+      }
+    ]
+  },
+  "soup": {
+    "image": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Broccoli & Stilton soup",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tvvxpv1511191952.jpg"
+      },
+      {
+        "name": "Clam chowder",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rvtvuw1511190488.jpg"
+      },
+      {
+        "name": "Creamy Tomato Soup",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/stpuws1511191310.jpg"
+      }
+    ]
+  },
+  "chicken": {
+    "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JpbGxlZCUyMGNoaWNrZW58ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Ayam Percik",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/020z181619788503.jpg"
+      },
+      {
+        "name": "Brown Stew Chicken",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg"
+      },
+      {
+        "name": "Chick-Fil-A Sandwich",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg"
+      },
+      {
+        "name": "Chicken & mushroom Hotpot",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uuuspp1511297945.jpg"
+      },
+      {
+        "name": "Chicken Alfredo Primavera",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg"
+      },
+      {
+        "name": "Chicken Basquaise",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg"
+      },
+      {
+        "name": "Chicken Congee",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1529446352.jpg"
+      },
+      {
+        "name": "Chicken Couscous",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg"
+      },
+      {
+        "name": "Chicken Enchilada Casserole",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg"
+      },
+      {
+        "name": "Chicken Fajita Mac and Cheese",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg"
+      },
+      {
+        "name": "Chicken Ham and Leek Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xrrtss1511555269.jpg"
+      },
+      {
+        "name": "Chicken Handi",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg"
+      },
+      {
+        "name": "Chicken Karaage",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg"
+      },
+      {
+        "name": "Chicken Marengo",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qpxvuq1511798906.jpg"
+      },
+      {
+        "name": "Chicken Parmentier",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg"
+      },
+      {
+        "name": "Chicken Quinoa Greek Salad",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg"
+      },
+      {
+        "name": "Coq au vin",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qstyvs1505931190.jpg"
+      },
+      {
+        "name": "Crock Pot Chicken Baked Tacos",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg"
+      },
+      {
+        "name": "French Onion Chicken with Roasted Carrots & Mashed Potatoes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/b5ft861583188991.jpg"
+      },
+      {
+        "name": "General Tso's Chicken",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1529444113.jpg"
+      },
+      {
+        "name": "Honey Balsamic Chicken with Crispy Broccoli & Potatoes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kvbotn1581012881.jpg"
+      },
+      {
+        "name": "Jerk chicken with rice & peas",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tytyxu1515363282.jpg"
+      },
+      {
+        "name": "Katsu Chicken curry",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vwrpps1503068729.jpg"
+      },
+      {
+        "name": "Kentucky Fried Chicken",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xqusqy1487348868.jpg"
+      },
+      {
+        "name": "Kung Pao Chicken",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1525872624.jpg"
+      },
+      {
+        "name": "Nutty Chicken Curry",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg"
+      },
+      {
+        "name": "Pad See Ew",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uuuspp1468263334.jpg"
+      },
+      {
+        "name": "Piri-piri chicken and slaw",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg"
+      },
+      {
+        "name": "Potato Gratin with Chicken",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qwrtut1468418027.jpg"
+      },
+      {
+        "name": "Rappie Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ruwpww1511817242.jpg"
+      },
+      {
+        "name": "Rosół (Polish Chicken Soup)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lx1kkj1593349302.jpg"
+      },
+      {
+        "name": "Shawarma",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg"
+      },
+      {
+        "name": "Tandoori chicken",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qptpvt1487339892.jpg"
+      },
+      {
+        "name": "Teriyaki Chicken Casserole",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg"
+      },
+      {
+        "name": "Thai Green Curry",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sstssx1487349585.jpg"
+      }
+    ]
+  },
+  "meat": {
+    "image": "https://images.unsplash.com/photo-1611171711791-b34fa42e9fc2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fGJlZWZ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Beef and Mustard Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg"
+      },
+      {
+        "name": "Beef and Oyster pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wrssvt1511556563.jpg"
+      },
+      {
+        "name": "Beef Banh Mi Bowls with Sriracha Mayo, Carrot & Pickled Cucumber",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg"
+      },
+      {
+        "name": "Beef Bourguignon",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg"
+      },
+      {
+        "name": "Beef Brisket Pot Roast",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ursuup1487348423.jpg"
+      },
+      {
+        "name": "Beef Dumpling Stew",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uyqrrv1511553350.jpg"
+      },
+      {
+        "name": "Beef Lo Mein",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1529444830.jpg"
+      },
+      {
+        "name": "Beef Rendang",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg"
+      },
+      {
+        "name": "Beef stroganoff",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/svprys1511176755.jpg"
+      },
+      {
+        "name": "Beef Sunday Roast",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ssrrrs1503664277.jpg"
+      },
+      {
+        "name": "Beef Wellington",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vvpprx1487325699.jpg"
+      },
+      {
+        "name": "Big Mac",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg"
+      },
+      {
+        "name": "Bitterballen (Dutch meatballs)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lhqev81565090111.jpg"
+      },
+      {
+        "name": "Braised Beef Chilli",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg"
+      },
+      {
+        "name": "Cevapi Sausages",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vc08jn1628769553.jpg"
+      },
+      {
+        "name": "Chivito uruguayo",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/n7qnkb1630444129.jpg"
+      },
+      {
+        "name": "Corned Beef and Cabbage",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xb97a81583266727.jpg"
+      },
+      {
+        "name": "Croatian Bean Stew",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg"
+      },
+      {
+        "name": "Croatian lamb peka",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/pn59o51628769837.jpg"
+      },
+      {
+        "name": "Egyptian Fatteh",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg"
+      },
+      {
+        "name": "Gołąbki (cabbage roll)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg"
+      },
+      {
+        "name": "Irish stew",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sxxpst1468569714.jpg"
+      },
+      {
+        "name": "Jamaican Beef Patties",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wsqqsw1515364068.jpg"
+      },
+      {
+        "name": "Ma Po Tofu",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1525874812.jpg"
+      },
+      {
+        "name": "Massaman Beef curry",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tvttqv1504640475.jpg"
+      },
+      {
+        "name": "Minced Beef Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xwutvy1511555540.jpg"
+      },
+      {
+        "name": "Montreal Smoked Meat",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uttupv1511815050.jpg"
+      },
+      {
+        "name": "Moussaka",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg"
+      },
+      {
+        "name": "Mulukhiyah",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg"
+      },
+      {
+        "name": "Oxtail with broad beans",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1520083578.jpg"
+      },
+      {
+        "name": "Paszteciki (Polish Pasties)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/c9a3l31593261890.jpg"
+      },
+      {
+        "name": "Pate Chinois",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yyrrxr1511816289.jpg"
+      },
+      {
+        "name": "Portuguese prego with green piri-piri",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg"
+      },
+      {
+        "name": "Red Peas Soup",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sqpqtp1515365614.jpg"
+      },
+      {
+        "name": "Roti john",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/hx335q1619789561.jpg"
+      },
+      {
+        "name": "Soy-Glazed Meatloaves with Wasabi Mashed Potatoes & Roasted Carrots",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/o2wb6p1581005243.jpg"
+      },
+      {
+        "name": "Spaghetti Bolognese",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg"
+      },
+      {
+        "name": "Steak and Kidney Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qysyss1511558054.jpg"
+      },
+      {
+        "name": "Steak Diane",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vussxq1511882648.jpg"
+      },
+      {
+        "name": "Szechuan Beef",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1529443236.jpg"
+      },
+      {
+        "name": "Traditional Croatian Goulash",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/n1hcou1628770088.jpg"
+      },
+      {
+        "name": "Vegetable Shepherd’s Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/w8umt11583268117.jpg"
+      }
+    ]
+  },
+  "pasta": {
+    "image": "https://images.unsplash.com/photo-1617474019977-0e105d1b430e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHBhc3RhfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Chilli prawn linguine",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg"
+      },
+      {
+        "name": "Fettucine alfredo",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg"
+      },
+      {
+        "name": "Grilled Mac and Cheese Sandwich",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xutquv1505330523.jpg"
+      },
+      {
+        "name": "Lasagna Sandwiches",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xr0n4r1576788363.jpg"
+      },
+      {
+        "name": "Lasagne",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg"
+      },
+      {
+        "name": "Pilchard puttanesca",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg"
+      },
+      {
+        "name": "Spaghetti alla Carbonara",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg"
+      },
+      {
+        "name": "Venetian Duck Ragu",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qvrwpt1511181864.jpg"
+      }
+    ]
+  },
+  "dessert": {
+    "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZGVzc2VydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Apam balik",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
+      },
+      {
+        "name": "Apple & Blackberry Crumble",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg"
+      },
+      {
+        "name": "Apple Frangipan Tart",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg"
+      },
+      {
+        "name": "Bakewell tart",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg"
+      },
+      {
+        "name": "Banana Pancakes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg"
+      },
+      {
+        "name": "Battenberg Cake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ywwrsp1511720277.jpg"
+      },
+      {
+        "name": "BeaverTails",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg"
+      },
+      {
+        "name": "Blackberry Fool",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rpvptu1511641092.jpg"
+      },
+      {
+        "name": "Bread and Butter Pudding",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg"
+      },
+      {
+        "name": "Budino Di Ricotta",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1549542877.jpg"
+      },
+      {
+        "name": "Canadian Butter Tarts",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg"
+      },
+      {
+        "name": "Carrot Cake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vrspxv1511722107.jpg"
+      },
+      {
+        "name": "Cashew Ghoriba Biscuits",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/t3r3ka1560461972.jpg"
+      },
+      {
+        "name": "Chelsea Buns",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vqpwrv1511723001.jpg"
+      },
+      {
+        "name": "Chinon Apple Tarts",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qtqwwu1511792650.jpg"
+      },
+      {
+        "name": "Choc Chip Pecan Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rqvwxt1511384809.jpg"
+      },
+      {
+        "name": "Chocolate Avocado Mousse",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uttuxy1511382180.jpg"
+      },
+      {
+        "name": "Chocolate Caramel Crispy",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1550442508.jpg"
+      },
+      {
+        "name": "Chocolate Gateau",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tqtywx1468317395.jpg"
+      },
+      {
+        "name": "Chocolate Raspberry Brownies",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yypvst1511386427.jpg"
+      },
+      {
+        "name": "Chocolate Souffle",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/twspvx1511784937.jpg"
+      },
+      {
+        "name": "Christmas cake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ldnrm91576791881.jpg"
+      },
+      {
+        "name": "Christmas Pudding Flapjack",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vvusxs1483907034.jpg"
+      },
+      {
+        "name": "Christmas Pudding Trifle",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/r33cud1576791081.jpg"
+      },
+      {
+        "name": "Classic Christmas pudding",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1d85821576790598.jpg"
+      },
+      {
+        "name": "Dundee cake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wxyvqq1511723401.jpg"
+      },
+      {
+        "name": "Eccles Cakes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wtqrqw1511639627.jpg"
+      },
+      {
+        "name": "Eton Mess",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uuxwvq1483907861.jpg"
+      },
+      {
+        "name": "Honey Yogurt Cheesecake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/y2irzl1585563479.jpg"
+      },
+      {
+        "name": "Hot Chocolate Fudge",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg"
+      },
+      {
+        "name": "Jam Roly-Poly",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ysqupp1511640538.jpg"
+      },
+      {
+        "name": "Key Lime Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qpqtuu1511386216.jpg"
+      },
+      {
+        "name": "Krispy Kreme Donut",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/4i5cnx1587672171.jpg"
+      },
+      {
+        "name": "Madeira Cake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/urtqut1511723591.jpg"
+      },
+      {
+        "name": "Mince Pies",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qe8pf51576795532.jpg"
+      },
+      {
+        "name": "Nanaimo Bars",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vwuprt1511813703.jpg"
+      },
+      {
+        "name": "New York cheesecake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/swttys1511385853.jpg"
+      },
+      {
+        "name": "Pancakes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg"
+      },
+      {
+        "name": "Parkin Cake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qxuqtt1511724269.jpg"
+      },
+      {
+        "name": "Peach & Blueberry Grunt",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg"
+      },
+      {
+        "name": "Peanut Butter Cheesecake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qtuuys1511387068.jpg"
+      },
+      {
+        "name": "Peanut Butter Cookies",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1544384070.jpg"
+      },
+      {
+        "name": "Pear Tarte Tatin",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rxvxrr1511797671.jpg"
+      },
+      {
+        "name": "Polskie Naleśniki (Polish Pancakes)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/58bkyo1593350017.jpg"
+      },
+      {
+        "name": "Portuguese custard tarts",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg"
+      },
+      {
+        "name": "Pouding chomeur",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yqqqwu1511816912.jpg"
+      },
+      {
+        "name": "Pumpkin Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/usuqtp1511385394.jpg"
+      },
+      {
+        "name": "Rock Cakes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tqrrsq1511723764.jpg"
+      },
+      {
+        "name": "Rocky Road Fudge",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vtxyxv1483567157.jpg"
+      },
+      {
+        "name": "Rogaliki (Polish Croissant Cookies)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/7mxnzz1593350801.jpg"
+      },
+      {
+        "name": "Salted Caramel Cheescake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xqrwyr1511133646.jpg"
+      },
+      {
+        "name": "Seri muka kuih",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/6ut2og1619790195.jpg"
+      },
+      {
+        "name": "Spotted Dick",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xqvyqr1511638875.jpg"
+      },
+      {
+        "name": "Sticky Toffee Pudding",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xqqqtu1511637379.jpg"
+      },
+      {
+        "name": "Sticky Toffee Pudding Ultimate",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xrptpq1483909204.jpg"
+      },
+      {
+        "name": "Strawberry Rhubarb Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/178z5o1585514569.jpg"
+      },
+      {
+        "name": "Sugar Pie",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yrstur1511816601.jpg"
+      },
+      {
+        "name": "Summer Pudding",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rsqwus1511640214.jpg"
+      },
+      {
+        "name": "Tarte Tatin",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ryspuw1511786688.jpg"
+      },
+      {
+        "name": "Timbits",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/txsupu1511815755.jpg"
+      },
+      {
+        "name": "Treacle Tart",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wprvrw1511641295.jpg"
+      },
+      {
+        "name": "Tunisian Orange Cake",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/y4jpgq1560459207.jpg"
+      },
+      {
+        "name": "Walnut Roll Gužvara",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/u9l7k81628771647.jpg"
+      },
+      {
+        "name": "White chocolate creme brulee",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uryqru1511798039.jpg"
+      }
+    ]
+  },
+  "side": {
+    "image": "https://images.unsplash.com/photo-1607532941433-304659e8198a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Boulangère Potatoes",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qywups1511796761.jpg"
+      },
+      {
+        "name": "Brie wrapped in prosciutto & brioche",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qqpwsy1511796276.jpg"
+      },
+      {
+        "name": "Burek",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg"
+      },
+      {
+        "name": "Corba",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
+      },
+      {
+        "name": "Fennel Dauphinoise",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ytttsv1511798734.jpg"
+      },
+      {
+        "name": "Feteer Meshaltet",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg"
+      },
+      {
+        "name": "French Onion Soup",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xvrrux1511783685.jpg"
+      },
+      {
+        "name": "Fresh sardines",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/nv5lf31628771380.jpg"
+      },
+      {
+        "name": "Japanese gohan rice",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg"
+      },
+      {
+        "name": "Kumpir",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg"
+      },
+      {
+        "name": "Mushroom soup with buckwheat",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg"
+      },
+      {
+        "name": "Mustard champ",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/o7p9581608589317.jpg"
+      },
+      {
+        "name": "Pierogi (Polish Dumplings)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/45xxr21593348847.jpg"
+      },
+      {
+        "name": "Prawn & Fennel Bisque",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rtwwvv1511799504.jpg"
+      },
+      {
+        "name": "Snert (Dutch Split Pea Soup)",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9ptx0a1565090843.jpg"
+      },
+      {
+        "name": "Split Pea Soup",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg"
+      }
+    ]
+  },
+  "pizza": {
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "SALMON & PRAWN SUPREME",
+        "imageUrl": "https://www.dominos.com.au/ManagedAssets/AU/product/P440/AU_P440_en_hero_8648.jpg?v147332844"
+      },
+      {
+        "name": "EXTRA LARGE SPICY VEG TRIO",
+        "imageUrl": "https://www.dominos.com.au/ManagedAssets/AU/product/P2252XL/AU_P2252XL_en_hero_8332.jpg?v1178871771"
+      },
+      {
+        "name": "VEGORAMA",
+        "imageUrl": "https://www.dominos.com.au/ManagedAssets/AU/product/P010/AU_P010_en_hero_8590.jpg?v282978303"
+      },
+      {
+        "name": "SPICY PEPPY PANEER ",
+        "imageUrl": "https://www.dominos.com.au/ManagedAssets/AU/product/P416/AU_P416_en_hero_8590.jpg?v-531245658"
+      },
+      {
+        "name": "CHICKEN SUPREME",
+        "imageUrl": "https://www.dominos.com.au/ManagedAssets/AU/product/P422/AU_P422_en_hero_8129.jpg?v807560171"
+      },
+      {
+        "name": "ROASTED VEGETABLE DELUXE",
+        "imageUrl": "https://www.dominos.com.au/ManagedAssets/AU/product/P442/AU_P442_en_hero_8648.jpg?v-685771111"
+      }
+    ]
+  },
+  "drinks": {
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    "meals": [
+      {
+        "name": "Afterglow",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/vuquyv1468876052.jpg"
+      },
+      {
+        "name": "Alice Cocktail",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/qyqtpv1468876144.jpg"
+      },
+      {
+        "name": "Aloha Fruit punch",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/wsyvrt1468876267.jpg"
+      },
+      {
+        "name": "Apello",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/uptxtv1468876415.jpg"
+      },
+      {
+        "name": "Apple Berry Smoothie",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg"
+      },
+
+      {
+        "name": "Banana Strawberry Shake",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/vqquwx1472720634.jpg"
+      },
+      {
+        "name": "Banana Strawberry Shake Daiquiri",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/uvypss1472720581.jpg"
+      },
+      {
+        "name": "Bora Bora",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/xwuqvw1473201811.jpg"
+      },
+      {
+        "name": "Castillian Hot Chocolate",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/3nbu4a1487603196.jpg"
+      },
+      {
+        "name": "Chocolate Beverage",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/jbqrhv1487603186.jpg"
+      },
+      {
+        "name": "Chocolate Drink",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/q7w4xu1487603180.jpg"
+      },
+      {
+        "name": "Coke and Drops",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/yrtxxp1472719367.jpg"
+      },
+      {
+        "name": "Cranberry Punch",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/mzgaqu1504389248.jpg"
+      },
+      {
+        "name": "Drinking Chocolate",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/u6jrdf1487603173.jpg"
+      },
+      {
+        "name": "Egg Cream",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/mvis731484430445.jpg"
+      },
+      {
+        "name": "Frappé",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/vqwryq1441245927.jpg"
+      },
+      {
+        "name": "Fruit Cooler",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/i3tfn31484430499.jpg"
+      },
+      {
+        "name": "Fruit Flip-Flop",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/nfdx6p1484430633.jpg"
+      },
+      {
+        "name": "Fruit Shake",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/q0fg2m1484430704.jpg"
+      },
+      {
+        "name": "Grape lemon pineapple Smoothie",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/54z5h71487603583.jpg"
+      },
+      {
+        "name": "Holloween Punch",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/lfeoe41504888925.jpg"
+      },
+      {
+        "name": "Hot Chocolate to Die for",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/0lrmjp1487603166.jpg"
+      },
+      {
+        "name": "Iced Coffee",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/ytprxy1454513855.jpg"
+      },
+      {
+        "name": "Ipamena",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/yswuwp1469090992.jpg"
+      },
+      {
+        "name": "Just a Moonmint",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/znald61487604035.jpg"
+      },
+      {
+        "name": "Kill the cold Smoothie",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/7j1z2e1487603414.jpg"
+      },
+      {
+        "name": "Kiwi Papaya Smoothie",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/jogv4w1487603571.jpg"
+      },
+      {
+        "name": "Lassi - A South Indian Drink",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/iq6scx1487603980.jpg"
+      },
+      {
+        "name": "Lassi - Mango",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/1bw6sd1487603816.jpg"
+      },
+      {
+        "name": "Lassi - Sweet",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/9jeifz1487603885.jpg"
+      },
+      {
+        "name": "Lassi Khara",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/m1suzm1487603970.jpg"
+      },
+      {
+        "name": "Lassi Raita",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/s4x0qj1487603933.jpg"
+      },
+      {
+        "name": "Lemouroudji",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/eirmo71487603745.jpg"
+      },
+      {
+        "name": "Limeade",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/5jdp5r1487603680.jpg"
+      },
+      {
+        "name": "Mango Orange Smoothie",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/vdp2do1487603520.jpg"
+      },
+      {
+        "name": "Masala Chai",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/uyrpww1441246384.jpg"
+      },
+      {
+        "name": "Melya",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/xwtptq1441247579.jpg"
+      },
+      {
+        "name": "Microwave Hot Cocoa",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/8y4x5f1487603151.jpg"
+      },
+      {
+        "name": "Nuked Hot Chocolate",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/xcu6nb1487603142.jpg"
+      },
+      {
+        "name": "Orange Scented Hot Chocolate",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/hdzwrh1487603131.jpg"
+      },
+      {
+        "name": "Orangeade",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/ytsxxw1441167732.jpg"
+      },
+      {
+        "name": "Pineapple Gingerale Smoothie",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/eg9i1d1487603469.jpg"
+      },
+      {
+        "name": "Pysch Vitamin Light",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/xsqsxw1441553580.jpg"
+      },
+      {
+        "name": "Rail Splitter",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/stsuqq1441207660.jpg"
+      },
+      {
+        "name": "Spanish chocolate",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/pra8vt1487603054.jpg"
+      },
+      {
+        "name": "Spiced Peach Punch",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/qxvypq1468924331.jpg"
+      },
+      {
+        "name": "Spiking coffee",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/isql6y1487602375.jpg"
+      },
+      {
+        "name": "Strawberry Lemonade",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/spvvxp1468924425.jpg"
+      },
+      {
+        "name": "Strawberry Shivers",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/9h1vvt1487603404.jpg"
+      },
+      {
+        "name": "Sweet Bananas",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/sxpcj71487603345.jpg"
+      },
+      {
+        "name": "Thai Coffee",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/wquwxs1441247025.jpg"
+      },
+      {
+        "name": "Thai Iced Coffee",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/rqpypv1441245650.jpg"
+      },
+      {
+        "name": "Thai Iced Tea",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/trvwpu1441245568.jpg"
+      },
+      {
+        "name": "Tomato Tang",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/869qr81487603278.jpg"
+      },
+      {
+        "name": "Yoghurt Cooler",
+        "imageUrl": "https://www.thecocktaildb.com/images/media/drink/trttrv1441254466.jpg"
+      }
+    ]
+  }
+}
