@@ -1,44 +1,40 @@
 const { writeFileSync } = require('fs');
 const { join } = require('path');
 const faker = require('faker');
-const mealsArr = require('./meals.json');
+const sourceData = require('./sourcedata.json');
 
 const createRandomData = () => {
   const users = [];
   const customers = [];
-  const restaurant = [];
+  const restaurants = [];
   const discountCode = [];
-  const categories = [];
 
-  const category = {
-    breakfast:
-      'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGJyZWFrZmFzdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    chicken:
-      'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JpbGxlZCUyMGNoaWNrZW58ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    meat: 'https://images.unsplash.com/photo-1611171711791-b34fa42e9fc2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fGJlZWZ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    pizza:
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-    burger:
-      'https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    dessert:
-      'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZGVzc2VydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    pasta:
-      'https://images.unsplash.com/photo-1617474019977-0e105d1b430e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHBhc3RhfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    seafood:
-      'https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-    side: 'https://images.unsplash.com/photo-1607532941433-304659e8198a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    soup: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    drink:
-      'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTh8fGRyaW5rfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  };
+  const sourceCategories = Object.entries(sourceData).map(
+    ([categoryName, { image, meals }], id) => ({
+      id: id + 1,
+      name: categoryName,
+      image,
+      meals,
+    })
+  );
 
-  for (let i = 1; i <= 10; i += 1) {
+  for (let i = 1; i <= 20; i += 1) {
     const id = i;
     const username = faker.internet.userName();
     const password = faker.internet.password();
     const email = faker.internet.email();
     const accountType = ['customer', 'restaurant'];
 
+    users.push({
+      id,
+      username,
+      email,
+      password,
+      accountType: accountType[Math.round(Math.random())],
+    });
+  }
+
+  for (let i = 0; i < 10; i += 1) {
     const customerName = faker.name.findName();
     const customerCity = faker.address.cityName();
     const customerStreetName = faker.address.streetName();
@@ -46,6 +42,15 @@ const createRandomData = () => {
     const customerFullAddress = `${customerCity},${customerStreetName},${customerStreetAddress}`;
     const customerPhone = faker.phone.phoneNumber();
 
+    customers.push({
+      userId: users[i].id,
+      customerName,
+      customerFullAddress,
+      customerPhone,
+    });
+  }
+
+  for (let i = 10; i < 20; i += 1) {
     const restaurantName = faker.company.companyName();
     const description = faker.lorem.paragraph();
     const restaurantCity = faker.address.cityName();
@@ -58,25 +63,8 @@ const createRandomData = () => {
     const contactEmail = faker.internet.email();
     const restaurantPhone = faker.phone.phoneNumber();
 
-    const discountType = ['percentage', 'flat'];
-
-    users.push({
-      id,
-      username,
-      email,
-      password,
-      accountType: accountType[Math.round(Math.random())],
-    });
-
-    customers.push({
-      userId: id,
-      customerName,
-      customerFullAddress,
-      customerPhone,
-    });
-
-    restaurant.push({
-      userId: id,
+    restaurants.push({
+      userId: users[i].id,
       restaurantName,
       description,
       restaurantFullAddress,
@@ -86,33 +74,47 @@ const createRandomData = () => {
       contactEmail,
       restaurantPhone,
     });
+  }
+  const meals = sourceCategories
+    .map(({ id: categoryId, meals: categoryMeals }) =>
+      categoryMeals.map(({ name, imageUrl }) => ({
+        categoryId,
+        restaurantId: faker.random.arrayElement(
+          restaurants.map((res) => res.userId)
+        ),
+        name,
+        images: [imageUrl, imageUrl],
+        price: +faker.commerce.price(2, 60),
+      }))
+    )
+    .flat()
+    .map((meal, id) => ({ id: id + 1, ...meal }));
 
-    categories.push({
-      id,
-      name: Object.keys(category)[i - 1],
-    });
-
-    categories[i - 1].imageUrl = category[categories[i - 1].name];
+  for (let i = 0; i <= 40; i += 1) {
+    const discountType = faker.random.arrayElement(['percentage', 'flat']);
 
     discountCode.push({
-      mealId: id,
-      discountType: discountType[Math.round(Math.random())],
+      mealId: faker.random.arrayElement(meals.map((meal) => meal.id)),
+      discountType,
+      discountAmount:
+        discountType === 'percentage'
+          ? +faker.commerce.price(5, 30)
+          : +faker.commerce.price(1, 10),
+      expiresAt: faker.date.future(1),
+      promocode: faker.random.alphaNumeric(6).toUpperCase(),
     });
-
-    discountCode[i - 1].discountAmount =
-      discountCode[i - 1].discountType === 'percentage'
-        ? `${Math.floor(Math.random() * 100)}`
-        : `${faker.commerce.price()} `;
   }
 
-  const meals = mealsArr.map(
-    ({ strMeal: name, strMealThumb: thumbnail }, index) => ({
-      id: index + 1,
-      name,
-      images: [thumbnailthumbnail],
-    })
-  );
-  return { users, customers, restaurant, discountCode, categories, meals };
+  const categories = sourceCategories.map(({ meals: _, ...rest }) => rest);
+
+  return {
+    users,
+    customers,
+    restaurants,
+    discountCode,
+    categories,
+    meals,
+  };
 };
 
 const data = createRandomData();
