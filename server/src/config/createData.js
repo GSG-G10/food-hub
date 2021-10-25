@@ -1,6 +1,7 @@
 const { writeFileSync } = require('fs');
 const { join } = require('path');
 const faker = require('faker');
+const mealsArr = require('./meals.json');
 
 const createRandomData = () => {
   const users = [];
@@ -104,7 +105,14 @@ const createRandomData = () => {
         : `${faker.commerce.price()} `;
   }
 
-  return { users, customers, restaurant, discountCode, categories };
+  const meals = mealsArr.map(
+    ({ strMeal: name, strMealThumb: thumbnail }, index) => ({
+      id: index + 1,
+      name,
+      images: [thumbnailthumbnail],
+    })
+  );
+  return { users, customers, restaurant, discountCode, categories, meals };
 };
 
 const data = createRandomData();
