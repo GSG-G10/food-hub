@@ -1,12 +1,13 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import { Link, Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { MenuDrawer } from './MenuDrawer';
 import { NavItems } from './NavItems';
 import Logo from '../../../assets/logo.png';
+import { LoginWindow } from '../../LoginWindow';
 
 const navItems = [
   { label: 'Restaurants', to: 'restaurants' },
@@ -16,6 +17,9 @@ const navItems = [
 
 export const Header = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.up('sm'));
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <Box component="header" bgcolor="primary.main">
@@ -45,13 +49,17 @@ export const Header = () => {
           )}
           <Button
             variant="outlined"
-            component={RouterLink}
-            to="/login"
             color="white"
             sx={{ borderColor: 'common.white' }}
+            onClick={handleOpen}
           >
             Login
           </Button>
+          <LoginWindow
+            handleOpen={handleOpen}
+            open={open}
+            handleClose={handleClose}
+          />
         </Box>
       </Container>
     </Box>
