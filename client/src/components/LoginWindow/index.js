@@ -52,7 +52,7 @@ export const LoginWindow = ({ open, handleClose }) => {
         // eslint-disable-next-line no-nested-ternary
         width={isLg ? `35%` : isMd ? '70%' : isXs ? '90%' : '90%'}
         border="1px solid #ddd"
-        padding="4rem 4rem 6rem"
+        padding="3rem 4rem 4rem"
         display="flex"
         bgcolor="common.white"
         flexDirection="column"
@@ -115,7 +115,7 @@ export const LoginWindow = ({ open, handleClose }) => {
             <FormControlLabel
               sx={{
                 '& .MuiFormControlLabel-label': {
-                  fontSize: 16,
+                  fontSize: 14,
                 },
               }}
               control={<Checkbox />}
@@ -134,12 +134,17 @@ export const LoginWindow = ({ open, handleClose }) => {
             variant="contained"
             fullWidth
             type="submit"
-            sx={{ height: '45px', marginBottom: '1em' }}
+            sx={{ height: '2.5em', marginBottom: '1em' }}
           >
             Login
           </Button>
         </form>
-        <Typography position="relative" bottom="-45px">
+        <Typography
+          variant="subtitle"
+          fontSize={14}
+          position="relative"
+          bottom="-45px"
+        >
           Don&apos;t have an account?{' '}
           <Link to="/" component={RouterLink} underline="none">
             Create an account
