@@ -13,12 +13,12 @@ import '../config/firebaseConfig';
 export const Login = () => {
   const auth = getAuth();
 
+  const [token, setToken] = useState('');
+  const [error, setError] = [];
+
   const [isAuth, setIsAuth] = useState(
     false || window.localStorage.getItem('auth') === 'true'
   );
-
-  const [token, setToken] = useState('');
-  const [error, setError] = [];
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
