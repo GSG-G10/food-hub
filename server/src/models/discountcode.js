@@ -10,7 +10,7 @@ const DiscountCode = sequelize.define('discountcode', {
     },
   },
   discountType: {
-    type: Sequelize.STRING(10),
+    type: Sequelize.STRING,
     allowNull: false,
   },
   discountAmount: {
@@ -18,11 +18,11 @@ const DiscountCode = sequelize.define('discountcode', {
     allowNull: false,
   },
   expiresAt: {
-    type: Sequelize.TIME,
+    type: Sequelize.DATE,
     allowNull: false,
   },
   promocode: {
-    type: Sequelize.STRING(15),
+    type: Sequelize.STRING,
     allowNull: false,
     primaryKey: true,
   },

@@ -100,11 +100,7 @@ const createRandomData = () => {
         discountType === 'percentage'
           ? +faker.commerce.price(5, 30)
           : +faker.commerce.price(1, 10),
-      expiresAt: JSON.stringify(faker.date.future(1))
-        .split(/[A-Z]/)
-        .join(' ')
-        .replace(/"/g, '')
-        .trim(),
+      expiresAt: faker.date.future(1).toISOString(),
       promocode: faker.random.alphaNumeric(6).toUpperCase(),
     });
   }

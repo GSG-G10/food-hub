@@ -11,7 +11,7 @@ const Restaurant = sequelize.define('restaurants', {
     },
   },
   restaurantName: {
-    type: Sequelize.STRING(40),
+    type: Sequelize.STRING,
     allowNull: false,
   },
   restaurantFullAddress: {
@@ -19,7 +19,7 @@ const Restaurant = sequelize.define('restaurants', {
     allowNull: false,
   },
   restaurantPhone: {
-    type: Sequelize.STRING(20),
+    type: Sequelize.STRING,
     allowNull: false,
   },
   description: {

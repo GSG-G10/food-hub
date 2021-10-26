@@ -11,7 +11,7 @@ const Customer = sequelize.define('customers', {
     },
   },
   customerName: {
-    type: Sequelize.STRING(40),
+    type: Sequelize.STRING,
     allowNull: false,
   },
   customerFullAddress: {
@@ -19,7 +19,7 @@ const Customer = sequelize.define('customers', {
     allowNull: false,
   },
   customerPhone: {
-    type: Sequelize.STRING(20),
+    type: Sequelize.STRING,
     allowNull: false,
   },
 });
