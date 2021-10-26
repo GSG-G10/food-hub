@@ -12,8 +12,8 @@ export const Login = () => {
   );
 
   const [token, setToken] = useState('');
-
-  // console.log('token state', token);
+  const [userId, setUserId] = useState('');
+  console.log('USEEEER', userId);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -21,24 +21,27 @@ export const Login = () => {
         setIsAuth(true);
         window.localStorage.setItem('auth', 'true');
         user.getIdToken().then((tokenId) => setToken(tokenId));
+        setUserId(user.uid);
       } else {
         setIsAuth(false);
       }
     });
   }, [auth]);
 
-  const sendToken = async (tokenId) => {
-    const res = await axios.get('/api/v1/login', {
+  const sendUserInfo = async (tokenId, userUid) => {
+    const res = await axios.get('/api/v1/auth', {
       headers: {
-        Authorization: `Bearer${tokenId}`,
+        Authorization: `Bearer ${tokenId}`,
+        id: userUid,
       },
     });
-    console.log('HEREEEEE', res);
+    console.log('HEREEEEE', res.data);
   };
 
   useEffect(() => {
-    sendToken(token);
-  }, [token]);
+    if (token) sendUserInfo(token, userId);
+  }, [token, userId]);
+
   const loginWithGoogle = () => {
     signInWithPopup(auth, new GoogleAuthProvider()).then((cred) => {
       if (cred) {

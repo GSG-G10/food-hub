@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
-const { login } = require('./controllers');
+const { auth } = require('./controllers');
+const { decodeToken } = require('./middleware/privateRoute');
 
 // router.post('/login', login);
-router.get('/login', login);
+router.get('/auth', decodeToken, auth);
 
 module.exports = router;
