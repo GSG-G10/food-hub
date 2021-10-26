@@ -35,7 +35,7 @@ export const Login = () => {
         id: userUid,
       },
     });
-    console.log('HEREEEEE', res.data);
+    console.log('HEREEEE', res.data);
   };
 
   useEffect(() => {
