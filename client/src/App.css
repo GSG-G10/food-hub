@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #FF5A00;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style-type: none;
+}
