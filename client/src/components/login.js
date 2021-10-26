@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 import '../config/firebaseConfig';
 
 export const Login = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const auth = getAuth();
+
+  const [isAuth, setIsAuth] = useState(
+    false || window.localStorage.getItem('auth') === 'true'
+  );
+
+  const [token, setToken] = useState('');
+
+  console.log('token state', token);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsAuth(true);
+        window.localStorage.setItem('auth', 'true');
+        user.getIdToken().then((tokenId) => setToken(tokenId));
+      }
+    });
+  }, [auth]);
 
   const loginWithGoogle = () => {
-    const auth = getAuth();
     signInWithPopup(auth, new GoogleAuthProvider()).then((cred) => {
       if (cred) {
         setIsAuth(true);
+        window.localStorage.setItem('auth', 'true');
       }
     });
   };
