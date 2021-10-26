@@ -4,7 +4,7 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const { join } = require('path');
 const router = require('./router');
-const { sequelize } = require('./config/databaseSchema');
+const { sequelize } = require('./config/connection');
 
 const app = express();
 
@@ -25,5 +25,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 sequelize.sync();
-
 module.exports = app;

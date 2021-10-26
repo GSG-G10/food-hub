@@ -83,7 +83,7 @@ const createRandomData = () => {
           restaurants.map((res) => res.userId)
         ),
         name,
-        images: [imageUrl, imageUrl],
+        images: JSON.stringify([imageUrl, imageUrl]),
         price: +faker.commerce.price(2, 60),
       }))
     )
@@ -100,7 +100,11 @@ const createRandomData = () => {
         discountType === 'percentage'
           ? +faker.commerce.price(5, 30)
           : +faker.commerce.price(1, 10),
-      expiresAt: faker.date.future(1),
+      expiresAt: JSON.stringify(faker.date.future(1))
+        .split(/[A-Z]/)
+        .join(' ')
+        .replace(/"/g, '')
+        .trim(),
       promocode: faker.random.alphaNumeric(6).toUpperCase(),
     });
   }
