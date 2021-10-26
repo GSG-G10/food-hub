@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import propTypes from 'prop-types';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -28,16 +27,10 @@ export const LoginWindow = ({ open, handleClose }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (password.length >= 8) {
-      console.log(`email: ${email}`);
-      console.log(`password: ${password}`);
-    } else {
+    if (password.length < 8) {
       setPasswordError(true);
     }
   };
-  const isXs = useMediaQuery((theme) => theme.breakpoints.up('xs'));
-  const isMd = useMediaQuery((theme) => theme.breakpoints.up('md'));
-  const isLg = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
   return (
     <Modal
@@ -49,8 +42,7 @@ export const LoginWindow = ({ open, handleClose }) => {
       sx={{ display: 'flex', alignItems: 'center' }}
     >
       <Box
-        // eslint-disable-next-line no-nested-ternary
-        width={isLg ? `35%` : isMd ? '70%' : isXs ? '90%' : '90%'}
+        width={{ xs: '90%', md: '70%', lg: '35%' }}
         border="1px solid #ddd"
         padding="3rem 4rem 4rem"
         display="flex"
