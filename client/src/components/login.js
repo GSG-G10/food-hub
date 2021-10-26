@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 import axios from 'axios';
 
 import '../config/firebaseConfig';
@@ -12,8 +18,7 @@ export const Login = () => {
   );
 
   const [token, setToken] = useState('');
-  const [userId, setUserId] = useState('');
-  console.log('USEEEER', userId);
+  const [error, setError] = [];
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -21,34 +26,63 @@ export const Login = () => {
         setIsAuth(true);
         window.localStorage.setItem('auth', 'true');
         user.getIdToken().then((tokenId) => setToken(tokenId));
-        setUserId(user.uid);
       } else {
         setIsAuth(false);
       }
     });
   }, [auth]);
 
-  const sendUserInfo = async (tokenId, userUid) => {
-    const res = await axios.get('/api/v1/auth', {
+  const sendToken = async (tokenId) => {
+    await axios.get('/api/v1/auth', {
       headers: {
         Authorization: `Bearer ${tokenId}`,
-        id: userUid,
       },
     });
-    console.log('HEREEEE', res.data);
   };
 
   useEffect(() => {
-    if (token) sendUserInfo(token, userId);
-  }, [token, userId]);
+    if (token) sendToken(token);
+  }, [token]);
 
+  // Sign in with Google
   const loginWithGoogle = () => {
-    signInWithPopup(auth, new GoogleAuthProvider()).then((cred) => {
-      if (cred) {
-        setIsAuth(true);
-        window.localStorage.setItem('auth', 'true');
-      }
-    });
+    signInWithPopup(auth, new GoogleAuthProvider())
+      .then((cred) => {
+        if (cred) {
+          setIsAuth(true);
+          window.localStorage.setItem('auth', 'true');
+        }
+      })
+      .catch((err) => setError([...error, err.message]));
+  };
+
+  // Sign in with Email and Password
+  const signInWithEmail = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        if (cred) {
+          setIsAuth(true);
+          window.localStorage.setItem('auth', 'true');
+        }
+      })
+      .catch((err) => setError([...error, err.message]));
+  };
+
+  // Logout
+  const logout = () => {
+    auth.signOut();
+  };
+
+  // Sign up with Email and Password
+  const signUpWithEmail = (email, password) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        if (cred) {
+          setIsAuth(true);
+          window.localStorage.setItem('auth', 'true');
+        }
+      })
+      .catch((err) => setError([...error, err.message]));
   };
 
   return (
