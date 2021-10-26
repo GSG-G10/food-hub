@@ -1,9 +1,0 @@
-.hamburger-links {
-  flex-direction: column;
-}
-.hamburger-links li {
-  margin: 12px 0;  
-}
-.hamburger-links li a {
-  color: #000;
-}

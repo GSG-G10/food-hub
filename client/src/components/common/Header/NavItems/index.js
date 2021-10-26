@@ -1,26 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
 
-import './style.css';
-
-export const NavItems = ({ navLinksMenu }) => {
-  const navItems = ['Restaurants', 'Categories', 'About Us'];
-  return (
-    <nav className="nav-items">
-      <ul className={`nav-links ${navLinksMenu}`}>
-        {navItems.map((navItem) => (
-          <li key={Math.random() * 100}>
-            <Link to={`/${navItem.replace(' ', '')}`}>{navItem}</Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
+export const NavItems = ({ navItems }) => (
+  <nav className="nav-items">
+    <Box>
+      {navItems.map((navItem) => (
+        <Link
+          key={Math.random() * 100}
+          component={RouterLink}
+          color="common.white"
+          padding="0 1.1em"
+          underline="hover"
+          to={navItem.to}
+        >
+          {navItem.label}
+        </Link>
+      ))}
+    </Box>
+  </nav>
+);
 NavItems.defaultProps = {
-  navLinksMenu: '',
+  navItems: [],
 };
 NavItems.propTypes = {
-  navLinksMenu: PropTypes.string,
+  navItems: propTypes.arrayOf(
+    propTypes.shape({ to: propTypes.string, label: propTypes.string })
+  ),
 };

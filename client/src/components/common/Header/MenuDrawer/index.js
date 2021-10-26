@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import propTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { NavItems } from '../NavItems';
-import './style.css';
 
 const drawerWidth = 200;
 
@@ -22,7 +23,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-start',
 }));
 
-export const HamburgerMenu = () => {
+export const MenuDrawer = ({ navItems }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -35,7 +36,7 @@ export const HamburgerMenu = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
+    <Box width="15%" display="flex" flexDirection="row-reverse">
       <CssBaseline />
       <IconButton
         aria-label="open drawer"
@@ -68,8 +69,30 @@ export const HamburgerMenu = () => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <NavItems navLinksMenu="hamburger-links" />
+        <Box display="flex" flexDirection="column" padding="1.2em">
+          {navItems.map((navItem) => (
+            <Link
+              key={Math.random() * 100}
+              component={RouterLink}
+              underline="hover"
+              to={navItem.to}
+              color="black"
+              paddingBottom="0.4em"
+            >
+              {navItem.label}
+            </Link>
+          ))}
+        </Box>
       </Drawer>
     </Box>
   );
+};
+
+MenuDrawer.defaultProps = {
+  navItems: [],
+};
+MenuDrawer.propTypes = {
+  navItems: propTypes.arrayOf(
+    propTypes.shape({ to: propTypes.string, label: propTypes.string })
+  ),
 };
