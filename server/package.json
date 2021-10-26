@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src",
+    "postinstall": "npm run build:fakedata",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:db": "node src/config/createData.js && node src/config/dbBuild.js",
+    "build:fakedata": "node src/config/createData.js",
+    "build:db": "node src/config/dbBuild.js",
     "lint": "eslint src --max-warnings=0",
     "lint-fix": "eslint src --fix --max-warnings=0"
   },
