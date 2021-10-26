@@ -33,7 +33,7 @@ export const Login = () => {
         Authorization: `Bearer${tokenId}`,
       },
     });
-    console.log('HEREEEE', res);
+    console.log('HEREEEEE', res);
   };
 
   useEffect(() => {
