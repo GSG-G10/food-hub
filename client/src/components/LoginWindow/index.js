@@ -76,7 +76,6 @@ export const LoginWindow = ({ open, handleClose }) => {
           onSubmit={handleSubmit}
           display="flex"
           alignItems="center"
-          // justifyContent="space-between"
           flexDirection="column"
           width="90%"
           m="auto"
