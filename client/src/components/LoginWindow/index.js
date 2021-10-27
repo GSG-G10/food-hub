@@ -10,7 +10,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
-import { AuthButtons } from './AuthButtons';
+import { AuthButtons } from '../AuthButtons';
 
 export const LoginWindow = ({ open, handleClose }) => {
   const [email, setEamil] = useState('');

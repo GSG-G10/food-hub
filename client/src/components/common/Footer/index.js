@@ -25,15 +25,7 @@ export const Footer = () => {
     'Burger Space',
   ];
   return (
-    <Box
-      component="footer"
-      bgcolor="secondary.main"
-      color="common.white"
-      // position="absolute"
-      // left="0"
-      // bottom="0"
-      // width="100%"
-    >
+    <Box component="footer" bgcolor="secondary.main" color="common.white">
       <Container
         maxWidth="lg"
         sx={{

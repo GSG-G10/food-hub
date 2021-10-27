@@ -6,27 +6,22 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
+import { Divider } from '@mui/material';
 import { AuthButtons } from '../AuthButtons';
 
 export const Signup = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEamil] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [formValues, setFormValues] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const { username, email, password, confirmPassword } = formValues;
 
   const handleChange = (event) => {
-    if (event.target.name === 'username') {
-      setUsername(event.target.value);
-    } else if (event.target.name === 'email') {
-      setEamil(event.target.value);
-    } else if (event.target.name === 'password') {
-      setPassword(event.target.value);
-    } else {
-      setConfirmPassword(event.target.value);
-    }
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
@@ -38,12 +33,11 @@ export const Signup = () => {
     }
   };
   return (
-    <Box>
+    <>
       <Container maxWidth="lg">
         <Box
           boxShadow="rgb(99 99 99 / 20%) 0px 2px 8px 0px"
           py={8}
-          px={24}
           mt={4}
           mb={8}
           display="flex"
@@ -51,103 +45,112 @@ export const Signup = () => {
           alignItems="center"
           textAlign="center"
         >
-          <Typography
-            variant="h1"
-            fontWeight="500"
-            marginBottom="1.5em"
-            color="secondary"
+          <Box
+            width={{ xl: '50%', lg: '60%', md: '70%', sm: '80%', xs: '90%' }}
           >
-            Create an Account
-          </Typography>
-          <AuthButtons />
-          <Typography variant="subtitle">OR</Typography>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              id="username"
-              name="username"
-              label="Username"
-              type="text"
-              value={username}
-              fullWidth
-              size="small"
-              margin="normal"
-              required
-              onChange={handleChange}
-            />
-            <TextField
-              id="email"
-              name="email"
-              label="email"
-              type="email"
-              value={email}
-              fullWidth
-              size="small"
-              margin="normal"
-              required
-              onChange={handleChange}
-            />
-            <TextField
-              error={passwordError}
-              id="password"
-              name="password"
-              label="password"
-              type="password"
-              value={password}
-              fullWidth
-              size="small"
-              margin="normal"
-              required
-              helperText={
-                passwordError
-                  ? 'Password must contain at least 8 characters'
-                  : ''
-              }
-              onChange={handleChange}
-            />
-            <TextField
-              error={confirmPasswordError}
-              id="confirmpassword"
-              name="confirmpassword"
-              label="Confirm Password"
-              type="password"
-              value={confirmPassword}
-              fullWidth
-              size="small"
-              margin="normal"
-              required
-              helperText={confirmPasswordError ? 'Passwrod do NOT match' : ''}
-              onChange={handleChange}
-            />
-            <Typography variant="body">
-              By creating an account you agree to the{' '}
-              <Link to="/" component={RouterLink} underline="none">
-                Privacy Policy{' '}
-              </Link>
-              and to the{' '}
-              <Link to="/" component={RouterLink} underline="none">
-                terms of use
-              </Link>
-            </Typography>
-            <Button
-              variant="contained"
-              fullWidth
-              type="submit"
-              sx={{ height: '2.5em', marginBottom: '1em' }}
-            >
-              Create your account
-            </Button>
             <Typography
-              variant="subtitle"
-              fontSize={14}
-              position="relative"
-              bottom="-45px"
+              variant="h1"
+              fontWeight="500"
+              marginBottom="1.5em"
+              color="secondary"
             >
-              Already have an account?
-              <Button>Login</Button>
+              Create an Account
             </Typography>
-          </form>
+            <AuthButtons />
+            <Divider width="100%" my={4} sx={{ my: 1.6 }} />
+            <form onSubmit={handleSubmit}>
+              <TextField
+                id="username"
+                name="username"
+                label="Username"
+                type="text"
+                value={username}
+                fullWidth
+                size="small"
+                margin="normal"
+                required
+                onChange={handleChange}
+              />
+              <TextField
+                id="email"
+                name="email"
+                label="email"
+                type="email"
+                value={email}
+                fullWidth
+                size="small"
+                margin="normal"
+                required
+                onChange={handleChange}
+              />
+              <TextField
+                error={passwordError}
+                id="password"
+                name="password"
+                label="password"
+                type="password"
+                value={password}
+                fullWidth
+                size="small"
+                margin="normal"
+                required
+                helperText={
+                  passwordError
+                    ? 'Password must contain at least 8 characters'
+                    : ''
+                }
+                onChange={handleChange}
+              />
+              <TextField
+                error={confirmPasswordError}
+                id="confirmPassword"
+                name="confirmPassword"
+                label="Confirm Password"
+                type="password"
+                value={confirmPassword}
+                fullWidth
+                size="small"
+                margin="normal"
+                required
+                helperText={confirmPasswordError ? 'Passwrod do NOT match' : ''}
+                onChange={handleChange}
+              />
+              <Typography variant="body" my={4} display="block">
+                By creating an account you agree to the{' '}
+                <Link
+                  to="/"
+                  component={RouterLink}
+                  underline="none"
+                  sx={{ color: '#189934' }}
+                >
+                  Privacy Policy{' '}
+                </Link>
+                and to the{' '}
+                <Link to="/" component={RouterLink} underline="none">
+                  terms of use
+                </Link>
+              </Typography>
+              <Button
+                variant="contained"
+                fullWidth
+                type="submit"
+                sx={{ mb: 2 }}
+              >
+                Create your account
+              </Button>
+              <Typography
+                variant="subtitle"
+                fontSize={14}
+                position="relative"
+                bottom="-45px"
+              >
+                Already have an account?
+                <Button>Login</Button>
+              </Typography>
+            </form>
+          </Box>
         </Box>
       </Container>
-    </Box>
+    </>
   );
 };
