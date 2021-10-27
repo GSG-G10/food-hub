@@ -1,98 +1,96 @@
-import React, { useState, useEffect } from 'react';
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
-import axios from 'axios';
+import React, { useContext } from 'react';
+// import React, { useState, useEffect, useContext } from 'react';
 
-import '../config/firebaseConfig';
+// import { getAuth } from 'firebase/auth';
+// import axios from 'axios';
+
+import '../firebase/firebaseConfig';
+import { AuthContext } from '../firebase/firebaseContext';
 
 export const Login = () => {
-  const auth = getAuth();
+  // const auth = getAuth();
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
-  const [token, setToken] = useState('');
-  const [error, setError] = [];
+  // signInWithPopup, GoogleAuthProvider
 
-  const [isAuth, setIsAuth] = useState(
-    false || window.localStorage.getItem('auth') === 'true'
-  );
+  // const [token, setToken] = useState('');
+  // const [error, setError] = [];
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setIsAuth(true);
-        window.localStorage.setItem('auth', 'true');
-        user.getIdToken().then((tokenId) => setToken(tokenId));
-      } else {
-        setIsAuth(false);
-      }
-    });
-  }, [auth]);
+  // const [isAuth, setIsAuth] = useState(
+  //   false || window.localStorage.getItem('auth') === 'true'
+  // );
 
-  const sendToken = async (tokenId) => {
-    await axios.get('/api/v1/auth', {
-      headers: {
-        Authorization: `Bearer ${tokenId}`,
-      },
-    });
-  };
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       setIsAuth(true);
+  //       window.localStorage.setItem('auth', 'true');
+  //       user.getIdToken().then((tokenId) => setToken(tokenId));
+  //     } else {
+  //       setIsAuth(false);
+  //     }
+  //   });
+  // }, [auth]);
 
-  useEffect(() => {
-    if (token) sendToken(token);
-  }, [token]);
+  // const sendToken = async (tokenId) => {
+  //   await axios.get('/api/v1/auth', {
+  //     headers: {
+  //       Authorization: `Bearer ${tokenId}`,
+  //     },
+  //   });
+  // };
 
-  // Sign in with Google
-  const loginWithGoogle = () => {
-    signInWithPopup(auth, new GoogleAuthProvider())
-      .then((cred) => {
-        if (cred) {
-          setIsAuth(true);
-          window.localStorage.setItem('auth', 'true');
-        }
-      })
-      .catch((err) => setError([...error, err.message]));
-  };
+  // useEffect(() => {
+  //   if (token) sendToken(token);
+  // }, [token]);
+
+  // // Sign in with Google
+  // const loginWithGoogle = () => {
+  //   signInWithPopup(auth, new GoogleAuthProvider())
+  //     .then((cred) => {
+  //       if (cred) {
+  //         setIsAuth(true);
+  //         window.localStorage.setItem('auth', 'true');
+  //       }
+  //     })
+  //     .catch((err) => setError([...error, err.message]));
+  // };
 
   // Sign in with Email and Password
-  const signInWithEmail = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
-        if (cred) {
-          setIsAuth(true);
-          window.localStorage.setItem('auth', 'true');
-        }
-      })
-      .catch((err) => setError([...error, err.message]));
-  };
+  // const signInWithEmail = (email, password) => {
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((cred) => {
+  //       if (cred) {
+  //         setIsAuth(true);
+  //         window.localStorage.setItem('auth', 'true');
+  //       }
+  //     })
+  //     .catch((err) => setError([...error, err.message]));
+  // };
 
   // Logout
-  const logout = () => {
-    auth.signOut();
-  };
+  // const logout = () => {
+  //   auth.signOut();
+  // };
 
   // Sign up with Email and Password
-  const signUpWithEmail = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
-        if (cred) {
-          setIsAuth(true);
-          window.localStorage.setItem('auth', 'true');
-        }
-      })
-      .catch((err) => setError([...error, err.message]));
-  };
-
+  // const signUpWithEmail = (email, password) => {
+  //   createUserWithEmailAndPassword(auth, email, password)
+  //     .then((cred) => {
+  //       if (cred) {
+  //         setIsAuth(true);
+  //         window.localStorage.setItem('auth', 'true');
+  //       }
+  //     })
+  //     .catch((err) => setError([...error, err.message]));
+  // };
   return (
     <div>
-      {isAuth ? (
+      {true ? (
         <h1>Hello, you are logged in</h1>
       ) : (
-        <button type="submit" onClick={loginWithGoogle}>
-          Login with google
-        </button>
+        <button type="submit">Login with google</button>
       )}
     </div>
   );
