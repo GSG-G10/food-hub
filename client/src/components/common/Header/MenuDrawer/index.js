@@ -36,7 +36,7 @@ export const MenuDrawer = ({ navItems }) => {
   };
 
   return (
-    <Box width={2} display="flex" flexDirection="row-reverse">
+    <Box width={35} display="flex" flexDirection="row-reverse">
       <CssBaseline />
       <IconButton
         aria-label="open drawer"
