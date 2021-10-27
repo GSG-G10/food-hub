@@ -1,9 +1,8 @@
 import './App.css';
-import { Login } from './components/login';
-
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import { Login } from './components/login';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
 
@@ -33,7 +32,6 @@ export const App = () => (
         <Route path="/categories" />
         <Route path="/about-us" />
         <Route path="/login" />
-
       </Router>
     </ThemeProvider>
   </div>
