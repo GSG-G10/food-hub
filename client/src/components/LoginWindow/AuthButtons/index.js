@@ -22,8 +22,8 @@ export const AuthButtons = () => (
     </Button>
     <Button
       variant="contained"
+      color="facebookBlue"
       sx={{
-        backgroundColor: '#5777B9',
         '.MuiButton-startIcon': {
           marginRight: '10px',
         },
