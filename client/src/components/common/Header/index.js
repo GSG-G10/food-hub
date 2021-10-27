@@ -1,12 +1,13 @@
-import React from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import { Link, Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { MenuDrawer } from './MenuDrawer';
 import { NavItems } from './NavItems';
 import Logo from '../../../assets/logo.png';
+import { LoginWindow } from '../../LoginWindow';
 
 const navItems = [
   { label: 'Restaurants', to: 'restaurants' },
@@ -16,6 +17,9 @@ const navItems = [
 
 export const Header = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.up('sm'));
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <Box component="header" bgcolor="primary.main">
@@ -28,15 +32,15 @@ export const Header = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Box width={isMobile ? '15%' : '25%'}>
+        <Box>
           <Link to="/">
-            <img src={Logo} alt="site-logo" style={{ width: '100%' }} />
+            <img src={Logo} alt="site-logo" />
           </Link>
         </Box>
         <Box
           display="flex"
           alignItems="center"
-          flexDirection={!isMobile ? 'row-reverse' : ''}
+          flexDirection={{ sm: 'row', xs: 'row-reverse' }}
         >
           {isMobile ? (
             <NavItems navItems={navItems} />
@@ -45,13 +49,17 @@ export const Header = () => {
           )}
           <Button
             variant="outlined"
-            component={RouterLink}
-            to="/login"
             color="white"
             sx={{ borderColor: 'common.white' }}
+            onClick={handleOpen}
           >
             Login
           </Button>
+          <LoginWindow
+            handleOpen={handleOpen}
+            open={open}
+            handleClose={handleClose}
+          />
         </Box>
       </Container>
     </Box>
