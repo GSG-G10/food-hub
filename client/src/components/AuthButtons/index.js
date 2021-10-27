@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import { ReactComponent as GoogleSvg } from '../../../assets/google-icon.svg';
+import { ReactComponent as GoogleSvg } from '../../assets/google-icon.svg';
 
 export const AuthButtons = () => (
   <Box display="flex" flexDirection="column" width="100%">

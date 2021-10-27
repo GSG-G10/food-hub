@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
+import { Signup } from './components/Signup';
 
 const theme = createTheme({
   palette: {
@@ -53,6 +54,7 @@ export const App = () => (
     <ThemeProvider theme={theme}>
       <Router>
         <Header />
+        <Signup />
         <Footer />
         <Switch />
         <Route path="/" />

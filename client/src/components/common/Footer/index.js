@@ -29,10 +29,10 @@ export const Footer = () => {
       component="footer"
       bgcolor="secondary.main"
       color="common.white"
-      position="absolute"
-      left="0"
-      bottom="0"
-      width="100%"
+      // position="absolute"
+      // left="0"
+      // bottom="0"
+      // width="100%"
     >
       <Container
         maxWidth="lg"
