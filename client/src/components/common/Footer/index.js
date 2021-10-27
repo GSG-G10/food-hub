@@ -42,7 +42,7 @@ export const Footer = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Box display="flex" justifyContent="space-between" padding="30px 0">
+        <Box display="flex" justifyContent="space-between" py="30px">
           {footerTopItems.map((item) => (
             <Link
               href="/"
@@ -62,16 +62,11 @@ export const Footer = () => {
           alignItems="center"
           justifyContent="space-between"
           flexWrap="wrap"
-          padding="2em 0 1em"
+          p="2em 0 1em"
         >
           {[1, 2, 3, 4].map((key) => (
-            <Box item key={key} marginBottom="1.2em">
-              <Typography
-                variant="h6"
-                color="#898989"
-                marginBottom="0.5em"
-                fontSize={16}
-              >
+            <Box item key={key} mb="1.2em">
+              <Typography variant="h6" color="#898989" mb="0.5em" fontSize={16}>
                 Popular Restaurants
               </Typography>
               <Box>
@@ -83,7 +78,7 @@ export const Footer = () => {
                     color="common.white"
                     fontSize="0.8em"
                     display="block"
-                    marginBottom="0.5em"
+                    mb="0.5em"
                   >
                     {item}
                   </Link>
@@ -93,7 +88,7 @@ export const Footer = () => {
           ))}
         </Box>
         <Divider color="#8d8d8d" />
-        <Box padding="1em 0">
+        <Box py="1em">
           <Box
             container
             className="socail-icons"

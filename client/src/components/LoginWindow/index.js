@@ -44,13 +44,13 @@ export const LoginWindow = ({ open, handleClose }) => {
       <Box
         width={{ xs: '90%', md: '70%', lg: '35%' }}
         border="1px solid #ddd"
-        padding="3rem 4rem 4rem"
+        p="3rem 4rem 4rem"
         display="flex"
         bgcolor="common.white"
         flexDirection="column"
         alignItems="center"
         borderRadius="4px"
-        margin="auto"
+        m="auto"
         position="absolute"
         left="0"
         right="0"
@@ -102,7 +102,7 @@ export const LoginWindow = ({ open, handleClose }) => {
             display="flex"
             alignItems="center"
             justifyContent="space-between"
-            margin="1em 0"
+            my="1em"
           >
             <FormControlLabel
               sx={{

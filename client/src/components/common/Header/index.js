@@ -32,15 +32,15 @@ export const Header = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Box width={isMobile ? '15%' : '25%'}>
+        <Box>
           <Link to="/">
-            <img src={Logo} alt="site-logo" style={{ width: '100%' }} />
+            <img src={Logo} alt="site-logo" />
           </Link>
         </Box>
         <Box
           display="flex"
           alignItems="center"
-          flexDirection={!isMobile ? 'row-reverse' : ''}
+          flexDirection={{ sm: 'row', xs: 'row-reverse' }}
         >
           {isMobile ? (
             <NavItems navItems={navItems} />
