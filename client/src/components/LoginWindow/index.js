@@ -15,25 +15,19 @@ import Divider from '@mui/material/Divider';
 import { AuthButtons } from './AuthButtons';
 
 export const LoginWindow = ({ open, handleClose }) => {
-  const [email, setEamil] = useState('');
-  const [password, setPassword] = useState('');
+  const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
 
   const handleChange = (event) => {
-    if (event.target.name === 'email') {
-      setEamil(event.target.value);
-    } else {
-      setPassword(event.target.value);
-    }
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
-
+  const { email, password } = formValues;
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (password.length < 8) {
-      setPasswordError(true);
-    }
+    return password.length < 8
+      ? setPasswordError(true)
+      : setPasswordError(false);
   };
-
   return (
     <Modal
       aria-labelledby="transition-modal-title"

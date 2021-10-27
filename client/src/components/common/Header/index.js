@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ const navItems = [
 
 export const Header = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.up('sm'));
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
