@@ -13,7 +13,7 @@ export const AuthButtons = () => (
         mb: 2,
         fontWeight: '400',
         '.MuiButton-startIcon': {
-          marginRight: '10px',
+          mr: 1.2,
         },
       }}
       startIcon={<GoogleIcon />}
@@ -25,7 +25,7 @@ export const AuthButtons = () => (
       color="facebookBlue"
       sx={{
         '.MuiButton-startIcon': {
-          marginRight: '10px',
+          mr: 1.2,
         },
       }}
       startIcon={<FacebookOutlinedIcon />}

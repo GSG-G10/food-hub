@@ -36,7 +36,7 @@ export const MenuDrawer = ({ navItems }) => {
   };
 
   return (
-    <Box width="2rem" display="flex" flexDirection="row-reverse">
+    <Box width={2} display="flex" flexDirection="row-reverse">
       <CssBaseline />
       <IconButton
         aria-label="open drawer"
@@ -69,7 +69,7 @@ export const MenuDrawer = ({ navItems }) => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Box display="flex" flexDirection="column" p="1.2em">
+        <Box display="flex" flexDirection="column" p={2.8}>
           {navItems.map((navItem) => (
             <Link
               key={Math.random() * 100}
@@ -77,7 +77,7 @@ export const MenuDrawer = ({ navItems }) => {
               underline="hover"
               to={navItem.to}
               color="black"
-              pb="0.4em"
+              pb={1.6}
             >
               {navItem.label}
             </Link>

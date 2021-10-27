@@ -12,7 +12,7 @@ export const NavItems = ({ navItems }) => (
           key={Math.random() * 100}
           component={RouterLink}
           color="common.white"
-          px="1.1em"
+          px={2.2}
           underline="hover"
           to={navItem.to}
         >
