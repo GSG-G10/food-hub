@@ -24,6 +24,19 @@ export const useFirebaseAuth = (email, password) => {
     }
   }, [user]);
 
+  // send token to the server
+  const sendToken = async (tokenId) => {
+    await axios.get('/api/v1/auth', {
+      headers: {
+        Authorization: `Bearer ${tokenId}`,
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (token) sendToken(token);
+  }, [token]);
+
   // Sign in with Google
   const loginWithGoogle = () => {
     signInWithPopup(auth, new GoogleAuthProvider())
