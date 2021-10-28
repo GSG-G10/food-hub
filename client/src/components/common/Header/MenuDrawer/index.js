@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import propTypes from 'prop-types';
 import Box from '@mui/material/Box';
@@ -25,7 +25,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export const MenuDrawer = ({ navItems }) => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
