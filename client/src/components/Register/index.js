@@ -8,8 +8,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { Divider } from '@mui/material';
 import { AuthButtons } from '../AuthButtons';
+import { LoginWindow } from '../LoginWindow';
 
-export const Signup = () => {
+export const Register = () => {
   const [formValues, setFormValues] = useState({
     username: '',
     email: '',
@@ -19,6 +20,7 @@ export const Signup = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
+  const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
@@ -145,8 +147,9 @@ export const Signup = () => {
                 bottom="-45px"
               >
                 Already have an account?
-                <Button>Login</Button>
+                <Button onClick={() => setOpen(true)}>Login</Button>
               </Typography>
+              <LoginWindow open={open} handleClose={() => setOpen(false)} />
             </form>
           </Box>
         </Box>

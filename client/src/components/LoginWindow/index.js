@@ -138,7 +138,12 @@ export const LoginWindow = ({ open, handleClose }) => {
           bottom="-45px"
         >
           Don&apos;t have an account?{' '}
-          <Link to="/" component={RouterLink} underline="none">
+          <Link
+            to="/register"
+            component={RouterLink}
+            underline="none"
+            onClick={handleClose}
+          >
             Create an account
           </Link>
         </Typography>
