@@ -12,7 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
 import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
-import { AuthButtons } from './AuthButtons';
+import { AuthButtons } from '../AuthButtons';
 
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
@@ -137,7 +137,12 @@ export const LoginWindow = ({ open, handleClose }) => {
         </Box>
         <Typography variant="body1" fontSize={14}>
           Don&apos;t have an account?{' '}
-          <Link to="/" component={RouterLink} underline="none">
+          <Link
+            to="/register"
+            component={RouterLink}
+            underline="none"
+            onClick={handleClose}
+          >
             Create an account
           </Link>
         </Typography>
