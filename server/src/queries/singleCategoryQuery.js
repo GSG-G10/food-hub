@@ -1,19 +1,15 @@
-const { Meal, Category } = require('../models');
+const { Meal } = require('../models');
 
-const singleCategoryQuery = async (page, numberOfItems, categoryName) => {
+const singleCategoryQuery = async (page, numberOfItems, categoryId) => {
   try {
-    const count = await Meal.count();
-    const categoryId = await Category.findAll({
-      where: { name: categoryName },
-    });
+    const count = await Meal.count({ where: { categoryId } });
     const items = await Meal.findAll({
       offset: (page - 1) * numberOfItems,
       limit: numberOfItems,
-      where: { categoryId: categoryId[0].dataValues.id },
+      where: { categoryId },
     });
     return { count, items };
   } catch (err) {
-    // console.log(err);
     return err;
   }
 };
