@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import propTypes from 'prop-types';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { Link as RouterLink } from 'react-router-dom';
-import Link from '@mui/material/Link';
 import CloseIcon from '@mui/icons-material/Close';
-import Modal from '@mui/material/Modal';
-import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-import { AuthButtons } from './AuthButtons';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import propTypes from 'prop-types';
+import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useAuthContext } from '../../firebase/firebaseHook';
+import { AuthButtons } from './AuthButtons';
 
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
@@ -32,6 +32,7 @@ export const LoginWindow = ({ open, handleClose }) => {
     } else if (passwordError) setPasswordError(false);
     signInWithEmail(email, password);
   };
+
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -141,7 +142,12 @@ export const LoginWindow = ({ open, handleClose }) => {
         </Box>
         <Typography variant="body1" fontSize={14}>
           Don&apos;t have an account?{' '}
-          <Link to="/" component={RouterLink} underline="none">
+          <Link
+            to="/register"
+            component={RouterLink}
+            underline="none"
+            onClick={handleClose}
+          >
             Create an account
           </Link>
         </Typography>

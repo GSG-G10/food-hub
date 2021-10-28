@@ -1,8 +1,9 @@
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
-import { Header } from './components/common/Header';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Footer } from './components/common/Footer';
+import { Header } from './components/common/Header';
+import { Register } from './components/Register';
 import { AuthProvider } from './firebase/firebaseContext';
 
 const theme = createTheme({
@@ -63,6 +64,9 @@ export const App = () => (
           <Header />
           <Switch>
             <Route path="/" />
+            <Route exact path="/register">
+              <Register />
+            </Route>
             <Route path="/restaurents" />
             <Route path="/categories" />
             <Route path="/about-us" />
