@@ -1,9 +1,9 @@
-require('env2')('../.env');
+require('env2')('.env');
 const express = require('express');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const { join } = require('path');
-const router = require('./router');
+const router = require('./routes');
 
 const app = express();
 
