@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import { ReactComponent as GoogleSvg } from '../../assets/google-icon.svg';
+import GoogleIcon from '@mui/icons-material/Google';
 
 export const AuthButtons = () => (
   <Box display="flex" flexDirection="column" width="100%">
@@ -10,22 +10,26 @@ export const AuthButtons = () => (
       variant="contained"
       color="white"
       sx={{
-        marginBottom: '1em',
+        mb: 2,
         fontWeight: '400',
+        '.MuiButton-startIcon': {
+          mr: 1.2,
+        },
       }}
+      startIcon={<GoogleIcon />}
     >
-      <GoogleSvg width="25px" style={{ position: 'absolute', left: '15px' }} />
       Continue with Google
     </Button>
     <Button
       variant="contained"
+      color="facebookBlue"
       sx={{
-        backgroundColor: '#5777B9',
-        marginBottom: '1em',
-        fontWeight: '400',
+        '.MuiButton-startIcon': {
+          mr: 1.2,
+        },
       }}
+      startIcon={<FacebookOutlinedIcon />}
     >
-      <FacebookOutlinedIcon sx={{ position: 'absolute', left: '15px' }} />
       Continue with Facebook
     </Button>
   </Box>

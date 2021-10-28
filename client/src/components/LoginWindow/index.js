@@ -10,28 +10,24 @@ import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
+import IconButton from '@mui/material/IconButton';
+import Divider from '@mui/material/Divider';
 import { AuthButtons } from '../AuthButtons';
 
 export const LoginWindow = ({ open, handleClose }) => {
-  const [email, setEamil] = useState('');
-  const [password, setPassword] = useState('');
+  const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
 
   const handleChange = (event) => {
-    if (event.target.name === 'email') {
-      setEamil(event.target.value);
-    } else {
-      setPassword(event.target.value);
-    }
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
-
+  const { email, password } = formValues;
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (password.length < 8) {
-      setPasswordError(true);
-    }
+    return password.length < 8
+      ? setPasswordError(true)
+      : setPasswordError(false);
   };
-
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -42,34 +38,43 @@ export const LoginWindow = ({ open, handleClose }) => {
       sx={{ display: 'flex', alignItems: 'center' }}
     >
       <Box
-        width={{ xs: '90%', md: '70%', lg: '35%' }}
+        width={{ xs: '90%', md: '70%', lg: '45%' }}
         border="1px solid #ddd"
-        p="3rem 4rem 4rem"
+        p={2}
         display="flex"
         bgcolor="common.white"
         flexDirection="column"
         alignItems="center"
         borderRadius="4px"
         m="auto"
-        position="absolute"
-        left="0"
-        right="0"
       >
-        <Button
-          onClick={handleClose}
-          sx={{ position: 'absolute', right: '0.4em', top: '0.6em' }}
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          width="95%"
+          ml="auto"
+          mb={1.5}
+          mr={0}
         >
-          <CloseIcon color="secondary" />
-        </Button>
-        <Typography variant="h2" marginBottom="1.5em" color="secondary">
-          Login
-        </Typography>
-
-        <AuthButtons />
-
-        <Typography variant="subtitle">OR</Typography>
-
-        <form onSubmit={handleSubmit}>
+          <Typography variant="h2" color="secondary">
+            Login
+          </Typography>
+          <IconButton onClick={handleClose} size="large">
+            <CloseIcon color="secondary" />
+          </IconButton>
+        </Box>
+        <Divider width="100%" />
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          display="flex"
+          alignItems="center"
+          flexDirection="column"
+          width="90%"
+          m="auto"
+          mb={2}
+        >
           <TextField
             id="email"
             name="email"
@@ -78,7 +83,7 @@ export const LoginWindow = ({ open, handleClose }) => {
             value={email}
             fullWidth
             size="small"
-            margin="dense"
+            margin="normal"
             required
             onChange={handleChange}
           />
@@ -98,22 +103,24 @@ export const LoginWindow = ({ open, handleClose }) => {
             }
             onChange={handleChange}
           />
-          <Box
+          {/* <Box
             display="flex"
             alignItems="center"
             justifyContent="space-between"
             my="1em"
-          >
-            <FormControlLabel
-              sx={{
-                '& .MuiFormControlLabel-label': {
-                  fontSize: 14,
-                },
-              }}
-              control={<Checkbox />}
-              label="Keep me logged in"
-            />
-            {/* <Link
+          > */}
+          <FormControlLabel
+            sx={{
+              '& .MuiFormControlLabel-label': {
+                fontSize: 14,
+              },
+              width: '95%',
+              mb: 1,
+            }}
+            control={<Checkbox />}
+            label="Keep me logged in"
+          />
+          {/* <Link
               to="/"
               component={RouterLink}
               underline="none"
@@ -121,22 +128,14 @@ export const LoginWindow = ({ open, handleClose }) => {
             >
               Forgot password?
             </Link> */}
-          </Box>
-          <Button
-            variant="contained"
-            fullWidth
-            type="submit"
-            sx={{ height: '2.5em', marginBottom: '1em' }}
-          >
+          {/* </Box> */}
+          <Button variant="contained" fullWidth type="submit">
             Login
           </Button>
-        </form>
-        <Typography
-          variant="subtitle"
-          fontSize={14}
-          position="relative"
-          bottom="-45px"
-        >
+          <Divider width="100%" sx={{ my: 2 }} />
+          <AuthButtons />
+        </Box>
+        <Typography variant="body1" fontSize={14}>
           Don&apos;t have an account?{' '}
           <Link
             to="/register"

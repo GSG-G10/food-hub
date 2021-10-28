@@ -1,6 +1,6 @@
-import './App.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
 import { Register } from './components/Register';
@@ -14,7 +14,12 @@ const theme = createTheme({
       main: '#2C2C2C',
     },
     white: {
-      main: '#fff',
+      main: '#FFFFFF',
+      contrastText: '#242424',
+    },
+    facebookBlue: {
+      main: '#5777B9',
+      contrastText: '#fff',
     },
   },
   typography: {
@@ -50,7 +55,8 @@ const theme = createTheme({
 });
 
 export const App = () => (
-  <div className="App">
+  <>
+    <CssBaseline />
     <ThemeProvider theme={theme}>
       <Router>
         <Header />
@@ -66,5 +72,5 @@ export const App = () => (
         <Footer />
       </Router>
     </ThemeProvider>
-  </div>
+  </>
 );
