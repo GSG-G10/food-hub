@@ -9,11 +9,13 @@ const getCategories = async (req, res, next) => {
         400,
         'Pagination Error, Please contact development team for help'
       );
+
     const count = await Category.count();
     const data = await Category.findAll({
       offset: (page - 1) * items,
       limit: items,
     });
+
     res.json({ count, data });
   } catch (err) {
     next(err);
