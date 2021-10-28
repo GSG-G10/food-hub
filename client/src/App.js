@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
-import { Login } from './components/login';
 import { AuthProvider } from './firebase/firebaseContext';
 
 const theme = createTheme({
@@ -58,20 +57,20 @@ const theme = createTheme({
 export const App = () => (
   <>
     <CssBaseline />
-    <ThemeProvider theme={theme}>
-      <Router>
-        <AuthProvider>
-          <Login />
-        </AuthProvider>
-        <Header />
-        <Footer />
-        <Switch />
-        <Route path="/" />
-        <Route path="/restaurents" />
-        <Route path="/categories" />
-        <Route path="/about-us" />
-        <Route path="/login" />
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Switch>
+            <Route path="/" />
+            <Route path="/restaurents" />
+            <Route path="/categories" />
+            <Route path="/about-us" />
+            <Route path="/login" />
+            <Footer />
+          </Switch>
+        </ThemeProvider>
+      </AuthProvider>
+    </Router>
   </>
 );

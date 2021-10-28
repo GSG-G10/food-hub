@@ -4,7 +4,10 @@ import Box from '@mui/material/Box';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
 
-export const AuthButtons = () => (
+export const AuthButtons = ({
+  loginWithGoogle = () => {},
+  loginWithFacebook = () => {},
+}) => (
   <Box display="flex" flexDirection="column" width="100%">
     <Button
       variant="contained"
@@ -17,6 +20,7 @@ export const AuthButtons = () => (
         },
       }}
       startIcon={<GoogleIcon />}
+      onClick={loginWithGoogle}
     >
       Continue with Google
     </Button>

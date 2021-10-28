@@ -13,20 +13,24 @@ import Modal from '@mui/material/Modal';
 import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 import { AuthButtons } from './AuthButtons';
+import { useAuthContext } from '../../firebase/firebaseHook';
 
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
+  const { signInWithEmail, loginWithGoogle } = useAuthContext();
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
+
   const { email, password } = formValues;
   const handleSubmit = (event) => {
     event.preventDefault();
-    return password.length < 8
-      ? setPasswordError(true)
-      : setPasswordError(false);
+    if (password.length < 8) {
+      setPasswordError(true);
+    } else if (passwordError) setPasswordError(false);
+    signInWithEmail(email, password);
   };
   return (
     <Modal
@@ -133,7 +137,7 @@ export const LoginWindow = ({ open, handleClose }) => {
             Login
           </Button>
           <Divider width="100%" sx={{ my: 2 }} />
-          <AuthButtons />
+          <AuthButtons loginWithGoogle={loginWithGoogle} />
         </Box>
         <Typography variant="body1" fontSize={14}>
           Don&apos;t have an account?{' '}
