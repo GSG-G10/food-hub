@@ -1,7 +1,7 @@
-const { Category } = require('../models');
+const { Restaurant } = require('../models');
 const { HttpError } = require('../utils');
 
-const getCategories = async (req, res, next) => {
+const getRestaurants = async (req, res, next) => {
   const { page = 1, items = 10 } = req.query;
   try {
     if (page <= 0)
@@ -11,8 +11,8 @@ const getCategories = async (req, res, next) => {
       );
 
     const [count, data] = await Promise.all([
-      Category.count(),
-      Category.findAll({
+      Restaurant.count(),
+      Restaurant.findAll({
         offset: (page - 1) * items,
         limit: items,
       }),
@@ -24,4 +24,4 @@ const getCategories = async (req, res, next) => {
   }
 };
 
-module.exports = { getCategories };
+module.exports = { getRestaurants };

@@ -1,3 +1,10 @@
-const { getCategories, getSingleCategory } = require('./categories');
+const { getMealsByCategory, getMealsByRestaurant } = require('./meals');
+const { getCategories } = require('./categories');
+const { getRestaurants } = require('./restaurants');
 
-module.exports = { getCategories, getSingleCategory };
+module.exports = {
+  getMealsByCategory,
+  getMealsByRestaurant,
+  getCategories,
+  getRestaurants,
+};
