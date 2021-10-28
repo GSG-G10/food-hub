@@ -18,14 +18,14 @@ const getCategories = async (req, res, next) => {
 
 const getSingleCategory = async (req, res, next) => {
   const { page, items } = req.query;
-  const { categoryId } = req.params;
+  const { id } = req.params;
   try {
     if (page <= 0)
       throw new HttpError(
         400,
         'Pagination Error, Please contact development team for help'
       );
-    const data = await singleCategoryQuery(page, items, categoryId);
+    const data = await singleCategoryQuery(page, items, id);
     res.json(data);
   } catch (err) {
     next(err);
