@@ -28,6 +28,7 @@ const sequelize = new Sequelize(dbUrl, {
       rejectUnauthorized: false,
     },
   },
+  logging: false,
 });
 
 (async () => {
