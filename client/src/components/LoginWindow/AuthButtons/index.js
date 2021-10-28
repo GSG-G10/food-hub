@@ -6,7 +6,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 
 export const AuthButtons = ({
   loginWithGoogle = () => {},
-  loginWithFacebook = () => {},
+  // loginWithFacebook = () => {},
 }) => (
   <Box display="flex" flexDirection="column" width="100%">
     <Button

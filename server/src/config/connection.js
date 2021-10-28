@@ -20,13 +20,13 @@ switch (NODE_ENV) {
   default:
     throw new Error('No database found');
 }
-
+console.log(dbUrl);
 const sequelize = new Sequelize(dbUrl, {
   dialect: 'postgres',
   dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    // ssl: {
+    //   rejectUnauthorized: false,
+    // },
   },
   logging: false,
 });
