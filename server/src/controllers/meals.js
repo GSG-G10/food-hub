@@ -51,4 +51,17 @@ const getMealsByRestaurant = async (req, res, next) => {
   }
 };
 
-module.exports = { getMealsByCategory, getMealsByRestaurant };
+const getMealById = async (req, res, next) => {
+  const { mealid } = req.params;
+  try {
+    const data = await Meal.findAll({
+      where: { id: mealid },
+    });
+
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getMealsByCategory, getMealsByRestaurant, getMealById };
