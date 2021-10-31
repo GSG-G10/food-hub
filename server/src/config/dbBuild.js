@@ -6,6 +6,7 @@ const {
   Category,
   Meal,
   DiscountCode,
+  // eslint-disable-next-line no-unused-vars
   UserDiscounts,
 } = require('../models');
 const { sequelize } = require('./connection');
