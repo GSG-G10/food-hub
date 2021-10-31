@@ -2,7 +2,8 @@ const { HttpError } = require('../utils');
 const { DiscountCode, UserDiscounts } = require('../models');
 
 exports.redeemCode = async (req, res, next) => {
-  const { promocode } = req.body;
+  const { promocode, totalPrice } = req.body;
+  let newPrice;
   try {
     const code = await DiscountCode.findOne({
       where: { promocode },
@@ -23,34 +24,22 @@ exports.redeemCode = async (req, res, next) => {
 
     if (!data[1])
       throw new HttpError(400, `Sorry, you have already used this promo code.`);
+
+    if (new Date() > code.expiresAt)
+      throw new HttpError(400, `The code you entered has been expired.`);
+
+    if (code.discountType === 'flat')
+      newPrice = totalPrice - code.discountAmount;
+    else {
+      newPrice = totalPrice - (totalPrice * code.discountAmount) / 100;
+    }
+
+    return res.json({ success: true, data: newPrice });
   } catch (err) {
     next(err);
   }
 };
 
-// The code you entered has expired
-
-// const test = async (promocode, uid) => {
-//   try {
-//     const code = await DiscountCode.findOne({
-//       where: { promocode },
-//     });
-
-//     if (!code)
-//       throw new HttpError(
-//         400,
-//         'The code you entered is incorrect, please try again.'
-//       );
-
-//     const promocodeId = code.id;
-
-// const data = await UserDiscounts.findOrCreate({
-//   where: { promocode: promocodeId, userid: uid },
-// });
-//     console.log(data[1]);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
-// console.log(test('BSASA', 6));
+// code.discountType === 'flat'
+//   ? (newPrice = totalPrice - code.discountAmount)
+//   : (newPrice = newPrice = totalPrice * (code.discountAmount / 100));
