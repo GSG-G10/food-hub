@@ -9,6 +9,7 @@ export const RestaurantOverview = ({
   restaurantName,
   restaurantLocation,
   restaurantOrders,
+  restaurantDesc,
 }) => (
   <Box boxShadow="rgb(99 99 99 / 20%) 0px 2px 8px 0px">
     <Box
@@ -76,24 +77,10 @@ export const RestaurantOverview = ({
       boxShadow="rgb(99 99 99 / 20%) 0px 2px 8px 0px"
     >
       <Typography variant="h3" color="primary" mb={2}>
-        Orgada Burger delivers to you
+        {restaurantName} delivers to you
       </Typography>
       <Typography variant="body" fontSize={12}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae
-        neque quis ipsum pellentesque commodo. Ut id mollis ipsum, sed hendrerit
-        ligula. Nam fringilla nulla accumsan dapibus laoreet. Ut sed nisl sem.
-        In pretium ante libero, eu blandit leo elementum vel. Vivamus feugiat
-        felis vitae urna tempor pulvinar. Aenean posuere mi ut accumsan laoreet.
-        Duis lacinia dolor eu dolor iaculis, vitae aliquam sapien bibendum.
-        Etiam suscipit malesuada vestibulum. Pellentesque fermentum non est
-        vitae faucibus. Praesent aliquet maximus purus vel iaculis. Vivamus
-        commodo interdum felis, quis vulputate orci scelerisque ut. Duis tempor,
-        tellus vitae consectetur tempus, metus sapien egestas quam, quis ornare
-        mi ex sed ipsum. Quisque pulvinar tempor dolor ac fermentum.
-        Pellentesque luctus pulvinar sapien, id tristique velit consectetur a.
-        Sed ac odio rutrum, tempus velit at, interdum ligula. Aliquam gravida
-        nec lorem vel fringilla. Praesent placerat mattis justo et volutpat.
-        Proin vitae odio vulputate, pharetra lectus vitae, venenatis neque.
+        {restaurantDesc}
       </Typography>
     </Box>
   </Box>
@@ -104,10 +91,12 @@ RestaurantOverview.defaultProps = {
   restaurantName: '',
   restaurantLocation: '',
   restaurantOrders: '',
+  restaurantDesc: '',
 };
 RestaurantOverview.propTypes = {
   restaurantLogo: propTypes.string,
   restaurantName: propTypes.string,
   restaurantLocation: propTypes.string,
   restaurantOrders: propTypes.number,
+  restaurantDesc: propTypes.string,
 };
