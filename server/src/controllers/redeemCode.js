@@ -1,6 +1,7 @@
 const { HttpError } = require('../utils');
 const { DiscountCode, UserDiscounts } = require('../models');
 
+// eslint-disable-next-line consistent-return
 exports.redeemCode = async (req, res, next) => {
   const { promocode, totalPrice } = req.body;
   let newPrice;
