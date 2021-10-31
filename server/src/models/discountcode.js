@@ -1,13 +1,12 @@
 const Sequelize = require('sequelize');
 const { sequelize } = require('../config/connection');
 
-const DiscountCode = sequelize.define('discountcode', {
-  mealId: {
+const DiscountCode = sequelize.define('discountcodes', {
+  id: {
     type: Sequelize.INTEGER,
-    references: {
-      model: 'meals',
-      key: 'id',
-    },
+    autoIncrement: true,
+    primaryKey: true,
+    unique: true,
   },
   discountType: {
     type: Sequelize.STRING,
