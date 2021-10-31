@@ -6,6 +6,7 @@ const {
   Category,
   Meal,
   DiscountCode,
+  UserDiscounts,
 } = require('../models');
 const { sequelize } = require('./connection');
 const data = require('./data.json');

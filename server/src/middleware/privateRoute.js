@@ -11,7 +11,7 @@ exports.decodeToken = async (req, res, next) => {
     if (decodevalue) return next();
     return res
       .status(400)
-      .json({ success: false, msg: 'You are nor authorized!' });
+      .json({ success: false, msg: 'You are not authorized!' });
   } catch (err) {
     return res.json({ success: false, msg: err });
   }
