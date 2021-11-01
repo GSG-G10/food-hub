@@ -1,4 +1,4 @@
-import React from 'react';
+import { useHistory } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -7,8 +7,15 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 
-export const RestaurantCard = ({ restaurantLogo, restaurantName }) => {
-  const handleClick = () => {};
+export const RestaurantCard = ({
+  restaurantId,
+  restaurantLogo,
+  restaurantName,
+}) => {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push(`/restaurant/${restaurantId}`);
+  };
   return (
     <Card
       sx={{
@@ -41,10 +48,12 @@ export const RestaurantCard = ({ restaurantLogo, restaurantName }) => {
 };
 
 RestaurantCard.defaultProps = {
+  restaurantId: '',
   restaurantLogo: '',
   restaurantName: '',
 };
 RestaurantCard.propTypes = {
+  restaurantId: propTypes.number,
   restaurantLogo: propTypes.string,
   restaurantName: propTypes.string,
 };
