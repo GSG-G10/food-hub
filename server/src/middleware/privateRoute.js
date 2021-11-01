@@ -9,7 +9,9 @@ exports.decodeToken = async (req, res, next) => {
       .verifyIdToken(authorization.split(' ')[1]);
     req.user = decodevalue;
     if (decodevalue) return next();
-    return res.status(400).json({ success: false, msg: 'Invalid token!' });
+    return res
+      .status(400)
+      .json({ success: false, msg: 'You are not authorized!' });
   } catch (err) {
     return res.json({ success: false, msg: err });
   }
