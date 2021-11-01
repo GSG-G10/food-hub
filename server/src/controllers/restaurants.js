@@ -27,7 +27,8 @@ const getRestaurants = async (req, res, next) => {
 const getRestaurant = async (req, res, next) => {
   const { id } = req.params;
   try {
-    if (id <= 0) throw new HttpError(400, 'validation error, invalid user id');
+    if (id <= 0)
+      throw new HttpError(400, 'validation error, invalid restaurant id');
     const data = await Restaurant.findAll({
       where: {
         userId: id,
