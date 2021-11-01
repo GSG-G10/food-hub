@@ -3,10 +3,11 @@ const express = require('express');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const { join } = require('path');
+const cors = require('cors');
 const router = require('./routes');
 
 const app = express();
-
+app.use(cors());
 app.use(compression());
 app.use(cookieParser());
 app.use(express.json());
