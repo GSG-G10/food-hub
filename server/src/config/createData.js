@@ -94,7 +94,6 @@ const createRandomData = () => {
     const discountType = faker.random.arrayElement(['percentage', 'flat']);
 
     discountCode.push({
-      mealId: faker.random.arrayElement(meals.map((meal) => meal.id)),
       discountType,
       discountAmount:
         discountType === 'percentage'
