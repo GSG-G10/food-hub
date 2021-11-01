@@ -30,7 +30,6 @@ const importDataToDatabase = async () => {
     console.log('Database filled with data!');
   } catch (err) {
     console.log(err);
-    console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhh');
   }
   return process.exit(0);
 };
