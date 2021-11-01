@@ -6,6 +6,7 @@ var cors = require('cors')
 
 const { join } = require('path');
 const router = require('./routes');
+const { errorHandler } = require('./controllers/error');
 
 const app = express();
 app.use(cors())
@@ -24,5 +25,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', '..', 'client', 'build', 'index.html'));
   });
 }
+
+app.use(errorHandler)
 
 module.exports = app;
