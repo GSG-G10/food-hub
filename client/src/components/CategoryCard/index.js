@@ -1,4 +1,4 @@
-import React from 'react';
+import { useHistory } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -7,12 +7,15 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 
-export const CategoryCard = ({ categoryImage, categoryName }) => {
-  const handleClick = () => {};
+export const CategoryCard = ({ categoryId, categoryImage, categoryName }) => {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push(`/category/${categoryId}`);
+  };
   return (
-    <Card sx={{ maxWidth: 200, height: '300px' }}>
+    <Card sx={{ height: '300px' }}>
       <CardActionArea onClick={handleClick}>
-        <Box>
+        <Box sx={{ filter: 'brightness(0.5)' }}>
           <CardMedia
             component="img"
             height="300"
@@ -36,10 +39,12 @@ export const CategoryCard = ({ categoryImage, categoryName }) => {
 };
 
 CategoryCard.defaultProps = {
+  categoryId: '',
   categoryImage: '',
   categoryName: '',
 };
 CategoryCard.propTypes = {
+  categoryId: propTypes.number,
   categoryImage: propTypes.string,
   categoryName: propTypes.string,
 };
