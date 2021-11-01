@@ -24,4 +24,20 @@ const getRestaurants = async (req, res, next) => {
   }
 };
 
-module.exports = { getRestaurants };
+const getRestaurant = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    if (id <= 0) throw new HttpError(400, 'validation error, invalid user id');
+    const data = await Restaurant.findAll({
+      where: {
+        userId: id,
+      },
+    });
+
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getRestaurants, getRestaurant };

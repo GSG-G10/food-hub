@@ -5,7 +5,7 @@ const {
 } = require('./meals');
 const { auth } = require('./auth');
 const { getCategories } = require('./categories');
-const { getRestaurants } = require('./restaurants');
+const { getRestaurants, getRestaurant } = require('./restaurants');
 const { createPromoCode } = require('./createPromocode');
 const { redeemCode } = require('./redeemCode');
 
@@ -18,4 +18,5 @@ module.exports = {
   getRestaurants,
   createPromoCode,
   redeemCode,
+  getRestaurant,
 };
