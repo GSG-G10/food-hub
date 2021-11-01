@@ -22,8 +22,7 @@ exports.createPromoCode = async (req, res, next) => {
       promocode,
     });
 
-    res.json({
-      success: true,
+    res.setHeader("Content-Type", "application/json").json({ success: true,
       msg: `Your promocode has been created successfully : ${promocode} `,
     });
   } catch (err) {
