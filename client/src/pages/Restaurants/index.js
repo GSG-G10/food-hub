@@ -7,19 +7,27 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
+import Pagination from '@mui/material/Pagination';
 import { api } from '../../api/axios';
 import { RestaurantCard } from '../../components/RestaurantCard';
 
 export const Restaurants = () => {
   const [restarants, setRestaurants] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(1);
+  const items = 10;
   useEffect(() => {
-    api
-      .get('/restaurant')
-      .then((response) => setRestaurants(response.data.data));
-  }, []);
+    api.get(`/restaurant?items=${items}&page=${page}`).then((response) => {
+      setCount(response.data.count);
+      setRestaurants(response.data.data);
+    });
+  }, [items, page]);
   const handleChange = (e) => {
     setSearchValue(e.target.value);
+  };
+  const handlePageChange = (event, value) => {
+    setPage(value);
   };
   return (
     <Container
@@ -68,6 +76,15 @@ export const Restaurants = () => {
           />
         ))}
       </Box>
+      <Pagination
+        count={Math.ceil(count / items)}
+        variant="outlined"
+        shape="rounded"
+        color="primary"
+        page={page}
+        onChange={handlePageChange}
+        sx={{ display: 'flex', justifyContent: 'center', my: '3rem' }}
+      />
     </Container>
   );
 };
