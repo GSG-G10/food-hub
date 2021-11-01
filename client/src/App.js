@@ -8,6 +8,7 @@ import { AuthProvider } from './firebase/firebaseContext';
 import { Categories } from './pages/Categories';
 import { Category } from './pages/Category';
 import { Restaurants } from './pages/Restaurants';
+import { Restaurant } from './pages/Restaurant';
 
 const theme = createTheme({
   palette: {
@@ -78,6 +79,9 @@ export const App = () => (
             </Route>
             <Route exact path="/category/:id">
               <Category />
+            </Route>
+            <Route exact path="/restaurant/:id">
+              <Restaurant />
             </Route>
             <Route path="/about-us" />
             <Route path="/login" />

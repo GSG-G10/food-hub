@@ -62,17 +62,19 @@ export const Restaurants = () => {
         display="grid"
         gridTemplateColumns={{
           xs: 'repeat(1, 1fr)',
+          sm: 'repeat(2, 1fr)',
           md: 'repeat(3, 1fr)',
           lg: 'repeat(4, 1fr)',
           xl: 'repeat(5, 1fr)',
         }}
         sx={{ gridGap: '30px' }}
       >
-        {restarants.map((restaurant) => (
+        {restarants.map(({ userId, logoUrl, restaurantName }) => (
           <RestaurantCard
-            key={restaurant.userId}
-            restaurantLogo={restaurant.logoUrl}
-            restaurantName={restaurant.restaurantName}
+            restaurantId={userId}
+            key={userId}
+            restaurantLogo={logoUrl}
+            restaurantName={restaurantName}
           />
         ))}
       </Box>
