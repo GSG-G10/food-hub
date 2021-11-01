@@ -5,6 +5,8 @@ import { Footer } from './components/common/Footer';
 import { Header } from './components/common/Header';
 import { Register } from './components/Register';
 import { AuthProvider } from './firebase/firebaseContext';
+import { Restaurants } from './pages/Restaurants';
+import { Restaurant } from './pages/Restaurant';
 
 const theme = createTheme({
   palette: {
@@ -63,11 +65,16 @@ export const App = () => (
         <ThemeProvider theme={theme}>
           <Header />
           <Switch>
-            <Route path="/" />
+            <Route exact path="/" />
             <Route exact path="/register">
               <Register />
             </Route>
-            <Route path="/restaurents" />
+            <Route exact path="/restaurants">
+              <Restaurants />
+            </Route>
+            <Route exact path="/restaurant/:id">
+              <Restaurant />
+            </Route>
             <Route path="/categories" />
             <Route path="/about-us" />
             <Route path="/login" />
