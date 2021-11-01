@@ -68,11 +68,12 @@ export const Restaurants = () => {
         }}
         sx={{ gridGap: '30px' }}
       >
-        {restarants.map((restaurant) => (
+        {restarants.map(({ userId, logoUrl, restaurantName }) => (
           <RestaurantCard
-            key={restaurant.userId}
-            restaurantLogo={restaurant.logoUrl}
-            restaurantName={restaurant.restaurantName}
+            restaurantId={userId}
+            key={userId}
+            restaurantLogo={logoUrl}
+            restaurantName={restaurantName}
           />
         ))}
       </Box>
