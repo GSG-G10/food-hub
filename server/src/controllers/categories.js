@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Category } = require('../models');
 const { HttpError } = require('../utils');
 
@@ -24,4 +25,26 @@ const getCategories = async (req, res, next) => {
   }
 };
 
-module.exports = { getCategories };
+const searchCategories = async (req, res, next) => {
+  const { name } = req.params;
+  try {
+    if (!name)
+      throw new HttpError(
+        400,
+        'validation Error, please enter a category name to search'
+      );
+
+    const data = await Category.findAll({
+      where: {
+        name: {
+          [Op.like]: `%${name}%`,
+        },
+      },
+    });
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getCategories, searchCategories };

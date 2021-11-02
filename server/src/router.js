@@ -7,6 +7,7 @@ const {
   getMealsByRestaurant,
   getRestaurants,
   getRestaurant,
+  searchCategories,
 } = require('./controllers');
 const { auth } = require('./controllers');
 const { decodeToken } = require('./middleware/privateRoute');
@@ -21,6 +22,7 @@ router.get('/meals/restaurant/:id', getMealsByRestaurant);
 router.get('/meals/:mealid', getMealById);
 router.get('/restaurants/:id', getRestaurant);
 router.get('/restaurants', getRestaurants);
+router.get('/category/search/:name', searchCategories);
 router.get('/category', getCategories);
 
 module.exports = router;
