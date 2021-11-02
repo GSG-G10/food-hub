@@ -2,16 +2,24 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
+import MapIcon from '@mui/icons-material/Map';
 import BG from '../../assets/restaurant.jpg';
 
 export const RestaurantOverview = ({
   restaurantLogo,
   restaurantName,
   restaurantLocation,
-  restaurantOrders,
   restaurantDesc,
+  lat,
+  lon,
+  phone,
+  email,
 }) => (
-  <Box boxShadow="rgb(99 99 99 / 20%) 0px 2px 8px 0px">
+  <>
     <Box
       sx={{
         backgroundImage: `url(${BG})`,
@@ -46,7 +54,7 @@ export const RestaurantOverview = ({
             <img
               src={restaurantLogo}
               alt={restaurantName}
-              style={{ width: '100%', objectFit: 'cover' }}
+              style={{ width: '100%', height: '130px', objectFit: 'cover' }}
             />
           </Box>
           <Typography
@@ -62,7 +70,34 @@ export const RestaurantOverview = ({
             {restaurantLocation}
           </Typography>
         </Box>
-        <Typography variant="body">{restaurantOrders}</Typography>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="80%"
+        >
+          <Box>Rating</Box>
+          <Box>
+            <Link href={`mailto:${email}`} target="_blank">
+              <IconButton aria-label="email" size="small">
+                <EmailOutlinedIcon color="white" fontSize="inherit" />
+              </IconButton>
+            </Link>
+            <Link href={`tel:${phone}`} target="_blank">
+              <IconButton aria-label="phone" size="small">
+                <LocalPhoneIcon color="white" fontSize="inherit" />
+              </IconButton>
+            </Link>
+            <Link
+              href={`https://maps.google.com?q=${lat},${lon}`}
+              target="_blank"
+            >
+              <IconButton aria-label="map" size="small">
+                <MapIcon color="white" fontSize="inherit" />
+              </IconButton>
+            </Link>
+          </Box>
+        </Box>
       </Box>
     </Box>
     <Box
@@ -83,20 +118,28 @@ export const RestaurantOverview = ({
         {restaurantDesc}
       </Typography>
     </Box>
-  </Box>
+  </>
 );
 
 RestaurantOverview.defaultProps = {
   restaurantLogo: '',
   restaurantName: '',
   restaurantLocation: '',
-  restaurantOrders: '',
+  // restaurantOrders: '',
   restaurantDesc: '',
+  lat: '',
+  lon: '',
+  phone: '',
+  email: '',
 };
 RestaurantOverview.propTypes = {
   restaurantLogo: propTypes.string,
   restaurantName: propTypes.string,
   restaurantLocation: propTypes.string,
-  restaurantOrders: propTypes.number,
+  // restaurantOrders: propTypes.number,
   restaurantDesc: propTypes.string,
+  lat: propTypes.number,
+  lon: propTypes.number,
+  phone: propTypes.string,
+  email: propTypes.string,
 };
