@@ -4,7 +4,6 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const cors = require('cors')
 const { join } = require('path');
-const cors = require('cors');
 const router = require('./router');
 const { errorHandler } = require('./controllers/error');
 
