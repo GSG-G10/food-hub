@@ -9,6 +9,7 @@ import Link from '@mui/material/Link';
 import { Divider } from '@mui/material';
 import { AuthButtons } from '../AuthButtons';
 import { LoginWindow } from '../LoginWindow';
+import { useAuthContext } from '../../firebase/firebaseHook';
 
 export const Register = () => {
   const [formValues, setFormValues] = useState({
@@ -21,7 +22,7 @@ export const Register = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
-
+  const { signUpWithEmail, error } = useAuthContext();
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
@@ -33,6 +34,7 @@ export const Register = () => {
     } else if (password !== confirmPassword) {
       setConfirmPasswordError(true);
     }
+    signUpWithEmail(email, password);
   };
   return (
     <>
