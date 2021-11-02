@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, forwardRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Pagination from '@mui/material/Pagination';
+import MuiAlert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { api } from '../../api/axios';
 import { MealCard } from '../../components/MealCard';
 import { RestaurantOverview } from '../../components/RestaurantOverview';
@@ -14,7 +16,11 @@ export const Restaurant = () => {
   const [restaurantMeals, setRestaurantMeals] = useState([]);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(1);
-  const items = 10;
+  const [addedToCart, setAddedToCart] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const items = 8;
+
   useEffect(() => {
     api.get(`/restaurants/${id}`).then((res) => setRestaurantData(res.data[0]));
   }, [id]);
@@ -27,6 +33,17 @@ export const Restaurant = () => {
         setRestaurantMeals(response.data.data);
       });
   }, [id, items, page]);
+  const Alert = forwardRef(function Alert(props, ref) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   const handlePageChange = (event, value) => {
     setPage(value);
   };
@@ -67,18 +84,36 @@ export const Restaurant = () => {
             sm: 'repeat(2, 1fr)',
             md: 'repeat(3, 1fr)',
             lg: 'repeat(4, 1fr)',
-            xl: 'repeat(5, 1fr)',
+            xl: 'repeat(4, 1fr)',
           }}
           sx={{ gridGap: '30px' }}
         >
-          {restaurantMeals.map(({ images, name }) => (
+          {restaurantMeals.map(({ id: mealId, images, name }) => (
             <MealCard
+              key={mealId}
+              mealId={mealId}
               mealImage={JSON.parse(images)[0]}
               mealName={name}
-              mealCategory
-              mealPrice
+              setAddedToCart={setAddedToCart}
+              addedToCart={addedToCart}
+              setOpen={setOpen}
+              // mealCategory
+              // mealPrice
             />
           ))}
+          {addedToCart ? (
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                sx={{ width: '100%' }}
+              >
+                The meal added successfully to cart
+              </Alert>
+            </Snackbar>
+          ) : (
+            ''
+          )}
         </Box>
         <Pagination
           count={Math.ceil(count / items)}

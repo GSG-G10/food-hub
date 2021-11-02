@@ -6,7 +6,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
-import MapIcon from '@mui/icons-material/Map';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import BG from '../../assets/restaurant.jpg';
 
 export const RestaurantOverview = ({
@@ -93,7 +93,7 @@ export const RestaurantOverview = ({
               target="_blank"
             >
               <IconButton aria-label="map" size="small">
-                <MapIcon color="white" fontSize="inherit" />
+                <LocationOnIcon color="white" fontSize="inherit" />
               </IconButton>
             </Link>
           </Box>
