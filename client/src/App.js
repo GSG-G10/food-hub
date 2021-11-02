@@ -63,14 +63,14 @@ export const App = () => (
         <ThemeProvider theme={theme}>
           <Header />
           <Switch>
-            <Route path="/" />
+            <Route exact path="/" />
             <Route exact path="/register">
               <Register />
             </Route>
-            <Route path="/restaurents" />
-            <Route path="/categories" />
-            <Route path="/about-us" />
-            <Route path="/login" />
+            <Route exact path="/restaurents" />
+            <Route exact path="/categories" />
+            <Route exact path="/about-us" />
+            <Route exact path="/login" />
             <Footer />
           </Switch>
         </ThemeProvider>

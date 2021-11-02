@@ -5,6 +5,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
+  FacebookAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
 import PropTypes from 'prop-types';
@@ -41,18 +42,23 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   useEffect(() => {
-    // auth.onAuthStateChanged(setUser)
-    auth.onAuthStateChanged((cred) => {
-      if (cred) {
-        setUser(cred);
-        setLoading(false);
-      }
-    });
+    auth.onAuthStateChanged(setUser);
+    setLoading(false);
   }, []);
 
   // Sign in with Google
   const loginWithGoogle = () => {
     signInWithPopup(auth, new GoogleAuthProvider())
+      .then((cred) => {
+        if (cred) {
+          window.localStorage.setItem('auth', 'true');
+        }
+      })
+      .catch((err) => setError(err.message));
+  };
+  // Sign in with Facebook
+  const loginWithFacebook = () => {
+    signInWithPopup(auth, new FacebookAuthProvider())
       .then((cred) => {
         if (cred) {
           window.localStorage.setItem('auth', 'true');
@@ -86,6 +92,7 @@ export const AuthProvider = ({ children }) => {
   // Logout
   const logout = () => {
     auth.signOut();
+    localStorage.setItem('auth', 'false');
   };
 
   if (loading) {
@@ -98,6 +105,7 @@ export const AuthProvider = ({ children }) => {
         loginWithGoogle,
         signInWithEmail,
         signUpWithEmail,
+        loginWithFacebook,
         logout,
         error,
       }}
