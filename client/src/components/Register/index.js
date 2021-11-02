@@ -22,7 +22,7 @@ export const Register = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
-  const { signUpWithEmail, error } = useAuthContext();
+  const { signUpWithEmail } = useAuthContext();
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };

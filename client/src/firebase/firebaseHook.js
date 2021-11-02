@@ -9,6 +9,7 @@ export const useAuthContext = () => {
     signUpWithEmail,
     loginWithFacebook,
     logout,
+    isNew,
     error,
   } = useContext(AuthContext);
   return {
@@ -18,6 +19,7 @@ export const useAuthContext = () => {
     signUpWithEmail,
     loginWithFacebook,
     logout,
+    isNew,
     error,
   };
 };

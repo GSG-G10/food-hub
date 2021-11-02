@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   FacebookAuthProvider,
   signInWithPopup,
+  getAdditionalUserInfo,
 } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isNew, setIsNew] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -62,6 +64,7 @@ export const AuthProvider = ({ children }) => {
       .then((cred) => {
         if (cred) {
           window.localStorage.setItem('auth', 'true');
+          setIsNew(getAdditionalUserInfo(cred).isNewUser);
         }
       })
       .catch((err) => setError(err.message));
@@ -73,6 +76,7 @@ export const AuthProvider = ({ children }) => {
       .then((cred) => {
         if (cred) {
           window.localStorage.setItem('auth', 'true');
+          setIsNew(getAdditionalUserInfo(cred).isNewUser);
         }
       })
       .catch((err) => setError(err.message));
@@ -84,6 +88,7 @@ export const AuthProvider = ({ children }) => {
       .then((cred) => {
         if (cred) {
           window.localStorage.setItem('auth', 'true');
+          setIsNew(getAdditionalUserInfo(cred).isNewUser);
         }
       })
       .catch((err) => setError(err.message));
@@ -107,6 +112,7 @@ export const AuthProvider = ({ children }) => {
         signUpWithEmail,
         loginWithFacebook,
         logout,
+        isNew,
         error,
       }}
     >
