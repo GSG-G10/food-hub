@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Restaurant } = require('../models');
 const { HttpError } = require('../utils');
 
@@ -41,4 +42,26 @@ const getRestaurant = async (req, res, next) => {
   }
 };
 
-module.exports = { getRestaurants, getRestaurant };
+const searchRestaurant = async (req, res, next) => {
+  const { name } = req.params;
+  try {
+    if (!name)
+      throw new HttpError(
+        400,
+        'validation error, please enter a restaurant name to search'
+      );
+    const data = await Restaurant.findAll({
+      where: {
+        restaurantName: {
+          [Op.like]: `%${name}%`,
+        },
+      },
+    });
+
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getRestaurants, getRestaurant, searchRestaurant };
