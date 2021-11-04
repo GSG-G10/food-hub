@@ -1,5 +1,6 @@
 const admin = require('../config/firebase');
 
+// eslint-disable-next-line consistent-return
 exports.isAuth = async (req, res, next) => {
   const { authorization } = req.headers;
 
