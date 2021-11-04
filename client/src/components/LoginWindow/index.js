@@ -18,7 +18,7 @@ import { AuthButtons } from './AuthButtons';
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
-  const { signInWithEmail, loginWithGoogle, loginWithFacebook, user } =
+  const { signInWithEmail, loginWithGoogle, loginWithFacebook } =
     useAuthContext();
 
   const handleChange = (event) => {
@@ -33,8 +33,6 @@ export const LoginWindow = ({ open, handleClose }) => {
     } else if (passwordError) setPasswordError(false);
     signInWithEmail(email, password);
   };
-
-  console.log(user);
 
   return (
     <Modal
