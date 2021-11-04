@@ -6,25 +6,47 @@ const { DiscountCode, Restaurant } = require('../../src/models');
 
 describe('test restaurant endpoints' , () => {
 
-    it('response is a json type with status code of 200 ', async ()=> {
-        const res = await request(app).get('/api/v1/restaurants')
-        .expect(200)
-        expect(res.statusCode).toBe(200);
-        expect(res.headers['content-type']).toEqual(expect.stringContaining("json"))
+    describe('get request to /restaurants' , () => {
+        
+        it('response is a json type with status code of 200 ', async ()=> {
+            const res = await request(app).get('/api/v1/restaurants')
+            .expect(200)
+            expect(res.statusCode).toBe(200);
+            expect(res.headers['content-type']).toEqual(expect.stringContaining("json"))
+        })
+    
+        it('response has all restaurants information', async () => {
+            const res = await request(app).get('/api/v1/restaurants')
+            const {userId,restaurantName, restaurantPhone, description, lat, lon, logoUrl, contactEmail,restaurantFullAddress  } = res.body.data[0]
+
+            expect(userId).toBeDefined()
+            expect(restaurantName).toBeDefined()
+            expect(restaurantPhone).toBeDefined()
+            expect(description).toBeDefined()
+            expect(lat).toBeDefined()
+            expect(lon).toBeDefined()
+            expect(logoUrl).toBeDefined()
+            expect(contactEmail).toBeDefined()
+            expect(restaurantFullAddress).toBeDefined()
+        })
+
+
     })
 
-    it('response has all restaurant information', async () => {
-        const res = await request(app).get('/api/v1/restaurants')
-        console.log(res.body);
-        console.log((res.body.data).length);
-        expect(res.body.data[0].userId).toBeDefined()
-        expect(res.body.data[0].restaurantName).toBeDefined()
-        expect(res.body.data[0].restaurantPhone).toBeDefined()
-        expect(res.body.data[0].description).toBeDefined()
-        expect(res.body.data[0].lat).toBeDefined()
-        expect(res.body.data[0].lon).toBeDefined()
-        expect(res.body.data[0].logoUrl).toBeDefined()
-        expect(res.body.data[0].contactEmail).toBeDefined()
-        expect(res.body.data[0].restaurantFullAddress).toBeDefined()
+    describe('get request to /restaurants/:id', () => {
+
+        it('response has all information about a restaurant with an id ', async ()=> {
+            const id = 1
+            const res = await request(app).get(`/api/v1/restaurants/${id}`).set({id})
+            expect(res.body[0]).toHaveProperty('userId', id)
+            
+        })
+        it('should not return value < 0 ', async ()=> {
+            const id = 0
+            const res = await request(app).get(`/api/v1/restaurants/${id}`).set({id})
+            expect(res.body[0]).toBeFalsy();
+            
+        })
     })
+
 })
