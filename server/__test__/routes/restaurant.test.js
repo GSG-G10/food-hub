@@ -37,13 +37,13 @@ describe('test restaurant endpoints' , () => {
 
         it('response has all information about a restaurant with an id ', async ()=> {
             const id = 1
-            const res = await request(app).get(`/api/v1/restaurants/${id}`).set({id})
+            const res = await request(app).get(`/api/v1/restaurants/${id}`)
             expect(res.body[0]).toHaveProperty('userId', id)
             
         })
         it('should not return value < 0 ', async ()=> {
             const id = 0
-            const res = await request(app).get(`/api/v1/restaurants/${id}`).set({id})
+            const res = await request(app).get(`/api/v1/restaurants/${id}`)
             expect(res.body[0]).toBeFalsy();
             
         })
