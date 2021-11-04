@@ -1,7 +1,5 @@
 const request = require('supertest');
-const sequelize = require('../../src/config/connection');
 const app = require('../../src/app');
-const { DiscountCode, Restaurant } = require('../../src/models');
 
 describe('test restaurant endpoints', () => {
   describe('get request to /restaurants', () => {
@@ -49,6 +47,7 @@ describe('test restaurant endpoints', () => {
       const id = 0;
       const res = await request(app).get(`/api/v1/restaurants/${id}`);
       expect(res.body[0]).toBeFalsy();
+      expect(res.statusCode).toBe(400);
     });
   });
 });

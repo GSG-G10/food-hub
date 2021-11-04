@@ -9,10 +9,8 @@ exports.isAuth = async (req, res, next) => {
       .verifyIdToken(authorization.split(' ')[1]);
     req.user = decodevalue;
     if (decodevalue) return next();
-    return res
-      .status(400)
-      .json({ msg: 'You are not authorized!' });
+    return res.status(400).json({ msg: 'You are not authorized!' });
   } catch (err) {
-    next(err)
-    }
+    next(err);
+  }
 };

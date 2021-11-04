@@ -2,7 +2,7 @@ require('env2')('.env');
 const express = require('express');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
-const cors = require('cors')
+const cors = require('cors');
 const { join } = require('path');
 const router = require('./router');
 const { errorHandler } = require('./controllers/error');
@@ -26,6 +26,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.use(errorHandler)
+app.use(errorHandler);
 
 module.exports = app;
