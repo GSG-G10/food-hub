@@ -11,8 +11,8 @@ module.exports = {
     'eol-last': 'error',
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': ['error', 'as-needed'],
-    env: {
-      jest: true,
-    },
+  },
+  env: {
+    jest: true,
   },
 };
