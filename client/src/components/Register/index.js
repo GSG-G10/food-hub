@@ -121,7 +121,11 @@ export const Register = () => {
                 size="small"
                 margin="normal"
                 required
-                helperText={confirmPasswordError ? 'Passwrod do NOT match' : ''}
+                helperText={
+                  confirmPasswordError
+                    ? 'Password and confirm password does not match'
+                    : ''
+                }
                 onChange={handleChange}
               />
               <Typography variant="body" my={4} display="block">
