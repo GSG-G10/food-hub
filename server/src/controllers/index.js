@@ -8,6 +8,7 @@ const { getCategories } = require('./categories');
 const { getRestaurants, getRestaurant } = require('./restaurants');
 const { createPromoCode } = require('./createPromocode');
 const { redeemCode } = require('./redeemCode');
+const { addUser } = require('./addUser');
 
 module.exports = {
   auth,
@@ -19,4 +20,5 @@ module.exports = {
   createPromoCode,
   redeemCode,
   getRestaurant,
+  addUser,
 };

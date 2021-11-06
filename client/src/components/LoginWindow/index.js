@@ -18,7 +18,8 @@ import { AuthButtons } from './AuthButtons';
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
-  const { signInWithEmail, loginWithGoogle } = useAuthContext();
+  const { signInWithEmail, loginWithGoogle, loginWithFacebook } =
+    useAuthContext();
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
@@ -138,7 +139,10 @@ export const LoginWindow = ({ open, handleClose }) => {
             Login
           </Button>
           <Divider width="100%" sx={{ my: 2 }} />
-          <AuthButtons loginWithGoogle={loginWithGoogle} />
+          <AuthButtons
+            loginWithGoogle={loginWithGoogle}
+            loginWithFacebook={loginWithFacebook}
+          />
         </Box>
         <Typography variant="body1" fontSize={14}>
           Don&apos;t have an account?{' '}

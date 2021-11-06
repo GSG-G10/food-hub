@@ -18,7 +18,7 @@ export const Restaurants = () => {
   const [count, setCount] = useState(1);
   const items = 10;
   useEffect(() => {
-    api.get(`/restaurant?items=${items}&page=${page}`).then((response) => {
+    api.get(`/restaurants?items=${items}&page=${page}`).then((response) => {
       setCount(response.data.count);
       setRestaurants(response.data.data);
     });

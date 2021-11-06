@@ -7,8 +7,9 @@ import TextField from '@mui/material/TextField';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { Divider } from '@mui/material';
-import { AuthButtons } from '../AuthButtons';
+import { AuthButtons } from '../LoginWindow/AuthButtons';
 import { LoginWindow } from '../LoginWindow';
+import { useAuthContext } from '../../firebase/firebaseHook';
 
 export const Register = () => {
   const [formValues, setFormValues] = useState({
@@ -21,7 +22,8 @@ export const Register = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
-
+  const { signUpWithEmail, loginWithGoogle, loginWithFacebook } =
+    useAuthContext();
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
@@ -32,6 +34,8 @@ export const Register = () => {
       setPasswordError(true);
     } else if (password !== confirmPassword) {
       setConfirmPasswordError(true);
+    } else {
+      signUpWithEmail(email, password);
     }
   };
   return (
@@ -58,7 +62,10 @@ export const Register = () => {
             >
               Create an Account
             </Typography>
-            <AuthButtons />
+            <AuthButtons
+              loginWithGoogle={loginWithGoogle}
+              loginWithFacebook={loginWithFacebook}
+            />
             <Divider width="100%" my={4} sx={{ my: 1.6 }} />
             <form onSubmit={handleSubmit}>
               <TextField
@@ -114,19 +121,25 @@ export const Register = () => {
                 size="small"
                 margin="normal"
                 required
-                helperText={confirmPasswordError ? 'Passwrod do NOT match' : ''}
+                helperText={
+                  confirmPasswordError
+                    ? 'Password and confirm password does not match'
+                    : ''
+                }
                 onChange={handleChange}
               />
               <Typography variant="body" my={4} display="block">
                 By creating an account you agree to the{' '}
-                <Link
-                  to="/"
+                <a
+                  href="https://www.privacypolicies.com/live/26cc46bd-7288-4c9a-a99d-234ed1f862f0"
                   component={RouterLink}
                   underline="none"
+                  target="_blank"
+                  rel="noreferrer"
                   sx={{ color: '#189934' }}
                 >
                   Privacy Policy{' '}
-                </Link>
+                </a>
                 and to the{' '}
                 <Link to="/" component={RouterLink} underline="none">
                   terms of use

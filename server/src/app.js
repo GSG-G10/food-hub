@@ -2,11 +2,13 @@ require('env2')('.env');
 const express = require('express');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
-const { join } = require('path');
 const cors = require('cors');
+const { join } = require('path');
 const router = require('./router');
+const { errorHandler } = require('./controllers/error');
 
 const app = express();
+
 app.use(cors());
 app.use(compression());
 app.use(cookieParser());
@@ -23,5 +25,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', '..', 'client', 'build', 'index.html'));
   });
 }
+
+app.use(errorHandler);
 
 module.exports = app;
