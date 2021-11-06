@@ -130,14 +130,16 @@ export const Register = () => {
               />
               <Typography variant="body" my={4} display="block">
                 By creating an account you agree to the{' '}
-                <Link
-                  to="/"
+                <a
+                  href="https://www.privacypolicies.com/live/26cc46bd-7288-4c9a-a99d-234ed1f862f0"
                   component={RouterLink}
                   underline="none"
+                  target="_blank"
+                  rel="noreferrer"
                   sx={{ color: '#189934' }}
                 >
                   Privacy Policy{' '}
-                </Link>
+                </a>
                 and to the{' '}
                 <Link to="/" component={RouterLink} underline="none">
                   terms of use
