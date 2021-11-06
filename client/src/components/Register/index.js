@@ -34,8 +34,9 @@ export const Register = () => {
       setPasswordError(true);
     } else if (password !== confirmPassword) {
       setConfirmPasswordError(true);
+    } else {
+      signUpWithEmail(email, password);
     }
-    signUpWithEmail(email, password);
   };
   return (
     <>
