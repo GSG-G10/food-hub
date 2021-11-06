@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { Divider } from '@mui/material';
-import { AuthButtons } from '../AuthButtons';
+import { AuthButtons } from '../LoginWindow/AuthButtons';
 import { LoginWindow } from '../LoginWindow';
 import { useAuthContext } from '../../firebase/firebaseHook';
 
@@ -22,7 +22,8 @@ export const Register = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
-  const { signUpWithEmail } = useAuthContext();
+  const { signUpWithEmail, loginWithGoogle, loginWithFacebook } =
+    useAuthContext();
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
@@ -60,7 +61,10 @@ export const Register = () => {
             >
               Create an Account
             </Typography>
-            <AuthButtons />
+            <AuthButtons
+              loginWithGoogle={loginWithGoogle}
+              loginWithFacebook={loginWithFacebook}
+            />
             <Divider width="100%" my={4} sx={{ my: 1.6 }} />
             <form onSubmit={handleSubmit}>
               <TextField
