@@ -27,15 +27,29 @@ export const MealSwiper = ({ mealImages, mealName }) => {
         thumbs={{ swiper: thumbsSwiper }}
         className="mySwiper2"
       >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        {mealImages.map((img) => (
+          <SwiperSlide>
+            <img src={img} alt={mealName} />
+          </SwiperSlide>
+        ))}
+        {/* <SwiperSlide>
+          <img
+            src="https://swiperjs.com/demos/images/nature-1.jpg"
+            alt="img1"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-2.jpg"
+            alt="img1"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
+          <img
+            src="https://swiperjs.com/demos/images/nature-3.jpg"
+            alt="img1"
+          />
+        </SwiperSlide> */}
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
@@ -45,15 +59,29 @@ export const MealSwiper = ({ mealImages, mealName }) => {
         watchSlidesProgress
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        {mealImages.map((img) => (
+          <SwiperSlide>
+            <img src={img} alt={mealName} />
+          </SwiperSlide>
+        ))}
+        {/* <SwiperSlide>
+          <img
+            src="https://swiperjs.com/demos/images/nature-1.jpg"
+            alt="img1"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-2.jpg"
+            alt="img1"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
+          <img
+            src="https://swiperjs.com/demos/images/nature-3.jpg"
+            alt="img1"
+          />
+        </SwiperSlide> */}
       </Swiper>
     </Box>
   );
@@ -61,7 +89,9 @@ export const MealSwiper = ({ mealImages, mealName }) => {
 
 MealSwiper.defaultProps = {
   mealImages: '',
+  mealName: '',
 };
 MealSwiper.propTypes = {
   mealImages: propTypes.string,
+  mealName: propTypes.string,
 };

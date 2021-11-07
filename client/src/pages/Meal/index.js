@@ -11,22 +11,24 @@ import { MealCard } from '../../components/MealCard';
 
 export const Meal = () => {
   const { id } = useParams();
-  const [mealData, setMealData] = useState();
+  const [mealData, setMealData] = useState({
+    id: -1,
+    images: [],
+    name: 'loading',
+  });
   const [relatedMeals, setRelatedMeals] = useState([]);
-  const [restaurantId, setRestaurantId] = useState();
   const [addedToCart, setAddedToCart] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    api.get(`/meals/${id}`).then((res) => {
-      setRestaurantId(res.data[0].restaurantId);
-      setMealData(res.data[0]);
-      api
-        .get(`/meals/restaurant/${restaurantId}`)
-        .then((result) => setRelatedMeals(result.data.data));
-    });
-  }, [id, restaurantId]);
-
+  // useEffect(() => {
+  //   api.get(`/meals/${id}`).then((res) => {
+  //     setMealData(res.data[0]);
+  //     api
+  //       .get(`/meals/restaurant/${res.data[0].restaurantId}`)
+  //       .then((result) => setRelatedMeals(result.data.data));
+  //   });
+  // }, [id]);
+  console.log(mealData);
   const Alert = forwardRef(function Alert(props, ref) {
     // eslint-disable-next-line react/jsx-props-no-spreading
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
