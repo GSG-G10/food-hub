@@ -12,4 +12,7 @@ module.exports = {
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': ['error', 'as-needed'],
   },
+  env: {
+    jest: true,
+  },
 };

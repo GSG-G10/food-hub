@@ -5,7 +5,9 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
+  FacebookAuthProvider,
   signInWithPopup,
+  getAdditionalUserInfo,
 } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -19,6 +21,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isNew, setIsNew] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -41,13 +44,8 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   useEffect(() => {
-    // auth.onAuthStateChanged(setUser)
-    auth.onAuthStateChanged((cred) => {
-      if (cred) {
-        setUser(cred);
-        setLoading(false);
-      }
-    });
+    auth.onAuthStateChanged(setUser);
+    setLoading(false);
   }, []);
 
   // Sign in with Google
@@ -60,6 +58,17 @@ export const AuthProvider = ({ children }) => {
       })
       .catch((err) => setError(err.message));
   };
+  // Sign in with Facebook
+  const loginWithFacebook = () => {
+    signInWithPopup(auth, new FacebookAuthProvider())
+      .then((cred) => {
+        if (cred) {
+          window.localStorage.setItem('auth', 'true');
+          setIsNew(getAdditionalUserInfo(cred).isNewUser);
+        }
+      })
+      .catch((err) => setError(err.message));
+  };
 
   // Sign in with Email and Password
   const signInWithEmail = (email, password) => {
@@ -67,6 +76,7 @@ export const AuthProvider = ({ children }) => {
       .then((cred) => {
         if (cred) {
           window.localStorage.setItem('auth', 'true');
+          setIsNew(getAdditionalUserInfo(cred).isNewUser);
         }
       })
       .catch((err) => setError(err.message));
@@ -78,6 +88,7 @@ export const AuthProvider = ({ children }) => {
       .then((cred) => {
         if (cred) {
           window.localStorage.setItem('auth', 'true');
+          setIsNew(getAdditionalUserInfo(cred).isNewUser);
         }
       })
       .catch((err) => setError(err.message));
@@ -86,6 +97,7 @@ export const AuthProvider = ({ children }) => {
   // Logout
   const logout = () => {
     auth.signOut();
+    localStorage.setItem('auth', 'false');
   };
 
   if (loading) {
@@ -98,7 +110,9 @@ export const AuthProvider = ({ children }) => {
         loginWithGoogle,
         signInWithEmail,
         signUpWithEmail,
+        loginWithFacebook,
         logout,
+        isNew,
         error,
       }}
     >

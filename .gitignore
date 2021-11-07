@@ -1,3 +1,3 @@
 node_modules
-config/data.json
 .env
+server/src/config/data.json
