@@ -27,10 +27,14 @@ const getCategories = async (req, res, next) => {
             [Op.like]: `%${search}%`,
           },
         },
+        raw: true,
       }),
     ]);
 
-    res.json({ count, data });
+    res.json({
+      pagination: { count, page, itemsPerPage: items },
+      data,
+    });
   } catch (err) {
     next(err);
   }
