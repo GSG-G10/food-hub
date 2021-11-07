@@ -10,9 +10,9 @@ import Logo from '../../../assets/logo.png';
 import { LoginWindow } from '../../LoginWindow';
 
 const navItems = [
-  { label: 'Restaurants', to: 'restaurants' },
-  { label: 'Categories', to: 'categories' },
-  { label: 'About Us', to: 'aboutus' },
+  { label: 'Restaurants', to: '/restaurants' },
+  { label: 'Categories', to: '/categories' },
+  { label: 'About Us', to: '/aboutus' },
 ];
 
 export const Header = () => {
