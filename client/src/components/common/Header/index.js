@@ -11,9 +11,9 @@ import { LoginWindow } from '../../LoginWindow';
 import { useAuthContext } from '../../../firebase/firebaseHook';
 
 const navItems = [
-  { label: 'Restaurants', to: 'restaurants' },
-  { label: 'Categories', to: 'categories' },
-  { label: 'About Us', to: 'aboutus' },
+  { label: 'Restaurants', to: '/restaurants' },
+  { label: 'Categories', to: '/categories' },
+  { label: 'About Us', to: '/aboutus' },
 ];
 
 export const Header = () => {
