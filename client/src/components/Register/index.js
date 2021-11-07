@@ -48,7 +48,7 @@ export const Register = () => {
       });
       history.push('/');
     } catch (err) {
-      setAuthError(true);
+      setAuthError(error);
     }
   };
   return (

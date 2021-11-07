@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAnalytics, setUserProperties } from 'firebase/analytics';
+import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCa5dMdxBpmzAk3CaubduD5NZ7wcWfMrac',
@@ -14,4 +14,3 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics();
-setUserProperties(analytics, { favorite_food: 'apples' });

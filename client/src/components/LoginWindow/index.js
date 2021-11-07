@@ -45,7 +45,7 @@ export const LoginWindow = ({ open, handleClose }) => {
       });
       history.push('/');
     } catch (err) {
-      setAuthError(true);
+      setAuthError(error);
     }
   };
 
