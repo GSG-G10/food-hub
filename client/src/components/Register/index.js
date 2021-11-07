@@ -19,9 +19,10 @@ export const Register = () => {
     password: '',
     confirmPassword: '',
   });
-  // eslint-disable-next-line no-unused-vars
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const [passwordError, setPasswordError] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [authError, setAuthError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
@@ -33,20 +34,21 @@ export const Register = () => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password.length < 8) {
       setPasswordError(true);
     } else if (password !== confirmPassword) {
       setConfirmPasswordError(true);
-    } else if (!error) {
-      signUpWithEmail(email, password);
+    }
+    try {
+      await signUpWithEmail(email, password);
       enqueueSnackbar('Your account has been created successfully !', {
         variant: 'success',
       });
-      setTimeout(() => {
-        history.push('/');
-      }, 1000);
+      history.push('/');
+    } catch (err) {
+      setAuthError(true);
     }
   };
   return (

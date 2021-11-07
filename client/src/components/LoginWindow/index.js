@@ -12,14 +12,19 @@ import Typography from '@mui/material/Typography';
 import propTypes from 'prop-types';
 import { useState } from 'react';
 import { Link as RouterLink, useHistory } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 import { useAuthContext } from '../../firebase/firebaseHook';
 import { AuthButtons } from './AuthButtons';
 
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [authError, setAuthError] = useState(false);
   const { signInWithEmail, loginWithGoogle, loginWithFacebook, error } =
     useAuthContext();
+  const { enqueueSnackbar } = useSnackbar();
+
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -27,23 +32,22 @@ export const LoginWindow = ({ open, handleClose }) => {
   };
 
   const { email, password } = formValues;
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password.length < 8) {
       setPasswordError(true);
     } else if (passwordError) setPasswordError(false);
-    signInWithEmail(email, password);
-  };
-
-  const redirect = () => {
-    if (!error && !passwordError) {
-      setTimeout(() => {
-        handleClose();
-      }, 1000);
+    try {
+      await signInWithEmail(email, password);
+      handleClose();
+      enqueueSnackbar('Welcome back !', {
+        variant: 'success',
+      });
       history.push('/');
+    } catch (err) {
+      setAuthError(true);
     }
   };
-  console.log(error);
 
   return (
     <Modal
@@ -149,12 +153,7 @@ export const LoginWindow = ({ open, handleClose }) => {
               Forgot password?
             </Link> */}
           {/* </Box> */}
-          <Button
-            variant="contained"
-            fullWidth
-            type="submit"
-            onClick={redirect}
-          >
+          <Button variant="contained" fullWidth type="submit">
             Login
           </Button>
           <Divider width="100%" sx={{ my: 2 }} />
