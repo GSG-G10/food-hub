@@ -1,8 +1,9 @@
+const { Op } = require('sequelize');
 const { Category } = require('../models');
 const { HttpError } = require('../utils');
 
 const getCategories = async (req, res, next) => {
-  const { page = 1, items = 10 } = req.query;
+  const { page = 1, items = 10, search = '' } = req.query;
   try {
     if (page <= 0)
       throw new HttpError(
@@ -11,10 +12,21 @@ const getCategories = async (req, res, next) => {
       );
 
     const [count, data] = await Promise.all([
-      Category.count(),
+      Category.count({
+        where: {
+          name: {
+            [Op.like]: `%${search}%`,
+          },
+        },
+      }),
       Category.findAll({
         offset: (page - 1) * items,
         limit: items,
+        where: {
+          name: {
+            [Op.like]: `%${search}%`,
+          },
+        },
       }),
     ]);
 
