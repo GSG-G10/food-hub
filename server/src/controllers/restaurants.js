@@ -3,7 +3,7 @@ const { Restaurant } = require('../models');
 const { HttpError } = require('../utils');
 
 const getRestaurants = async (req, res, next) => {
-  const { page = 1, items = 10, search } = req.query;
+  const { page = 1, items = 10, search = '' } = req.query;
   try {
     if (page <= 0)
       throw new HttpError(
@@ -15,7 +15,7 @@ const getRestaurants = async (req, res, next) => {
       Restaurant.count({
         where: {
           restaurantName: {
-            [Op.like]: `%${search || ''}%`,
+            [Op.like]: `%${search}%`,
           },
         },
       }),
@@ -24,7 +24,7 @@ const getRestaurants = async (req, res, next) => {
         limit: items,
         where: {
           restaurantName: {
-            [Op.like]: `%${search || ''}%`,
+            [Op.like]: `%${search}%`,
           },
         },
       }),
