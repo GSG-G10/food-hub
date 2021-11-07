@@ -33,9 +33,7 @@ export const Register = () => {
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
-  // const handleTypeChange = (event) => {
-  //   setFormValues({ ...formValues, accountType: event.target.value });
-  // };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password.length < 8) {
