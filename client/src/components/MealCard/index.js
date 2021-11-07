@@ -28,6 +28,7 @@ export const MealCard = ({
   };
   const handleClick = () => {
     history.push(`/meal/${mealId}`);
+    window.scrollTo(0, 0);
   };
 
   return (

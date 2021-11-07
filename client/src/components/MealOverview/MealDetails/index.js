@@ -126,12 +126,7 @@ export const MealDetails = ({ mealName }) => {
           </FormControl>
         </Box>
       </Box>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignSelf="self-end"
-        width="50%"
-      >
+      <Box display="flex" justifyContent="space-between" alignSelf="self-end">
         {/* <Box display="flex">
           <TextField
             id="outlined-basic"
@@ -143,7 +138,9 @@ export const MealDetails = ({ mealName }) => {
             Apply
           </Button>
         </Box> */}
-        <Button variant="contained">Order now</Button>
+        <Button variant="contained" sx={{ mr: '1rem' }}>
+          Order now
+        </Button>
         <Button variant="outlined">Add to cart</Button>
       </Box>
     </Box>
