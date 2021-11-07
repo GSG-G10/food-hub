@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon ./src",
     "postinstall": "npm run build:fakedata",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=testing jest --runInBand --verbose ",
     "build:fakedata": "node src/config/createData.js",
     "build:db": "node src/config/dbBuild.js",
     "lint": "eslint src --max-warnings=0",
@@ -22,8 +22,12 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1",
+    "jest-cli": "^27.3.1",
     "nodemon": "^2.0.14",
-    "prettier": "2.4.1"
+    "prettier": "2.4.1",
+    "sequelize-cli": "^6.3.0",
+    "supertest": "^6.1.6"
   },
   "dependencies": {
     "@types/sequelize": "^4.28.10",
@@ -31,6 +35,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "env": "0.0.2",
     "env2": "^2.2.2",
     "express": "^4.17.1",

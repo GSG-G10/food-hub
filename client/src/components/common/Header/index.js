@@ -8,6 +8,7 @@ import { MenuDrawer } from './MenuDrawer';
 import { NavItems } from './NavItems';
 import Logo from '../../../assets/logo.png';
 import { LoginWindow } from '../../LoginWindow';
+import { useAuthContext } from '../../../firebase/firebaseHook';
 
 const navItems = [
   { label: 'Restaurants', to: 'restaurants' },
@@ -18,8 +19,10 @@ const navItems = [
 export const Header = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.up('sm'));
   const [open, setOpen] = useState(false);
+  const { user, logout } = useAuthContext();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleLogout = () => logout();
 
   return (
     <Box component="header" bgcolor="primary.main">
@@ -47,14 +50,27 @@ export const Header = () => {
           ) : (
             <MenuDrawer navItems={navItems} />
           )}
-          <Button
-            variant="outlined"
-            color="white"
-            sx={{ borderColor: 'common.white' }}
-            onClick={handleOpen}
-          >
-            Login
-          </Button>
+
+          {user && localStorage.getItem('auth', 'true') ? (
+            <Button
+              variant="outlined"
+              color="white"
+              sx={{ borderColor: 'common.white' }}
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          ) : (
+            <Button
+              variant="outlined"
+              color="white"
+              sx={{ borderColor: 'common.white' }}
+              onClick={handleOpen}
+            >
+              Login
+            </Button>
+          )}
+
           <LoginWindow
             handleOpen={handleOpen}
             open={open}

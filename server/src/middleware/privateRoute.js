@@ -1,6 +1,7 @@
 const admin = require('../config/firebase');
 
-exports.decodeToken = async (req, res, next) => {
+// eslint-disable-next-line consistent-return
+exports.isAuth = async (req, res, next) => {
   const { authorization } = req.headers;
 
   try {
@@ -9,10 +10,8 @@ exports.decodeToken = async (req, res, next) => {
       .verifyIdToken(authorization.split(' ')[1]);
     req.user = decodevalue;
     if (decodevalue) return next();
-    return res
-      .status(400)
-      .json({ success: false, msg: 'You are not authorized!' });
+    return res.status(400).json({ msg: 'You are not authorized!' });
   } catch (err) {
-    return res.json({ success: false, msg: err });
+    next(err);
   }
 };
