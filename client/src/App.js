@@ -1,6 +1,7 @@
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
 import { Footer } from './components/common/Footer';
 import { Header } from './components/common/Header';
 import { Register } from './components/Register';
@@ -65,28 +66,30 @@ export const App = () => (
     <Router>
       <AuthProvider>
         <ThemeProvider theme={theme}>
-          <Header />
-          <Switch>
-            <Route exact path="/" />
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/restaurants">
-              <Restaurants />
-            </Route>
-            <Route exact path="/categories">
-              <Categories />
-            </Route>
-            <Route exact path="/category/:id">
-              <Category />
-            </Route>
-            <Route exact path="/restaurant/:id">
-              <Restaurant />
-            </Route>
-            <Route path="/about-us" />
-            <Route path="/login" />
-          </Switch>
-          <Footer />
+          <SnackbarProvider>
+            <Header />
+            <Switch>
+              <Route exact path="/" />
+              <Route exact path="/register">
+                <Register />
+              </Route>
+              <Route exact path="/restaurants">
+                <Restaurants />
+              </Route>
+              <Route exact path="/categories">
+                <Categories />
+              </Route>
+              <Route exact path="/category/:id">
+                <Category />
+              </Route>
+              <Route exact path="/restaurant/:id">
+                <Restaurant />
+              </Route>
+              <Route path="/about-us" />
+              <Route path="/login" />
+            </Switch>
+            <Footer />
+          </SnackbarProvider>
         </ThemeProvider>
       </AuthProvider>
     </Router>

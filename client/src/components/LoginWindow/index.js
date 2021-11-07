@@ -36,10 +36,14 @@ export const LoginWindow = ({ open, handleClose }) => {
   };
 
   const redirect = () => {
-    if (!error) {
+    if (!error && !passwordError) {
+      setTimeout(() => {
+        handleClose();
+      }, 1000);
       history.push('/');
     }
   };
+  console.log(error);
 
   return (
     <Modal
@@ -149,7 +153,7 @@ export const LoginWindow = ({ open, handleClose }) => {
             variant="contained"
             fullWidth
             type="submit"
-            onSubmit={redirect}
+            onClick={redirect}
           >
             Login
           </Button>

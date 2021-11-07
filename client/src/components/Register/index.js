@@ -4,9 +4,10 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { Divider } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import { AuthButtons } from '../LoginWindow/AuthButtons';
 import { LoginWindow } from '../LoginWindow';
 import { useAuthContext } from '../../firebase/firebaseHook';
@@ -18,12 +19,16 @@ export const Register = () => {
     password: '',
     confirmPassword: '',
   });
+  // eslint-disable-next-line no-unused-vars
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
-  const { signUpWithEmail, loginWithGoogle, loginWithFacebook } =
+  const { signUpWithEmail, loginWithGoogle, loginWithFacebook, error } =
     useAuthContext();
+  const history = useHistory();
+
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
@@ -34,8 +39,14 @@ export const Register = () => {
       setPasswordError(true);
     } else if (password !== confirmPassword) {
       setConfirmPasswordError(true);
-    } else {
+    } else if (!error) {
       signUpWithEmail(email, password);
+      enqueueSnackbar('Your account has been created successfully !', {
+        variant: 'success',
+      });
+      setTimeout(() => {
+        history.push('/');
+      }, 1000);
     }
   };
   return (
@@ -122,9 +133,12 @@ export const Register = () => {
                 margin="normal"
                 required
                 helperText={
-                  confirmPasswordError
+                  (confirmPasswordError
                     ? 'Password and confirm password does not match'
-                    : ''
+                    : '',
+                  error
+                    ? error.split('/')[1].split(')')[0].replace('-', ' ')
+                    : '')
                 }
                 onChange={handleChange}
               />
