@@ -7,9 +7,14 @@ import TextField from '@mui/material/TextField';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { Divider } from '@mui/material';
-import { AuthButtons } from '../LoginWindow/AuthButtons';
-import { LoginWindow } from '../LoginWindow';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 import { useAuthContext } from '../../firebase/firebaseHook';
+import { LoginWindow } from '../LoginWindow';
+import { AuthButtons } from '../LoginWindow/AuthButtons';
 
 export const Register = () => {
   const [formValues, setFormValues] = useState({
@@ -17,6 +22,7 @@ export const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    accountType: '',
   });
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
@@ -27,7 +33,9 @@ export const Register = () => {
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
-
+  // const handleTypeChange = (event) => {
+  //   setFormValues({ ...formValues, accountType: event.target.value });
+  // };
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password.length < 8) {
@@ -38,6 +46,7 @@ export const Register = () => {
       signUpWithEmail(email, password);
     }
   };
+
   return (
     <>
       <Container maxWidth="lg">
@@ -128,6 +137,34 @@ export const Register = () => {
                 }
                 onChange={handleChange}
               />
+              <Box
+                display="flex"
+                justifyContent="flex-start"
+                textAlign="left"
+                mt={2}
+              >
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">Account type</FormLabel>
+                  <RadioGroup
+                    row
+                    aria-label="account-type"
+                    name="accountType"
+                    value={formValues.accountType}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      value="user"
+                      control={<Radio />}
+                      label="User"
+                    />
+                    <FormControlLabel
+                      value="restaurant"
+                      control={<Radio />}
+                      label="Restaurant"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Box>
               <Typography variant="body" my={4} display="block">
                 By creating an account you agree to the{' '}
                 <a
