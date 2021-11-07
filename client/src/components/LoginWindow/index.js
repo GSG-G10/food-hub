@@ -11,15 +11,16 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import propTypes from 'prop-types';
 import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 import { useAuthContext } from '../../firebase/firebaseHook';
 import { AuthButtons } from './AuthButtons';
 
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
-  const { signInWithEmail, loginWithGoogle, loginWithFacebook } =
+  const { signInWithEmail, loginWithGoogle, loginWithFacebook, error } =
     useAuthContext();
+  const history = useHistory();
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
@@ -32,6 +33,12 @@ export const LoginWindow = ({ open, handleClose }) => {
       setPasswordError(true);
     } else if (passwordError) setPasswordError(false);
     signInWithEmail(email, password);
+  };
+
+  const redirect = () => {
+    if (!error) {
+      history.push('/');
+    }
   };
 
   return (
@@ -105,7 +112,10 @@ export const LoginWindow = ({ open, handleClose }) => {
             margin="dense"
             required
             helperText={
-              passwordError ? 'Password must contain at least 8 characters' : ''
+              (passwordError
+                ? 'Password must contain at least 8 characters'
+                : '',
+              error ? error.split('/')[1].split(')')[0].replace('-', ' ') : '')
             }
             onChange={handleChange}
           />
@@ -135,7 +145,12 @@ export const LoginWindow = ({ open, handleClose }) => {
               Forgot password?
             </Link> */}
           {/* </Box> */}
-          <Button variant="contained" fullWidth type="submit">
+          <Button
+            variant="contained"
+            fullWidth
+            type="submit"
+            onSubmit={redirect}
+          >
             Login
           </Button>
           <Divider width="100%" sx={{ my: 2 }} />
