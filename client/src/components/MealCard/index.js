@@ -24,7 +24,10 @@ export const MealCard = ({
   const history = useHistory();
   const handleAddClick = (e) => {
     e.stopPropagation();
-    setCart((prev) => [...prev, { mealId, mealImage, mealName }]);
+    setCart((prev) => [
+      ...prev,
+      { mealId, mealImage, mealName, mealPrice, quantity: 1 },
+    ]);
     setAddedToCart(true);
     setOpen(true);
   };
