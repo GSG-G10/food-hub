@@ -1,19 +1,12 @@
-import { useState, useContext } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import propTypes from 'prop-types';
-import { CartContext } from '../../context/CartContext';
 
-export const CartRow = ({ mealName, mealPrice }) => {
-  const { cart, setCart } = useContext(CartContext);
+export const CartRow = ({ handleQtyChange, meal }) => {
+  const { name, price, quantity } = meal;
 
-  const [quantity, setQyantity] = useState(1);
-
-  const handleQtyChange = (e) => {
-    setQyantity(e.target.value);
-  };
   return (
     <>
       <Box
@@ -25,13 +18,13 @@ export const CartRow = ({ mealName, mealPrice }) => {
         mb={3}
       >
         <Box width="40%">
-          <Typography variant="h4">{mealName}</Typography>
+          <Typography variant="h4">{name}</Typography>
           <Typography variant="caption" fontSize={12} color="primary">
             Orgada Burger
           </Typography>
         </Box>
         <Typography variant="subtitle" width="20%">
-          ${mealPrice}
+          ${price}
         </Typography>
         <Box width="20%">
           <input
@@ -49,7 +42,7 @@ export const CartRow = ({ mealName, mealPrice }) => {
           />
         </Box>
         <Typography variant="h4" width="15%">
-          ${mealPrice * quantity}
+          ${price * quantity}
         </Typography>
         <IconButton aria-label="delete">
           <DeleteIcon />
@@ -60,12 +53,20 @@ export const CartRow = ({ mealName, mealPrice }) => {
 };
 
 CartRow.defaultProps = {
-  mealName: '',
-  // restaurantName: '',
-  mealPrice: '',
+  handleQtyChange: () => {},
+  meal: {
+    id: -1,
+    name: '',
+    price: -1,
+    quantity: -1,
+  },
 };
 CartRow.propTypes = {
-  mealName: propTypes.number,
-  // restaurantName: propTypes.string,
-  mealPrice: propTypes.number,
+  handleQtyChange: propTypes.func,
+  meal: propTypes.shape({
+    id: propTypes.number,
+    name: propTypes.string,
+    price: propTypes.number,
+    quantity: propTypes.number,
+  }),
 };

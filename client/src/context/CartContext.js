@@ -1,14 +1,55 @@
-import { useState, createContext } from 'react';
+import {
+  useEffect,
+  useState,
+  createContext,
+  useMemo,
+  useCallback,
+} from 'react';
 import propTypes from 'prop-types';
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const cartData = JSON.parse(localStorage.getItem('cart'));
-  const [cart, setCart] = useState(cartData || []);
-  localStorage.setItem('cart', JSON.stringify(cart));
+  const [cart, setCart] = useState(
+    () => JSON.parse(localStorage.getItem('cart')) || []
+  );
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const addMeal = useCallback(
+    ({ id, name, price, quantity = 1 }) => {
+      const foundMeal = cart.find((meal) => meal.id === id);
+      if (foundMeal) {
+        setCart([
+          ...cart.filter((meal) => meal.id !== id),
+          { ...foundMeal, quantity: foundMeal.quantity + 1 },
+        ]);
+      } else {
+        setCart([...cart, { id, name, price, quantity, order: cart.length }]);
+      }
+    },
+    [cart]
+  );
+
+  const changeQty = useCallback(
+    ({ id, quantity }) => {
+      const foundMeal = cart.find((meal) => meal.id === id);
+      setCart([
+        ...cart.filter((meal) => meal.id !== id),
+        { ...foundMeal, quantity },
+      ]);
+    },
+    [cart]
+  );
+
+  const sortedCart = useMemo(
+    () => cart.sort((a, b) => a.order - b.order),
+    [cart]
+  );
+
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider value={{ cart: sortedCart, addMeal, changeQty }}>
       {children}
     </CartContext.Provider>
   );

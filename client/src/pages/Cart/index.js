@@ -8,7 +8,8 @@ import { CartRow } from '../../components/CartRow';
 import { CartContext } from '../../context/CartContext';
 
 export const Cart = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, changeQty } = useContext(CartContext);
+
   return (
     <Container
       maxWidth="lg"
@@ -39,8 +40,16 @@ export const Cart = () => {
           Total
         </Typography>
       </Box>
-      {cart.map(({ mealName, mealPrice }) => (
-        <CartRow mealName={mealName} mealPrice={mealPrice} />
+      {cart.map((meal) => (
+        <CartRow
+          meal={meal}
+          handleQtyChange={(e) => {
+            changeQty({
+              id: meal.id,
+              quantity: +e.target.value,
+            });
+          }}
+        />
       ))}
 
       <Box display="flex" alignItems="center" justifyContent="space-between">

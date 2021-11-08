@@ -13,17 +13,12 @@ export const MealOverview = ({ mealData }) => {
   );
 };
 
-MealOverview.defaultProps = {
-  mealData: [],
-};
 
 MealOverview.propTypes = {
-  mealData: propTypes.arrayOf(
-    propTypes.shape({
-      id: propTypes.number,
-      name: propTypes.string,
-      images: propTypes.arrayOf,
-      price: propTypes.number,
-    })
-  ),
+  mealData: propTypes.shape({
+    id: propTypes.number,
+    name: propTypes.string,
+    images: propTypes.arrayOf,
+    price: propTypes.number,
+  }),
 };
