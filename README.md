@@ -41,6 +41,7 @@ I can register as a restaurant account, then I will be able to add my restaurant
 - axios
 - react swiperjs
 - React router
+- firebase Authentication
 
 ### Backend
 
@@ -48,8 +49,8 @@ I can register as a restaurant account, then I will be able to add my restaurant
 - postgresql
 - sequelize
 - faker
-- firebase auth
-- joi
+- firebase Authentication
+
 
 ## Database Schema
 
