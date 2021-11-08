@@ -7,7 +7,9 @@ export const useAuthContext = () => {
     loginWithGoogle,
     signInWithEmail,
     signUpWithEmail,
+    loginWithFacebook,
     logout,
+    isNew,
     error,
   } = useContext(AuthContext);
   return {
@@ -15,7 +17,9 @@ export const useAuthContext = () => {
     loginWithGoogle,
     signInWithEmail,
     signUpWithEmail,
+    loginWithFacebook,
     logout,
+    isNew,
     error,
   };
 };
