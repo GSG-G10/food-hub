@@ -1,0 +1,20 @@
+input[type='radio'] {
+  display: none;
+}
+
+label.size-label {
+  display: inline-block;
+  width: 50px;
+  padding: 5px;
+  border: solid 2px #ccc;
+  transition: all 0.3s;
+  text-align: center;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+input[type='radio']:checked + label.size-label {
+  border-color: #ff5a00;
+  background-color: #ff5a00;
+  color: #fff;
+}

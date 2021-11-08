@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { Divider } from '@mui/material';
 import Radio from '@mui/material/Radio';
@@ -12,8 +12,9 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { useAuthContext } from '../../firebase/firebaseHook';
+import { useSnackbar } from 'notistack';
 import { LoginWindow } from '../LoginWindow';
+import { useAuthContext } from '../../firebase/firebaseHook';
 import { AuthButtons } from '../LoginWindow/AuthButtons';
 
 export const Register = () => {
@@ -24,24 +25,36 @@ export const Register = () => {
     confirmPassword: '',
     accountType: '',
   });
+  const { enqueueSnackbar } = useSnackbar();
   const [passwordError, setPasswordError] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [authError, setAuthError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
-  const { signUpWithEmail, loginWithGoogle, loginWithFacebook } =
+  const { signUpWithEmail, loginWithGoogle, loginWithFacebook, error } =
     useAuthContext();
+  const history = useHistory();
+
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password.length < 8) {
       setPasswordError(true);
     } else if (password !== confirmPassword) {
       setConfirmPasswordError(true);
-    } else {
-      signUpWithEmail(email, password);
+    }
+    try {
+      await signUpWithEmail(email, password);
+      enqueueSnackbar('Your account has been created successfully !', {
+        variant: 'success',
+      });
+      history.push('/');
+    } catch (err) {
+      setAuthError(error);
     }
   };
 
@@ -129,9 +142,12 @@ export const Register = () => {
                 margin="normal"
                 required
                 helperText={
-                  confirmPasswordError
+                  (confirmPasswordError
                     ? 'Password and confirm password does not match'
-                    : ''
+                    : '',
+                  error
+                    ? error.split('/')[1].split(')')[0].replace('-', ' ')
+                    : '')
                 }
                 onChange={handleChange}
               />

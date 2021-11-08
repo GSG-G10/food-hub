@@ -30,7 +30,10 @@ const getRestaurants = async (req, res, next) => {
       }),
     ]);
 
-    res.json({ count, data });
+    res.json({
+      pagination: { count, page, itemsPerPage: items },
+      data,
+    });
   } catch (err) {
     next(err);
   }
@@ -47,7 +50,9 @@ const getRestaurant = async (req, res, next) => {
       },
     });
 
-    res.json(data);
+    res.json({
+      data,
+    });
   } catch (err) {
     next(err);
   }
