@@ -1,8 +1,9 @@
+const { Op } = require('sequelize');
 const { Restaurant } = require('../models');
 const { HttpError } = require('../utils');
 
 const getRestaurants = async (req, res, next) => {
-  const { page = 1, items = 10 } = req.query;
+  const { page = 1, items = 10, search = '' } = req.query;
   try {
     if (page <= 0)
       throw new HttpError(
@@ -11,14 +12,28 @@ const getRestaurants = async (req, res, next) => {
       );
 
     const [count, data] = await Promise.all([
-      Restaurant.count(),
+      Restaurant.count({
+        where: {
+          restaurantName: {
+            [Op.like]: `%${search}%`,
+          },
+        },
+      }),
       Restaurant.findAll({
         offset: (page - 1) * items,
         limit: items,
+        where: {
+          restaurantName: {
+            [Op.like]: `%${search}%`,
+          },
+        },
       }),
     ]);
 
-    res.json({ count, data });
+    res.json({
+      pagination: { count, page, itemsPerPage: items },
+      data,
+    });
   } catch (err) {
     next(err);
   }
@@ -35,7 +50,9 @@ const getRestaurant = async (req, res, next) => {
       },
     });
 
-    res.json(data);
+    res.json({
+      data,
+    });
   } catch (err) {
     next(err);
   }
