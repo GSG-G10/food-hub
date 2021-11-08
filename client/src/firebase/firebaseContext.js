@@ -49,51 +49,59 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Sign in with Google
-  const loginWithGoogle = () => {
-    signInWithPopup(auth, new GoogleAuthProvider())
-      .then((cred) => {
-        if (cred) {
-          window.localStorage.setItem('auth', 'true');
-        }
-      })
-      .catch((err) => setError(err.message));
+  const loginWithGoogle = async () => {
+    try {
+      const cred = await signInWithPopup(auth, new GoogleAuthProvider());
+      if (cred) {
+        window.localStorage.setItem('auth', 'true');
+        setIsNew(getAdditionalUserInfo(cred).isNewUser);
+      }
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    }
   };
+
   // Sign in with Facebook
-  const loginWithFacebook = () => {
-    signInWithPopup(auth, new FacebookAuthProvider())
-      .then((cred) => {
-        if (cred) {
-          window.localStorage.setItem('auth', 'true');
-          setIsNew(getAdditionalUserInfo(cred).isNewUser);
-        }
-      })
-      .catch((err) => setError(err.message));
+  const loginWithFacebook = async () => {
+    try {
+      const cred = await signInWithPopup(auth, new FacebookAuthProvider());
+      if (cred) {
+        window.localStorage.setItem('auth', 'true');
+        setIsNew(getAdditionalUserInfo(cred).isNewUser);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   // Sign in with Email and Password
-  const signInWithEmail = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
-        if (cred) {
-          window.localStorage.setItem('auth', 'true');
-          setIsNew(getAdditionalUserInfo(cred).isNewUser);
-        }
-      })
-      .catch((err) => setError(err.message));
+  const signInWithEmail = async (email, password) => {
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      if (cred) {
+        window.localStorage.setItem('auth', 'true');
+        setIsNew(getAdditionalUserInfo(cred).isNewUser);
+      }
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    }
   };
 
   // Sign up with Email and Password
-  const signUpWithEmail = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
-        if (cred) {
-          window.localStorage.setItem('auth', 'true');
-          setIsNew(getAdditionalUserInfo(cred).isNewUser);
-        }
-      })
-      .catch((err) => setError(err.message));
+  const signUpWithEmail = async (email, password) => {
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      if (cred) {
+        window.localStorage.setItem('auth', 'true');
+        setIsNew(getAdditionalUserInfo(cred).isNewUser);
+      }
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    }
   };
-
   // Logout
   const logout = () => {
     auth.signOut();
@@ -109,8 +117,8 @@ export const AuthProvider = ({ children }) => {
         user,
         loginWithGoogle,
         signInWithEmail,
-        signUpWithEmail,
         loginWithFacebook,
+        signUpWithEmail,
         logout,
         isNew,
         error,
