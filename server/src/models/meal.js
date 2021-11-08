@@ -25,9 +25,12 @@ const Meal = sequelize.define('meals', {
   restaurantId: {
     type: Sequelize.INTEGER,
   },
+  price: {
+    type: Sequelize.DOUBLE,
+  },
 });
 
 Meal.belongsTo(Restaurant, { foreignkey: 'restaurantId' });
-Meal.belongsTo(Category, { foreignkey: 'categoryId', as: 'categoryName' });
+Meal.belongsTo(Category, { foreignkey: 'categoryId' });
 
 module.exports = { Meal };
