@@ -54,9 +54,11 @@ export const AuthProvider = ({ children }) => {
       const cred = await signInWithPopup(auth, new GoogleAuthProvider());
       if (cred) {
         window.localStorage.setItem('auth', 'true');
+        setIsNew(getAdditionalUserInfo(cred).isNewUser);
       }
     } catch (err) {
       setError(err.message);
+      throw err;
     }
   };
 

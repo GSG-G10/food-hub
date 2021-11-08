@@ -40,7 +40,33 @@ export const LoginWindow = ({ open, handleClose }) => {
     try {
       await signInWithEmail(email, password);
       handleClose();
-      enqueueSnackbar('Welcome back !', {
+      enqueueSnackbar('Welcome to Foodhub !', {
+        variant: 'success',
+      });
+      history.push('/');
+    } catch (err) {
+      setAuthError(error);
+    }
+  };
+
+  const handleGoogle = async () => {
+    try {
+      await loginWithGoogle();
+      handleClose();
+      enqueueSnackbar('Welcome to Foodhub !', {
+        variant: 'success',
+      });
+      history.push('/');
+    } catch (err) {
+      setAuthError(error);
+    }
+  };
+
+  const handleFacebook = async () => {
+    try {
+      await loginWithFacebook();
+      handleClose();
+      enqueueSnackbar('Welcome to Foodhub !', {
         variant: 'success',
       });
       history.push('/');
@@ -127,12 +153,7 @@ export const LoginWindow = ({ open, handleClose }) => {
             }
             onChange={handleChange}
           />
-          {/* <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-            my="1em"
-          > */}
+
           <FormControlLabel
             sx={{
               '& .MuiFormControlLabel-label': {
@@ -144,22 +165,14 @@ export const LoginWindow = ({ open, handleClose }) => {
             control={<Checkbox />}
             label="Keep me logged in"
           />
-          {/* <Link
-              to="/"
-              component={RouterLink}
-              underline="none"
-              color="secondary"
-            >
-              Forgot password?
-            </Link> */}
-          {/* </Box> */}
+
           <Button variant="contained" fullWidth type="submit">
             Login
           </Button>
           <Divider width="100%" sx={{ my: 2 }} />
           <AuthButtons
-            loginWithGoogle={loginWithGoogle}
-            loginWithFacebook={loginWithFacebook}
+            loginWithGoogle={handleGoogle}
+            loginWithFacebook={handleFacebook}
           />
         </Box>
         <Typography variant="body1" fontSize={14}>
