@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Card from '@mui/material/Card';
@@ -8,6 +9,7 @@ import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { CartContext } from '../../context/CartContext';
 
 export const MealCard = ({
   mealId,
@@ -18,18 +20,17 @@ export const MealCard = ({
   setAddedToCart,
   setOpen,
 }) => {
+  const { setCart } = useContext(CartContext);
   const history = useHistory();
   const handleAddClick = (e) => {
     e.stopPropagation();
-    const cart = [localStorage.getItem('cart'), mealId];
-    localStorage.setItem('cart', cart);
+    setCart((prev) => [...prev, { mealId, mealImage, mealName }]);
     setAddedToCart(true);
     setOpen(true);
   };
   const handleClick = () => {
     history.push(`/meal/${mealId}`);
   };
-
   return (
     <>
       <Card variant="outlined">

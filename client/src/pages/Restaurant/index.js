@@ -22,14 +22,16 @@ export const Restaurant = () => {
   const items = 8;
 
   useEffect(() => {
-    api.get(`/restaurants/${id}`).then((res) => setRestaurantData(res.data[0]));
+    api
+      .get(`/restaurants/${id}`)
+      .then((res) => setRestaurantData(res.data.data[0]));
   }, [id]);
 
   useEffect(() => {
     api
       .get(`/meals/restaurant/${id}?items=${items}&page=${page}`)
       .then((response) => {
-        setCount(response.data.count);
+        setCount(response.data.pagination.count);
         setRestaurantMeals(response.data.data);
       });
   }, [id, items, page]);
@@ -92,7 +94,7 @@ export const Restaurant = () => {
             <MealCard
               key={mealId}
               mealId={mealId}
-              mealImage={JSON.parse(images)[0]}
+              mealImage={images[0]}
               mealName={name}
               setAddedToCart={setAddedToCart}
               addedToCart={addedToCart}
