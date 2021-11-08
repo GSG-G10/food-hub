@@ -1,24 +1,23 @@
-import { useEffect, useState, forwardRef } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Pagination from '@mui/material/Pagination';
-import MuiAlert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
+import { useSnackbar } from 'notistack';
 import { api } from '../../api/axios';
 import { MealCard } from '../../components/MealCard';
 import { RestaurantOverview } from '../../components/RestaurantOverview';
+import { CartContext } from '../../context/CartContext';
 
 export const Restaurant = () => {
+  const { addMeal } = useContext(CartContext);
   const { id } = useParams();
   const [restaurantData, setRestaurantData] = useState({});
   const [restaurantMeals, setRestaurantMeals] = useState([]);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(1);
-  const [addedToCart, setAddedToCart] = useState(false);
-  const [open, setOpen] = useState(false);
-
+  const { enqueueSnackbar } = useSnackbar();
   const items = 8;
 
   useEffect(() => {
@@ -39,17 +38,7 @@ export const Restaurant = () => {
         setRestaurantMeals(response.data.data);
       });
   }, [id, items, page]);
-  const Alert = forwardRef(function Alert(props, ref) {
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
 
-    setOpen(false);
-  };
   const handlePageChange = (event, value) => {
     setPage(value);
   };
@@ -94,32 +83,23 @@ export const Restaurant = () => {
           }}
           sx={{ gridGap: '30px' }}
         >
-          {restaurantMeals.map(({ id: mealId, images, name, price }) => (
+          {restaurantMeals.map((meal) => (
             <MealCard
-              key={mealId}
-              mealId={mealId}
-              mealImage={images[0]}
-              mealName={name}
-              setAddedToCart={setAddedToCart}
-              addedToCart={addedToCart}
-              setOpen={setOpen}
-              // mealCategory
-              mealPrice={price}
+              key={meal.id}
+              meal={meal}
+              handleAddClick={(e) => {
+                e.stopPropagation();
+                addMeal(meal);
+                enqueueSnackbar('added succesfully', { variant: 'success' });
+              }}
+              // mealId={mealId}
+              // mealImage={images[0]}
+              // mealName={name}
+              // setAddedToCart={setAddedToCart}
+              // // mealCategory
+              // mealPrice={price}
             />
           ))}
-          {addedToCart ? (
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-              <Alert
-                onClose={handleClose}
-                severity="success"
-                sx={{ width: '100%' }}
-              >
-                The meal added successfully to cart
-              </Alert>
-            </Snackbar>
-          ) : (
-            ''
-          )}
         </Box>
         <Pagination
           count={Math.ceil(count / items)}

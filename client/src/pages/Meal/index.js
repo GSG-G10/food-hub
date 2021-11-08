@@ -1,15 +1,16 @@
-import { useState, useEffect, forwardRef } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Container from '@mui/material/Container';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+import { useSnackbar } from 'notistack';
 import { MealOverview } from '../../components/MealOverview';
 import { api } from '../../api/axios';
 import { MealCard } from '../../components/MealCard';
+import { CartContext } from '../../context/CartContext';
 
 export const Meal = () => {
+  const { addItem } = useContext(CartContext);
   const { id } = useParams();
   const [mealData, setMealData] = useState({
     id: -1,
@@ -18,8 +19,7 @@ export const Meal = () => {
     price: -1,
   });
   const [relatedMeals, setRelatedMeals] = useState([]);
-  const [addedToCart, setAddedToCart] = useState(false);
-  const [open, setOpen] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     api.get(`/meals/${id}`).then((res) => {
@@ -33,17 +33,7 @@ export const Meal = () => {
       }
     });
   }, [id]);
-  const Alert = forwardRef(function Alert(props, ref) {
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
 
-    setOpen(false);
-  };
   return (
     <Container
       maxWidth="lg"
@@ -68,31 +58,17 @@ export const Meal = () => {
           }}
           sx={{ gridGap: '30px' }}
         >
-          {relatedMeals.map(({ id: mealId, images, name, price }) => (
+          {relatedMeals.map((meal) => (
             <MealCard
-              key={mealId}
-              mealId={mealId}
-              mealImage={images[0]}
-              mealName={name}
-              setAddedToCart={setAddedToCart}
-              addedToCart={addedToCart}
-              setOpen={setOpen}
-              mealPrice={price}
+              key={meal.id}
+              meal={meal}
+              handleAddClick={(e) => {
+                e.stopPropagation();
+                addItem(meal);
+                enqueueSnackbar('added succesfully', { variant: 'success' });
+              }}
             />
           ))}
-          {addedToCart ? (
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-              <Alert
-                onClose={handleClose}
-                severity="success"
-                sx={{ width: '100%' }}
-              >
-                The meal added successfully to cart
-              </Alert>
-            </Snackbar>
-          ) : (
-            ''
-          )}
         </Box>
       </Box>
     </Container>
