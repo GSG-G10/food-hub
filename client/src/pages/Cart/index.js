@@ -38,8 +38,6 @@ export const Cart = () => (
     </Box>
 
     <CartRow />
-    <CartRow />
-    <CartRow />
 
     <Box display="flex" alignItems="center" justifyContent="space-between">
       <Button
