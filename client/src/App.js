@@ -9,6 +9,7 @@ import { Categories } from './pages/Categories';
 import { Category } from './pages/Category';
 import { Restaurants } from './pages/Restaurants';
 import { Restaurant } from './pages/Restaurant';
+import { Cart } from './pages/Cart';
 
 const theme = createTheme({
   palette: {
@@ -82,6 +83,9 @@ export const App = () => (
             </Route>
             <Route exact path="/restaurant/:id">
               <Restaurant />
+            </Route>
+            <Route exact path="/cart">
+              <Cart />
             </Route>
             <Route path="/about-us" />
             <Route path="/login" />
