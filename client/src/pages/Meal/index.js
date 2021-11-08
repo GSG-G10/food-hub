@@ -15,20 +15,20 @@ export const Meal = () => {
     id: -1,
     images: [],
     name: 'loading',
+    price: -1,
   });
   const [relatedMeals, setRelatedMeals] = useState([]);
   const [addedToCart, setAddedToCart] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // useEffect(() => {
-  //   api.get(`/meals/${id}`).then((res) => {
-  //     setMealData(res.data[0]);
-  //     api
-  //       .get(`/meals/restaurant/${res.data[0].restaurantId}`)
-  //       .then((result) => setRelatedMeals(result.data.data));
-  //   });
-  // }, [id]);
-  console.log(mealData);
+  useEffect(() => {
+    api.get(`/meals/${id}`).then((res) => {
+      setMealData(res.data.data[0]);
+      api
+        .get(`/meals/restaurant/${res.data.data[0].restaurantId}`)
+        .then((result) => setRelatedMeals(result.data.data));
+    });
+  }, [id]);
   const Alert = forwardRef(function Alert(props, ref) {
     // eslint-disable-next-line react/jsx-props-no-spreading
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -64,15 +64,16 @@ export const Meal = () => {
           }}
           sx={{ gridGap: '30px' }}
         >
-          {relatedMeals.map(({ id: mealId, images, name }) => (
+          {relatedMeals.map(({ id: mealId, images, name, price }) => (
             <MealCard
               key={mealId}
               mealId={mealId}
-              mealImage={JSON.parse(images)[0]}
+              mealImage={images[0]}
               mealName={name}
               setAddedToCart={setAddedToCart}
               addedToCart={addedToCart}
               setOpen={setOpen}
+              mealPrice={price}
             />
           ))}
           {addedToCart ? (

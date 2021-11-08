@@ -19,7 +19,7 @@ export const Categories = () => {
   const items = 10;
   useEffect(() => {
     api.get(`/category?items=${items}&page=${page}`).then((response) => {
-      setCount(response.data.count);
+      setCount(response.data.pagination.count);
       setCategories(response.data.data);
     });
   }, [items, page]);

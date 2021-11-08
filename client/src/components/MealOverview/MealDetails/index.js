@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
@@ -7,11 +8,10 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import propTypes from 'prop-types';
 
-export const MealDetails = ({ mealName }) => {
+export const MealDetails = ({ mealName, mealPrice }) => {
   const [value, setValue] = useState(2);
   const [quantity, setQyantity] = useState(1);
   const [size, setSize] = useState('S');
-  const price = 29.99;
   const handleSizeChange = (e) => {
     setSize(e.target.value);
   };
@@ -43,7 +43,7 @@ export const MealDetails = ({ mealName }) => {
         </Box>
       </Box>
 
-      <Typography variant="h2">${price}</Typography>
+      <Typography variant="h2">${mealPrice}</Typography>
       <Typography variant="body" textAlign="justify" my={3}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae
         neque quis ipsum pellentesque commodo. Ut id mollis ipsum, sed hendrerit
@@ -60,8 +60,13 @@ export const MealDetails = ({ mealName }) => {
       >
         <Typography variant="h2">
           $
-          {quantity * price +
-            (size === 'M' ? 0.2 * price : size === 'L' ? 0.4 * price : 0)}
+          {quantity * mealPrice +
+            // eslint-disable-next-line no-nested-ternary
+            (size === 'M'
+              ? 0.2 * mealPrice
+              : size === 'L'
+              ? 0.4 * mealPrice
+              : 0)}
         </Typography>
         <Box display="flex" alignItems="center">
           <FormControl>
@@ -127,17 +132,6 @@ export const MealDetails = ({ mealName }) => {
         </Box>
       </Box>
       <Box display="flex" justifyContent="space-between" alignSelf="self-end">
-        {/* <Box display="flex">
-          <TextField
-            id="outlined-basic"
-            label="Coupon"
-            variant="outlined"
-            sx={{ width: '180px', mr: '0.4rem' }}
-          />
-          <Button variant="contained" color="secondary">
-            Apply
-          </Button>
-        </Box> */}
         <Button variant="contained" sx={{ mr: '1rem' }}>
           Order now
         </Button>
@@ -148,7 +142,9 @@ export const MealDetails = ({ mealName }) => {
 };
 MealDetails.defaultProps = {
   mealName: '',
+  mealPrice: '',
 };
 MealDetails.propTypes = {
   mealName: propTypes.string,
+  mealPrice: propTypes.number,
 };
