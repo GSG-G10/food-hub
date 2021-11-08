@@ -19,7 +19,7 @@ export const Restaurants = () => {
   const items = 10;
   useEffect(() => {
     api.get(`/restaurants?items=${items}&page=${page}`).then((response) => {
-      setCount(response.data.count);
+      setCount(response.data.pagination.count);
       setRestaurants(response.data.data);
     });
   }, [items, page]);

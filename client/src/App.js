@@ -10,6 +10,7 @@ import { Categories } from './pages/Categories';
 import { Category } from './pages/Category';
 import { Restaurants } from './pages/Restaurants';
 import { Restaurant } from './pages/Restaurant';
+import { CartProvider } from './context/CartContext';
 
 const theme = createTheme({
   palette: {
@@ -65,8 +66,8 @@ export const App = () => (
     <CssBaseline />
     <Router>
       <AuthProvider>
-        <ThemeProvider theme={theme}>
-          <SnackbarProvider>
+        <CartProvider>
+          <ThemeProvider theme={theme}>
             <Header />
             <Switch>
               <Route exact path="/" />
@@ -82,15 +83,15 @@ export const App = () => (
               <Route exact path="/category/:id">
                 <Category />
               </Route>
-              <Route exact path="/restaurant/:id">
+              <Route exact path="/restaurants/:id">
                 <Restaurant />
               </Route>
               <Route path="/about-us" />
               <Route path="/login" />
             </Switch>
             <Footer />
-          </SnackbarProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </CartProvider>
       </AuthProvider>
     </Router>
   </>

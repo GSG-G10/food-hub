@@ -85,7 +85,7 @@ export const Categories = () => {
         color="primary"
         page={page}
         onChange={handlePageChange}
-        sx={{ display: 'flex', justifyContent: 'center', my: '3rem' }}
+        sx={{ display: 'flex', justifyContent: 'center', py: '3rem' }}
       />
     </Container>
   );
