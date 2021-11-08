@@ -22,9 +22,13 @@ export const Restaurant = () => {
   const items = 8;
 
   useEffect(() => {
-    api
-      .get(`/restaurants/${id}`)
-      .then((res) => setRestaurantData(res.data.data[0]));
+    api.get(`/restaurants/${id}`).then((res) => {
+      if (res.data.data[0] !== undefined) {
+        setRestaurantData(res.data.data[0]);
+      } else {
+        // here I want to redirect to NotFound page
+      }
+    });
   }, [id]);
 
   useEffect(() => {

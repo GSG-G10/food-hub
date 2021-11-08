@@ -23,10 +23,14 @@ export const Meal = () => {
 
   useEffect(() => {
     api.get(`/meals/${id}`).then((res) => {
-      setMealData(res.data.data[0]);
-      api
-        .get(`/meals/restaurant/${res.data.data[0].restaurantId}`)
-        .then((result) => setRelatedMeals(result.data.data));
+      if (res.data.data[0] !== undefined) {
+        setMealData(res.data.data[0]);
+        api
+          .get(`/meals/restaurant/${res.data.data[0].restaurantId}`)
+          .then((result) => setRelatedMeals(result.data.data));
+      } else {
+        // here I want to redirect to NotFound page
+      }
     });
   }, [id]);
   const Alert = forwardRef(function Alert(props, ref) {
