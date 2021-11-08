@@ -9,6 +9,7 @@ export const useAuthContext = () => {
     signUpWithEmail,
     loginWithFacebook,
     logout,
+    storeInDb,
     isNew,
     error,
   } = useContext(AuthContext);
@@ -18,6 +19,7 @@ export const useAuthContext = () => {
     signInWithEmail,
     signUpWithEmail,
     loginWithFacebook,
+    storeInDb,
     logout,
     isNew,
     error,

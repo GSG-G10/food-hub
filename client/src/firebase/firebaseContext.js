@@ -48,6 +48,15 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  // register the new user in database
+  const storeInDb = async (id, email, accountType) => {
+    const info = { id, email, accountType };
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    if (isNew) await axios.post('/api/v1/user', info, { headers });
+  };
+
   // Sign in with Google
   const loginWithGoogle = async () => {
     try {
@@ -120,6 +129,7 @@ export const AuthProvider = ({ children }) => {
         loginWithFacebook,
         signUpWithEmail,
         logout,
+        storeInDb,
         isNew,
         error,
       }}

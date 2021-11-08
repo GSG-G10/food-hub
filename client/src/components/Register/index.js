@@ -32,8 +32,14 @@ export const Register = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
-  const { signUpWithEmail, loginWithGoogle, loginWithFacebook, error } =
-    useAuthContext();
+  const {
+    signUpWithEmail,
+    loginWithGoogle,
+    loginWithFacebook,
+    storeInDb,
+    user,
+    error,
+  } = useAuthContext();
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -53,6 +59,7 @@ export const Register = () => {
         variant: 'success',
       });
       history.push('/');
+      storeInDb(user.uid, email, formValues.accountType);
     } catch (err) {
       setAuthError(error);
     }
@@ -167,9 +174,9 @@ export const Register = () => {
                     onChange={handleChange}
                   >
                     <FormControlLabel
-                      value="user"
+                      value="customer"
                       control={<Radio />}
-                      label="User"
+                      label="Customer"
                     />
                     <FormControlLabel
                       value="restaurant"
