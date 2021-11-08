@@ -14,7 +14,7 @@ export const RestaurantCard = ({
 }) => {
   const history = useHistory();
   const handleClick = () => {
-    history.push(`/restaurant/${restaurantId}`);
+    history.push(`/restaurants/${restaurantId}`);
   };
   return (
     <Card

@@ -9,6 +9,7 @@ import { Categories } from './pages/Categories';
 import { Category } from './pages/Category';
 import { Restaurants } from './pages/Restaurants';
 import { Restaurant } from './pages/Restaurant';
+import { CartProvider } from './context/CartContext';
 
 const theme = createTheme({
   palette: {
@@ -64,30 +65,32 @@ export const App = () => (
     <CssBaseline />
     <Router>
       <AuthProvider>
-        <ThemeProvider theme={theme}>
-          <Header />
-          <Switch>
-            <Route exact path="/" />
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/restaurants">
-              <Restaurants />
-            </Route>
-            <Route exact path="/categories">
-              <Categories />
-            </Route>
-            <Route exact path="/category/:id">
-              <Category />
-            </Route>
-            <Route exact path="/restaurant/:id">
-              <Restaurant />
-            </Route>
-            <Route path="/about-us" />
-            <Route path="/login" />
-          </Switch>
-          <Footer />
-        </ThemeProvider>
+        <CartProvider>
+          <ThemeProvider theme={theme}>
+            <Header />
+            <Switch>
+              <Route exact path="/" />
+              <Route exact path="/register">
+                <Register />
+              </Route>
+              <Route exact path="/restaurants">
+                <Restaurants />
+              </Route>
+              <Route exact path="/categories">
+                <Categories />
+              </Route>
+              <Route exact path="/category/:id">
+                <Category />
+              </Route>
+              <Route exact path="/restaurants/:id">
+                <Restaurant />
+              </Route>
+              <Route path="/about-us" />
+              <Route path="/login" />
+            </Switch>
+            <Footer />
+          </ThemeProvider>
+        </CartProvider>
       </AuthProvider>
     </Router>
   </>
