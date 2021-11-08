@@ -27,7 +27,6 @@ export const Restaurant = () => {
         setRestaurantData(res.data.data[0]);
       } else {
         // here I want to redirect to NotFound page
-        console.log('undefined');
       }
     });
   }, [id]);
