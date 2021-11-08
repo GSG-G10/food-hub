@@ -1,44 +1,38 @@
-import { useEffect, useState, forwardRef } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
+import Container from '@mui/material/Container';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Pagination from '@mui/material/Pagination';
-import MuiAlert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import { MealOverview } from '../../components/MealOverview';
 import { api } from '../../api/axios';
 import { MealCard } from '../../components/MealCard';
-import { RestaurantOverview } from '../../components/RestaurantOverview';
 
-export const Restaurant = () => {
+export const Meal = () => {
   const { id } = useParams();
-  const [restaurantData, setRestaurantData] = useState({});
-  const [restaurantMeals, setRestaurantMeals] = useState([]);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(1);
+  const [mealData, setMealData] = useState({
+    id: -1,
+    images: [],
+    name: 'loading',
+    price: -1,
+  });
+  const [relatedMeals, setRelatedMeals] = useState([]);
   const [addedToCart, setAddedToCart] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const items = 8;
-
   useEffect(() => {
-    api.get(`/restaurants/${id}`).then((res) => {
+    api.get(`/meals/${id}`).then((res) => {
       if (res.data.data[0] !== undefined) {
-        setRestaurantData(res.data.data[0]);
+        setMealData(res.data.data[0]);
+        api
+          .get(`/meals/restaurant/${res.data.data[0].restaurantId}`)
+          .then((result) => setRelatedMeals(result.data.data));
       } else {
         // here I want to redirect to NotFound page
       }
     });
   }, [id]);
-
-  useEffect(() => {
-    api
-      .get(`/meals/restaurant/${id}?items=${items}&page=${page}`)
-      .then((response) => {
-        setCount(response.data.pagination.count);
-        setRestaurantMeals(response.data.data);
-      });
-  }, [id, items, page]);
   const Alert = forwardRef(function Alert(props, ref) {
     // eslint-disable-next-line react/jsx-props-no-spreading
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -50,38 +44,18 @@ export const Restaurant = () => {
 
     setOpen(false);
   };
-  const handlePageChange = (event, value) => {
-    setPage(value);
-  };
-  const {
-    logoUrl,
-    restaurantName,
-    restaurantFullAddress,
-    description,
-    lon,
-    lat,
-    contactEmail,
-    restaurantPhone,
-  } = restaurantData;
   return (
     <Container
       maxWidth="lg"
-      sx={{ boxShadow: 'rgb(99 99 99 / 20%) 0px 2px 8px 0px', mb: '4rem' }}
+      sx={{
+        boxShadow: 'rgb(99 99 99 / 20%) 0px 2px 8px 0px',
+        mb: '4rem',
+        pt: '2rem',
+      }}
     >
-      <Box mb={12}>
-        <RestaurantOverview
-          restaurantLogo={logoUrl}
-          restaurantName={restaurantName}
-          restaurantLocation={restaurantFullAddress}
-          restaurantDesc={description}
-          lon={lon}
-          lat={lat}
-          email={contactEmail}
-          phone={restaurantPhone}
-        />
-      </Box>
-      <Box>
-        <Typography variant="h2">Restaurant Meals</Typography>
+      <MealOverview mealData={mealData} />
+      <Box mt={14} pb={12}>
+        <Typography variant="h2">Related Meals</Typography>
         <Box
           mt={6}
           display="grid"
@@ -94,7 +68,7 @@ export const Restaurant = () => {
           }}
           sx={{ gridGap: '30px' }}
         >
-          {restaurantMeals.map(({ id: mealId, images, name, price }) => (
+          {relatedMeals.map(({ id: mealId, images, name, price }) => (
             <MealCard
               key={mealId}
               mealId={mealId}
@@ -103,7 +77,6 @@ export const Restaurant = () => {
               setAddedToCart={setAddedToCart}
               addedToCart={addedToCart}
               setOpen={setOpen}
-              // mealCategory
               mealPrice={price}
             />
           ))}
@@ -121,15 +94,6 @@ export const Restaurant = () => {
             ''
           )}
         </Box>
-        <Pagination
-          count={Math.ceil(count / items)}
-          variant="outlined"
-          shape="rounded"
-          color="primary"
-          page={page}
-          onChange={handlePageChange}
-          sx={{ display: 'flex', justifyContent: 'center', py: '3rem' }}
-        />
       </Box>
     </Container>
   );

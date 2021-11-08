@@ -16,7 +16,7 @@ export const MealCard = ({
   mealImage,
   mealName,
   // mealCategory,
-  // mealPrice,
+  mealPrice,
   setAddedToCart,
   setOpen,
 }) => {
@@ -30,6 +30,7 @@ export const MealCard = ({
   };
   const handleClick = () => {
     history.push(`/meal/${mealId}`);
+    window.scrollTo(0, 0);
   };
   return (
     <>
@@ -68,11 +69,11 @@ export const MealCard = ({
               alignItems="center"
             >
               {/* <Typography variant="subtitle" color="primary.main">
-              {mealCategory}
-            </Typography>
-            <Typography variant="subtitle" color="text.secondary">
-              {mealPrice}
-            </Typography> */}
+                {mealCategory}
+              </Typography> */}
+              <Typography variant="subtitle" color="text.secondary">
+                ${mealPrice}
+              </Typography>
             </Box>
           </CardContent>
         </CardActionArea>
@@ -85,7 +86,7 @@ MealCard.defaultProps = {
   mealImage: '',
   mealName: '',
   // mealCategory: '',
-  // mealPrice: '',
+  mealPrice: '',
   setAddedToCart: () => {},
   setOpen: () => {},
 };
@@ -94,7 +95,7 @@ MealCard.propTypes = {
   mealImage: propTypes.string,
   mealName: propTypes.string,
   // mealCategory: propTypes.string,
-  // mealPrice: propTypes.number,
+  mealPrice: propTypes.number,
   setAddedToCart: propTypes.func,
   setOpen: propTypes.func,
 };

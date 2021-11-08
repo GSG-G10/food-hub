@@ -10,6 +10,7 @@ import { Categories } from './pages/Categories';
 import { Category } from './pages/Category';
 import { Restaurants } from './pages/Restaurants';
 import { Restaurant } from './pages/Restaurant';
+import { Meal } from './pages/Meal';
 import { CartProvider } from './context/CartContext';
 
 const theme = createTheme({
@@ -33,27 +34,27 @@ const theme = createTheme({
     fontSize: 16,
     h1: {
       fontSize: '2rem',
-      fontWeight: 600,
+      fontWeight: 500,
     },
     h2: {
       fontSize: '1.5rem',
-      fontWeight: 600,
+      fontWeight: 500,
     },
     h3: {
       fontSize: '1.1rem',
-      fontWeight: 600,
+      fontWeight: 500,
     },
     h4: {
       fontSize: '1rem',
-      fontWeight: 600,
+      fontWeight: 500,
     },
     h5: {
       fontSize: '0.8rem',
-      fontWeight: 600,
+      fontWeight: 500,
     },
     h6: {
       fontSize: '0.6rem',
-      fontWeight: 600,
+      fontWeight: 500,
     },
     button: {
       textTransform: 'capitalize',
@@ -86,6 +87,9 @@ export const App = () => (
                 </Route>
                 <Route exact path="/restaurants/:id">
                   <Restaurant />
+                </Route>
+                <Route exact path="/meal/:id">
+                  <Meal />
                 </Route>
                 <Route path="/about-us" />
                 <Route path="/login" />
