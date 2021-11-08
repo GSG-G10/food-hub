@@ -11,27 +11,68 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import propTypes from 'prop-types';
 import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 import { useAuthContext } from '../../firebase/firebaseHook';
 import { AuthButtons } from './AuthButtons';
 
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
-  const { signInWithEmail, loginWithGoogle, loginWithFacebook } =
+  // eslint-disable-next-line no-unused-vars
+  const [authError, setAuthError] = useState(false);
+  const { signInWithEmail, loginWithGoogle, loginWithFacebook, error } =
     useAuthContext();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const history = useHistory();
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
   const { email, password } = formValues;
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password.length < 8) {
       setPasswordError(true);
     } else if (passwordError) setPasswordError(false);
-    signInWithEmail(email, password);
+    try {
+      await signInWithEmail(email, password);
+      handleClose();
+      enqueueSnackbar('Welcome to Foodhub !', {
+        variant: 'success',
+      });
+      history.push('/');
+    } catch (err) {
+      setAuthError(error);
+    }
+  };
+
+  const handleGoogle = async () => {
+    try {
+      await loginWithGoogle();
+      handleClose();
+      enqueueSnackbar('Welcome to Foodhub !', {
+        variant: 'success',
+      });
+      history.push('/');
+    } catch (err) {
+      setAuthError(error);
+    }
+  };
+
+  const handleFacebook = async () => {
+    try {
+      await loginWithFacebook();
+      handleClose();
+      enqueueSnackbar('Welcome to Foodhub !', {
+        variant: 'success',
+      });
+      history.push('/');
+    } catch (err) {
+      setAuthError(error);
+    }
   };
 
   return (
@@ -105,16 +146,14 @@ export const LoginWindow = ({ open, handleClose }) => {
             margin="dense"
             required
             helperText={
-              passwordError ? 'Password must contain at least 8 characters' : ''
+              (passwordError
+                ? 'Password must contain at least 8 characters'
+                : '',
+              error ? error.split('/')[1].split(')')[0].replace('-', ' ') : '')
             }
             onChange={handleChange}
           />
-          {/* <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-            my="1em"
-          > */}
+
           <FormControlLabel
             sx={{
               '& .MuiFormControlLabel-label': {
@@ -126,22 +165,14 @@ export const LoginWindow = ({ open, handleClose }) => {
             control={<Checkbox />}
             label="Keep me logged in"
           />
-          {/* <Link
-              to="/"
-              component={RouterLink}
-              underline="none"
-              color="secondary"
-            >
-              Forgot password?
-            </Link> */}
-          {/* </Box> */}
+
           <Button variant="contained" fullWidth type="submit">
             Login
           </Button>
           <Divider width="100%" sx={{ my: 2 }} />
           <AuthButtons
-            loginWithGoogle={loginWithGoogle}
-            loginWithFacebook={loginWithFacebook}
+            loginWithGoogle={handleGoogle}
+            loginWithFacebook={handleFacebook}
           />
         </Box>
         <Typography variant="body1" fontSize={14}>
