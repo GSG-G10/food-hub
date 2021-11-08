@@ -66,32 +66,34 @@ export const App = () => (
     <CssBaseline />
     <Router>
       <AuthProvider>
-        <CartProvider>
-          <ThemeProvider theme={theme}>
-            <Header />
-            <Switch>
-              <Route exact path="/" />
-              <Route exact path="/register">
-                <Register />
-              </Route>
-              <Route exact path="/restaurants">
-                <Restaurants />
-              </Route>
-              <Route exact path="/categories">
-                <Categories />
-              </Route>
-              <Route exact path="/category/:id">
-                <Category />
-              </Route>
-              <Route exact path="/restaurants/:id">
-                <Restaurant />
-              </Route>
-              <Route path="/about-us" />
-              <Route path="/login" />
-            </Switch>
-            <Footer />
-          </ThemeProvider>
-        </CartProvider>
+        <SnackbarProvider>
+          <CartProvider>
+            <ThemeProvider theme={theme}>
+              <Header />
+              <Switch>
+                <Route exact path="/" />
+                <Route exact path="/register">
+                  <Register />
+                </Route>
+                <Route exact path="/restaurants">
+                  <Restaurants />
+                </Route>
+                <Route exact path="/categories">
+                  <Categories />
+                </Route>
+                <Route exact path="/category/:id">
+                  <Category />
+                </Route>
+                <Route exact path="/restaurants/:id">
+                  <Restaurant />
+                </Route>
+                <Route path="/about-us" />
+                <Route path="/login" />
+              </Switch>
+              <Footer />
+            </ThemeProvider>
+          </CartProvider>
+        </SnackbarProvider>
       </AuthProvider>
     </Router>
   </>
