@@ -92,7 +92,7 @@ export const Cart = () => {
           Total
         </Typography>
         <Typography variant="h2" fontWeight="400" color="primary">
-          {/* ${cart.reduce((acc, curr) => acc + curr.mealPrice, 0)} */}
+          ${cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
         </Typography>
       </Box>
       <Button
