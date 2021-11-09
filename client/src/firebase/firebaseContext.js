@@ -1,4 +1,3 @@
-import axios from 'axios';
 import './firebaseConfig';
 import {
   createUserWithEmailAndPassword,
@@ -11,6 +10,7 @@ import {
 } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { api } from '../api/axios';
 
 export const AuthContext = React.createContext(null);
 
@@ -21,27 +21,13 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [isNew, setIsNew] = useState(null);
 
   useEffect(() => {
     if (user) {
       window.localStorage.setItem('auth', 'true');
-      user.getIdToken().then((tokenId) => setToken(tokenId));
+      user.getIdToken(true).then((tokenId) => setToken(tokenId));
     }
   }, [user]);
-
-  // send token to the server
-  const sendToken = async (tokenId) => {
-    await axios.get('/api/v1/auth', {
-      headers: {
-        Authorization: `Bearer ${tokenId}`,
-      },
-    });
-  };
-
-  useEffect(() => {
-    if (token) sendToken(token);
-  }, [token]);
 
   useEffect(() => {
     auth.onAuthStateChanged(setUser);
@@ -49,21 +35,26 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // register the new user in database
-  const storeInDb = async (id, email, accountType) => {
+  const storeInDb = ({ id, email, accountType }) => {
     const info = { id, email, accountType };
     const headers = {
       Authorization: `Bearer ${token}`,
     };
-    if (isNew) await axios.post('/api/v1/user', info, { headers });
+    return api.post('/user', info, { headers });
   };
 
   // Sign in with Google
-  const loginWithGoogle = async () => {
+  const loginWithGoogle = async ({ accountType }) => {
     try {
       const cred = await signInWithPopup(auth, new GoogleAuthProvider());
       if (cred) {
         window.localStorage.setItem('auth', 'true');
-        setIsNew(getAdditionalUserInfo(cred).isNewUser);
+        if (getAdditionalUserInfo(cred).isNewUser)
+          if (accountType)
+            storeInDb({ id: user.uid, email: user.email, accountType });
+          else {
+            throw new Error('please create an account');
+          }
       }
     } catch (err) {
       setError(err.message);
@@ -130,6 +121,7 @@ export const AuthProvider = ({ children }) => {
         signUpWithEmail,
         logout,
         storeInDb,
+        token,
         isNew,
         error,
       }}

@@ -37,10 +37,7 @@ exports.redeemCode = async (req, res, next) => {
 
     return res.json({ success: true, data: newPrice });
   } catch (err) {
+    console.log(err);
     next(err);
   }
 };
-
-// code.discountType === 'flat'
-//   ? (newPrice = totalPrice - code.discountAmount)
-//   : (newPrice = newPrice = totalPrice * (code.discountAmount / 100));

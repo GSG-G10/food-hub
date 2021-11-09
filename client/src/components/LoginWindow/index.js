@@ -21,7 +21,7 @@ export const LoginWindow = ({ open, handleClose }) => {
   const [passwordError, setPasswordError] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [authError, setAuthError] = useState(false);
-  const { signInWithEmail, loginWithGoogle, loginWithFacebook, error } =
+  const { signInWithEmail, loginWithGoogle, loginWithFacebook, error, user } =
     useAuthContext();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -52,6 +52,7 @@ export const LoginWindow = ({ open, handleClose }) => {
   const handleGoogle = async () => {
     try {
       await loginWithGoogle();
+
       handleClose();
       enqueueSnackbar('Welcome to Foodhub !', {
         variant: 'success',
@@ -66,7 +67,7 @@ export const LoginWindow = ({ open, handleClose }) => {
     try {
       await loginWithFacebook();
       handleClose();
-      enqueueSnackbar('Welcome to Foodhub !', {
+      enqueueSnackbar(`Welcome to Foodhub ${user.displayName}!`, {
         variant: 'success',
       });
       history.push('/');
@@ -74,7 +75,6 @@ export const LoginWindow = ({ open, handleClose }) => {
       setAuthError(error);
     }
   };
-
   return (
     <Modal
       aria-labelledby="transition-modal-title"

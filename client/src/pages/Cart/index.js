@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -6,9 +6,34 @@ import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { CartRow } from '../../components/CartRow';
 import { CartContext } from '../../context/CartContext';
+import { useAuthContext } from '../../firebase/firebaseHook';
+import { api } from '../../api/axios';
 
 export const Cart = () => {
   const { cart, changeQty } = useContext(CartContext);
+  const { token } = useAuthContext();
+  const [promocode, setCode] = useState('');
+  const [codeError, setCodeError] = useState('');
+
+  const totalPrice = cart.reduce(
+    (acc, curr) => acc + curr.price * curr.quantity,
+    0
+  );
+  const redeem = async () => {
+    const info = { promocode, totalPrice: 100 };
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    try {
+      await api.post('/promo/redeem', info, { headers });
+    } catch (err) {
+      setCodeError(err.response.data.message);
+    }
+  };
+
+  const handleChange = (event) => {
+    setCode(event.target.value);
+  };
 
   return (
     <Container
@@ -72,8 +97,17 @@ export const Cart = () => {
               label="Enter promo code"
               variant="outlined"
               sx={{ mr: '0.5rem' }}
+              onChange={handleChange}
+              error={codeError}
+              helperText={codeError}
             />
-            <Button variant="contained" color="secondary" disableElevation>
+
+            <Button
+              variant="contained"
+              color="secondary"
+              disableElevation
+              onClick={redeem}
+            >
               Apply
             </Button>
           </Box>
@@ -92,7 +126,7 @@ export const Cart = () => {
           Total
         </Typography>
         <Typography variant="h2" fontWeight="400" color="primary">
-          ${cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
+          ${totalPrice}
         </Typography>
       </Box>
       <Button

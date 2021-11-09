@@ -59,7 +59,8 @@ export const Register = () => {
         variant: 'success',
       });
       history.push('/');
-      storeInDb(user.uid, email, formValues.accountType);
+      const res = await storeInDb(user.uid, email, formValues.accountType);
+      console.log('ressss', res);
     } catch (err) {
       setAuthError(error);
     }

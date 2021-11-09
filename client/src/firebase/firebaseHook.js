@@ -11,6 +11,7 @@ export const useAuthContext = () => {
     logout,
     storeInDb,
     isNew,
+    token,
     error,
   } = useContext(AuthContext);
   return {
@@ -22,6 +23,7 @@ export const useAuthContext = () => {
     storeInDb,
     logout,
     isNew,
+    token,
     error,
   };
 };

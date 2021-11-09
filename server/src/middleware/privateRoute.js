@@ -12,6 +12,7 @@ exports.isAuth = async (req, res, next) => {
     if (decodevalue) return next();
     return res.status(400).json({ msg: 'You are not authorized!' });
   } catch (err) {
+    console.log('private error:', err);
     next(err);
   }
 };
