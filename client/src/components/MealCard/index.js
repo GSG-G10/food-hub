@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Card from '@mui/material/Card';
@@ -9,39 +8,25 @@ import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { CartContext } from '../../context/CartContext';
 
-export const MealCard = ({
-  mealId,
-  mealImage,
-  mealName,
-  // mealCategory,
-  mealPrice,
-  setAddedToCart,
-  setOpen,
-}) => {
-  const { setCart } = useContext(CartContext);
+export const MealCard = ({ meal, handleAddClick }) => {
+  const { id, name, price, images, category } = meal;
+  // const { addMeal } = useContext(CartContext);
   const history = useHistory();
-  const handleAddClick = (e) => {
-    e.stopPropagation();
-    setCart((prev) => [...prev, { mealId, mealImage, mealName }]);
-    setAddedToCart(true);
-    setOpen(true);
-  };
   const handleClick = () => {
-    history.push(`/meal/${mealId}`);
+    history.push(`/meal/${id}`);
     window.scrollTo(0, 0);
   };
   return (
     <>
       <Card variant="outlined">
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea component="div" onClick={handleClick}>
           <Box>
             <CardMedia
               component="img"
               height="200"
-              image={mealImage}
-              alt={mealName}
+              image={images[0]}
+              alt={name}
             />
           </Box>
           <CardContent sx={{ padding: '0.6rem 1rem 0.8rem' }}>
@@ -52,7 +37,7 @@ export const MealCard = ({
               mb={1}
             >
               <Typography gutterBottom variant="h4" component="div">
-                {mealName}
+                {name}
               </Typography>
               <IconButton
                 aria-label="add to cart"
@@ -68,11 +53,11 @@ export const MealCard = ({
               justifyContent="space-between"
               alignItems="center"
             >
-              {/* <Typography variant="subtitle" color="primary.main">
-                {mealCategory}
-              </Typography> */}
+              <Typography variant="subtitle" color="primary.main">
+                {category.name}
+              </Typography>
               <Typography variant="subtitle" color="text.secondary">
-                ${mealPrice}
+                ${price}
               </Typography>
             </Box>
           </CardContent>
@@ -82,20 +67,22 @@ export const MealCard = ({
   );
 };
 MealCard.defaultProps = {
-  mealId: '',
-  mealImage: '',
-  mealName: '',
-  // mealCategory: '',
-  mealPrice: '',
-  setAddedToCart: () => {},
-  setOpen: () => {},
+  handleAddClick: () => {},
+  meal: {
+    id: -1,
+    name: '',
+    price: -1,
+    images: [],
+    category: {},
+  },
 };
 MealCard.propTypes = {
-  mealId: propTypes.number,
-  mealImage: propTypes.string,
-  mealName: propTypes.string,
-  // mealCategory: propTypes.string,
-  mealPrice: propTypes.number,
-  setAddedToCart: propTypes.func,
-  setOpen: propTypes.func,
+  handleAddClick: propTypes.func,
+  meal: propTypes.shape({
+    id: propTypes.number,
+    name: propTypes.string,
+    price: propTypes.number,
+    images: propTypes.arrayOf(propTypes.string),
+    category: propTypes.shape({ name: propTypes.string }),
+  }),
 };

@@ -127,8 +127,8 @@ RestaurantOverview.defaultProps = {
   restaurantLocation: '',
   // restaurantOrders: '',
   restaurantDesc: '',
-  lat: '',
-  lon: '',
+  lat: 0,
+  lon: 0,
   phone: '',
   email: '',
 };

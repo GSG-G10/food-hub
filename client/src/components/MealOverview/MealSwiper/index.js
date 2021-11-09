@@ -13,8 +13,9 @@ import SwiperCore, { FreeMode, Navigation, Thumbs } from 'swiper';
 
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
-export const MealSwiper = ({ mealImages, mealName }) => {
-  mealImages.push(mealImages[0]);
+export const MealSwiper = ({ meal }) => {
+  const { images, name } = meal;
+  images.push(images[0]);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <Box width="50%" height="100%">
@@ -28,9 +29,9 @@ export const MealSwiper = ({ mealImages, mealName }) => {
         thumbs={{ swiper: thumbsSwiper }}
         className="mySwiper2"
       >
-        {mealImages.map((img) => (
+        {images.map((img) => (
           <SwiperSlide>
-            <img src={img} alt={mealName} />
+            <img src={img} alt={name} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -42,9 +43,9 @@ export const MealSwiper = ({ mealImages, mealName }) => {
         watchSlidesProgress
         className="mySwiper"
       >
-        {mealImages.map((img) => (
+        {images.map((img) => (
           <SwiperSlide>
-            <img src={img} alt={mealName} />
+            <img src={img} alt={name} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -53,11 +54,11 @@ export const MealSwiper = ({ mealImages, mealName }) => {
 };
 
 MealSwiper.defaultProps = {
-  mealImages: [],
-  mealName: '',
+  meal: {},
 };
 MealSwiper.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  mealImages: propTypes.any,
-  mealName: propTypes.string,
+  meal: propTypes.shape({
+    name: propTypes.string,
+    images: propTypes.arrayOf(propTypes.string),
+  }),
 };
