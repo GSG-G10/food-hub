@@ -10,7 +10,7 @@ import { MealCard } from '../../components/MealCard';
 import { CartContext } from '../../context/CartContext';
 
 export const Meal = () => {
-  const { addItem } = useContext(CartContext);
+  const { addMeal } = useContext(CartContext);
   const { id } = useParams();
   const [mealData, setMealData] = useState({
     id: -1,
@@ -64,7 +64,7 @@ export const Meal = () => {
               meal={meal}
               handleAddClick={(e) => {
                 e.stopPropagation();
-                addItem(meal);
+                addMeal(meal);
                 enqueueSnackbar('added succesfully', { variant: 'success' });
               }}
             />
