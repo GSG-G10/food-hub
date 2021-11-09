@@ -7,10 +7,15 @@ import TextField from '@mui/material/TextField';
 import { Link as RouterLink, useHistory } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { Divider } from '@mui/material';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 import { useSnackbar } from 'notistack';
-import { AuthButtons } from '../LoginWindow/AuthButtons';
 import { LoginWindow } from '../LoginWindow';
 import { useAuthContext } from '../../firebase/firebaseHook';
+import { AuthButtons } from '../LoginWindow/AuthButtons';
 
 export const Register = () => {
   const [formValues, setFormValues] = useState({
@@ -18,6 +23,7 @@ export const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    accountType: '',
   });
   const { enqueueSnackbar } = useSnackbar();
   const [passwordError, setPasswordError] = useState(false);
@@ -51,6 +57,7 @@ export const Register = () => {
       setAuthError(error);
     }
   };
+
   return (
     <>
       <Container maxWidth="lg">
@@ -144,6 +151,34 @@ export const Register = () => {
                 }
                 onChange={handleChange}
               />
+              <Box
+                display="flex"
+                justifyContent="flex-start"
+                textAlign="left"
+                mt={2}
+              >
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">Account type</FormLabel>
+                  <RadioGroup
+                    row
+                    aria-label="account-type"
+                    name="accountType"
+                    value={formValues.accountType}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      value="user"
+                      control={<Radio />}
+                      label="User"
+                    />
+                    <FormControlLabel
+                      value="restaurant"
+                      control={<Radio />}
+                      label="Restaurant"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Box>
               <Typography variant="body" my={4} display="block">
                 By creating an account you agree to the{' '}
                 <a
