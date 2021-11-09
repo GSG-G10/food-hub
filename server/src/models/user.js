@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 const { sequelize } = require('../config/connection');
 
-const User = sequelize.define('users', {
+const User = sequelize.define('user', {
   id: {
-    type: Sequelize.STRING,
+    type: Sequelize.UUID,
     // autoIncrement: true,
     allowNull: false,
     primaryKey: true,

@@ -3,7 +3,7 @@ const { sequelize } = require('../config/connection');
 
 const UserDiscounts = sequelize.define('userdiscount', {
   userid: {
-    type: Sequelize.STRING,
+    type: Sequelize.UUID,
     primaryKey: true,
     references: {
       model: 'users',

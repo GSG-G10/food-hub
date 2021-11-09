@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 const { sequelize } = require('../config/connection');
 
-const Restaurant = sequelize.define('restaurants', {
+const Restaurant = sequelize.define('restaurant', {
   userId: {
-    type: Sequelize.STRING,
+    type: Sequelize.UUID,
     primaryKey: true,
     references: {
       model: 'users',

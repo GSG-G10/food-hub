@@ -13,16 +13,21 @@ import propTypes from 'prop-types';
 import { useState } from 'react';
 import { Link as RouterLink, useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import { useAuthContext } from '../../firebase/firebaseHook';
 import { AuthButtons } from './AuthButtons';
+import { useAuthContext } from '../../firebase/firebaseHook';
 
 export const LoginWindow = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [passwordError, setPasswordError] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [authError, setAuthError] = useState(false);
-  const { signInWithEmail, loginWithGoogle, loginWithFacebook, error, user } =
-    useAuthContext();
+
+  const {
+    signInWithEmail,
+    loginWithGoogle,
+    loginWithFacebook,
+    error,
+    user,
+    isIgnorableError,
+  } = useAuthContext();
   const { enqueueSnackbar } = useSnackbar();
 
   const history = useHistory();
@@ -45,7 +50,8 @@ export const LoginWindow = ({ open, handleClose }) => {
       });
       history.push('/');
     } catch (err) {
-      setAuthError(error);
+      if (!isIgnorableError(err))
+        enqueueSnackbar(err.message, { variant: 'error' });
     }
   };
 
@@ -59,7 +65,8 @@ export const LoginWindow = ({ open, handleClose }) => {
       });
       history.push('/');
     } catch (err) {
-      setAuthError(error);
+      if (!isIgnorableError(err))
+        enqueueSnackbar(err.message, { variant: 'error' });
     }
   };
 
@@ -72,7 +79,8 @@ export const LoginWindow = ({ open, handleClose }) => {
       });
       history.push('/');
     } catch (err) {
-      setAuthError(error);
+      if (!isIgnorableError(err))
+        enqueueSnackbar(err.message, { variant: 'error' });
     }
   };
   return (
