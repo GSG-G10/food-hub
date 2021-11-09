@@ -19,13 +19,15 @@ export const Cart = () => {
     (acc, curr) => acc + curr.price * curr.quantity,
     0
   );
+
   const redeem = async () => {
-    const info = { promocode, totalPrice: 100 };
+    const info = { promocode, totalPrice };
     const headers = {
       Authorization: `Bearer ${token}`,
     };
     try {
       await api.post('/promo/redeem', info, { headers });
+      setCodeError('');
     } catch (err) {
       setCodeError(err.response.data.message);
     }

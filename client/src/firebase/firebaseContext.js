@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import './firebaseConfig';
 import {
   createUserWithEmailAndPassword,
@@ -52,7 +53,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     auth.onAuthStateChanged(setUser);
-    auth.onAuthStateChanged(console.log);
     setLoading(false);
   }, []);
 
@@ -72,19 +72,14 @@ export const AuthProvider = ({ children }) => {
       if (cred) {
         window.localStorage.setItem('auth', 'true');
         if (getAdditionalUserInfo(cred).isNewUser) {
-          // if (accountType)
-          const { email, uid } = cred.user;
-          console.log('my user', cred.user);
-          console.log("nour's user", user);
-          await storeInDb({
-            id: uid,
-            email,
-            accountType,
-          });
+          const {
+            providerData: [{ email }],
+            uid,
+          } = cred.user;
+
+          await storeInDb({ id: uid, email, accountType });
         }
-        // else {
-        //   throw new Error('please create an account');
-        // }
+        return cred.user;
       }
     } catch (err) {
       if (isUserError(err) && !isIgnorableError(err)) setError(err.message);
@@ -93,13 +88,19 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Sign in with Facebook
-  const loginWithFacebook = async ({ accountType } = {}) => {
+  const loginWithFacebook = async ({ accountType = 'customer' } = {}) => {
     try {
       const cred = await signInWithPopup(auth, new FacebookAuthProvider());
       if (cred) {
         window.localStorage.setItem('auth', 'true');
-        if (getAdditionalUserInfo(cred).isNewUser)
-          await storeInDb({ id: user.uid, email: user.email, accountType });
+        if (getAdditionalUserInfo(cred).isNewUser) {
+          const {
+            providerData: [{ email }],
+            uid,
+          } = cred.user;
+          await storeInDb({ id: uid, email, accountType });
+        }
+        return cred.user;
       }
     } catch (err) {
       if (isUserError(err) && !isIgnorableError(err)) setError(err.message);
@@ -113,6 +114,7 @@ export const AuthProvider = ({ children }) => {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       if (cred) {
         window.localStorage.setItem('auth', 'true');
+        return cred.user;
       }
     } catch (err) {
       if (isUserError(err) && !isIgnorableError(err)) setError(err.message);
@@ -126,8 +128,11 @@ export const AuthProvider = ({ children }) => {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
       if (cred) {
         window.localStorage.setItem('auth', 'true');
-        if (getAdditionalUserInfo(cred).isNewUser)
-          await storeInDb({ id: user.uid, email: user.email, accountType });
+        if (getAdditionalUserInfo(cred).isNewUser) {
+          const { uid } = cred.user;
+          await storeInDb({ id: uid, email, accountType });
+        }
+        return cred.user;
       }
     } catch (err) {
       if (isUserError(err) && !isIgnorableError(err)) setError(err.message);

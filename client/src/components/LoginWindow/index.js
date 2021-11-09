@@ -25,7 +25,6 @@ export const LoginWindow = ({ open, handleClose }) => {
     loginWithGoogle,
     loginWithFacebook,
     error,
-    user,
     isIgnorableError,
   } = useAuthContext();
   const { enqueueSnackbar } = useSnackbar();
@@ -45,7 +44,7 @@ export const LoginWindow = ({ open, handleClose }) => {
     try {
       await signInWithEmail(email, password);
       handleClose();
-      enqueueSnackbar('Welcome to Foodhub !', {
+      enqueueSnackbar('Welcome to Foodhub!', {
         variant: 'success',
       });
       history.push('/');
@@ -57,10 +56,11 @@ export const LoginWindow = ({ open, handleClose }) => {
 
   const handleGoogle = async () => {
     try {
-      await loginWithGoogle();
+      const user = await loginWithGoogle();
 
       handleClose();
-      enqueueSnackbar('Welcome to Foodhub !', {
+
+      enqueueSnackbar(`Welcome to Foodhub, ${user.displayName}!`, {
         variant: 'success',
       });
       history.push('/');
@@ -72,11 +72,13 @@ export const LoginWindow = ({ open, handleClose }) => {
 
   const handleFacebook = async () => {
     try {
-      await loginWithFacebook();
-      handleClose();
-      enqueueSnackbar(`Welcome to Foodhub ${user.displayName}!`, {
+      const user = await loginWithFacebook();
+
+      enqueueSnackbar(`Welcome to Foodhub, ${user.displayName}!`, {
         variant: 'success',
       });
+
+      handleClose();
       history.push('/');
     } catch (err) {
       if (!isIgnorableError(err))

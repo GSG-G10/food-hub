@@ -52,8 +52,11 @@ export const Register = () => {
       setConfirmPasswordError(true);
     }
     try {
-      await signUpWithEmail(email, password);
-      enqueueSnackbar('Your account has been created successfully !', {
+      await signUpWithEmail(formValues);
+      enqueueSnackbar('Your account has been created successfully!', {
+        variant: 'success',
+      });
+      enqueueSnackbar(`Welcome to Foodhub, ${username}!`, {
         variant: 'success',
       });
       history.push('/');
@@ -65,9 +68,8 @@ export const Register = () => {
 
   const handleGoogle = async () => {
     try {
-      await loginWithGoogle();
-
-      enqueueSnackbar('Welcome to Foodhub !', {
+      const user = await loginWithGoogle();
+      enqueueSnackbar(`Welcome to Foodhub ${user.displayName}!`, {
         variant: 'success',
       });
       history.push('/');
@@ -79,9 +81,8 @@ export const Register = () => {
 
   const handleFacebook = async () => {
     try {
-      await loginWithFacebook();
-      // TODO: ${user.displayName}!
-      enqueueSnackbar(`Welcome to Foodhub `, {
+      const user = await loginWithFacebook();
+      enqueueSnackbar(`Welcome to Foodhub, ${user.displayName}!`, {
         variant: 'success',
       });
       history.push('/');
