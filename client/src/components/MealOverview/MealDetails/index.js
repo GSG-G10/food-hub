@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import Rating from '@mui/material/Rating';
@@ -7,11 +7,17 @@ import './style.css';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import propTypes from 'prop-types';
+import { useSnackbar } from 'notistack';
+import { CartContext } from '../../../context/CartContext';
 
-export const MealDetails = ({ mealName, mealPrice }) => {
+export const MealDetails = ({ meal }) => {
+  const { addMeal } = useContext(CartContext);
+  const { name, price, category } = meal;
   const [value, setValue] = useState(2);
-  const [quantity, setQyantity] = useState(1);
+  const [qty, setQyantity] = useState(1);
   const [size, setSize] = useState('S');
+  const { enqueueSnackbar } = useSnackbar();
+
   const handleSizeChange = (e) => {
     setSize(e.target.value);
   };
@@ -24,10 +30,10 @@ export const MealDetails = ({ mealName, mealPrice }) => {
       py={1.8}
       justifyContent="space-between"
     >
-      <Typography variant="h2">{mealName}</Typography>
+      <Typography variant="h2">{name}</Typography>
       <Box display="flex" justifyContent="space-between" my={3}>
         <Typography variant="caption" color="primary">
-          Burger
+          {category.name}
         </Typography>
         <Box display="flex" alignItems="center">
           <Rating
@@ -43,7 +49,7 @@ export const MealDetails = ({ mealName, mealPrice }) => {
         </Box>
       </Box>
 
-      <Typography variant="h2">${mealPrice}</Typography>
+      <Typography variant="h2">${price}</Typography>
       <Typography variant="body" textAlign="justify" my={3}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae
         neque quis ipsum pellentesque commodo. Ut id mollis ipsum, sed hendrerit
@@ -60,13 +66,9 @@ export const MealDetails = ({ mealName, mealPrice }) => {
       >
         <Typography variant="h2">
           $
-          {quantity * mealPrice +
+          {qty * price +
             // eslint-disable-next-line no-nested-ternary
-            (size === 'M'
-              ? 0.2 * mealPrice
-              : size === 'L'
-              ? 0.4 * mealPrice
-              : 0)}
+            (size === 'M' ? 0.2 * price : size === 'L' ? 0.4 * price : 0)}
         </Typography>
         <Box display="flex" alignItems="center">
           <FormControl>
@@ -74,8 +76,10 @@ export const MealDetails = ({ mealName, mealPrice }) => {
             <input
               id="quantity"
               type="number"
-              value={quantity}
-              onChange={(e) => setQyantity(e.target.value)}
+              value={qty}
+              onChange={(e) => {
+                setQyantity(e.target.value);
+              }}
               style={{
                 width: '45px',
                 marginRight: '2rem',
@@ -135,16 +139,30 @@ export const MealDetails = ({ mealName, mealPrice }) => {
         <Button variant="contained" sx={{ mr: '1rem' }}>
           Order now
         </Button>
-        <Button variant="outlined">Add to cart</Button>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            addMeal({ ...meal, quantity: qty });
+            enqueueSnackbar('The meal added successfully to cart', {
+              variant: 'success',
+            });
+          }}
+        >
+          Add to cart
+        </Button>
       </Box>
     </Box>
   );
 };
 MealDetails.defaultProps = {
-  mealName: '',
-  mealPrice: '',
+  meal: {},
 };
 MealDetails.propTypes = {
-  mealName: propTypes.string,
-  mealPrice: propTypes.number,
+  meal: propTypes.shape({
+    id: propTypes.number,
+    name: propTypes.string,
+    price: propTypes.number,
+    quantity: propTypes.number,
+    category: propTypes.shape({ name: propTypes.string }),
+  }),
 };

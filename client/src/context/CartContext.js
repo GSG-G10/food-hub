@@ -18,15 +18,18 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addMeal = useCallback(
-    ({ id, name, price, quantity = 1 }) => {
+    ({ id, name, price, quantity = 1, category }) => {
       const foundMeal = cart.find((meal) => meal.id === id);
       if (foundMeal) {
         setCart([
           ...cart.filter((meal) => meal.id !== id),
-          { ...foundMeal, quantity: foundMeal.quantity + 1 },
+          { ...foundMeal, quantity },
         ]);
       } else {
-        setCart([...cart, { id, name, price, quantity, order: cart.length }]);
+        setCart([
+          ...cart,
+          { id, name, price, quantity, order: cart.length, category },
+        ]);
       }
     },
     [cart]

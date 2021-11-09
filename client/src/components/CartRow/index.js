@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import propTypes from 'prop-types';
 
 export const CartRow = ({ handleQtyChange, meal }) => {
-  const { name, price, quantity } = meal;
+  const { name, price, quantity, category } = meal;
 
   return (
     <>
@@ -20,7 +20,7 @@ export const CartRow = ({ handleQtyChange, meal }) => {
         <Box width="40%">
           <Typography variant="h4">{name}</Typography>
           <Typography variant="caption" fontSize={12} color="primary">
-            Orgada Burger
+            {category.name}
           </Typography>
         </Box>
         <Typography variant="subtitle" width="20%">
@@ -59,6 +59,7 @@ CartRow.defaultProps = {
     name: '',
     price: -1,
     quantity: -1,
+    category: {},
   },
 };
 CartRow.propTypes = {
@@ -68,5 +69,6 @@ CartRow.propTypes = {
     name: propTypes.string,
     price: propTypes.number,
     quantity: propTypes.number,
+    category: propTypes.shape({ name: propTypes.string }),
   }),
 };

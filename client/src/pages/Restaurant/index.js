@@ -90,14 +90,10 @@ export const Restaurant = () => {
               handleAddClick={(e) => {
                 e.stopPropagation();
                 addMeal(meal);
-                enqueueSnackbar('added succesfully', { variant: 'success' });
+                enqueueSnackbar('The meal added successfully to cart', {
+                  variant: 'success',
+                });
               }}
-              // mealId={mealId}
-              // mealImage={images[0]}
-              // mealName={name}
-              // setAddedToCart={setAddedToCart}
-              // // mealCategory
-              // mealPrice={price}
             />
           ))}
         </Box>

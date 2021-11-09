@@ -3,21 +3,16 @@ import propTypes from 'prop-types';
 import { MealSwiper } from './MealSwiper';
 import { MealDetails } from './MealDetails';
 
-export const MealOverview = ({ mealData }) => {
-  const { id, name, images, price } = mealData;
-  return (
-    <Box display="flex">
-      <MealSwiper mealImages={images} mealName={name} mealId={id} />
-      <MealDetails mealName={name} mealPrice={price} />
-    </Box>
-  );
-};
+export const MealOverview = ({ meal }) => (
+  <Box display="flex">
+    <MealSwiper meal={meal} />
+    <MealDetails meal={meal} />
+  </Box>
+);
 
+MealOverview.defaultProps = {
+  meal: {},
+};
 MealOverview.propTypes = {
-  mealData: propTypes.shape({
-    id: propTypes.number,
-    name: propTypes.string,
-    images: propTypes.arrayOf,
-    price: propTypes.number,
-  }),
+  meal: propTypes.shape({}),
 };
