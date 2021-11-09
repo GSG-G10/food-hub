@@ -17,6 +17,7 @@ export const Meal = () => {
     images: [],
     name: 'loading',
     price: -1,
+    category: {},
   });
   const [relatedMeals, setRelatedMeals] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
@@ -43,7 +44,7 @@ export const Meal = () => {
         pt: '2rem',
       }}
     >
-      <MealOverview mealData={mealData} />
+      <MealOverview meal={mealData} />
       <Box mt={14} pb={12}>
         <Typography variant="h2">Related Meals</Typography>
         <Box
@@ -65,7 +66,9 @@ export const Meal = () => {
               handleAddClick={(e) => {
                 e.stopPropagation();
                 addMeal(meal);
-                enqueueSnackbar('added succesfully', { variant: 'success' });
+                enqueueSnackbar('The meal added successfully to cart', {
+                  variant: 'success',
+                });
               }}
             />
           ))}

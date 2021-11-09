@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export const MealCard = ({ meal, handleAddClick }) => {
-  const { id, name, price, images } = meal;
+  const { id, name, price, images, category } = meal;
   // const { addMeal } = useContext(CartContext);
   const history = useHistory();
   const handleClick = () => {
@@ -53,9 +53,9 @@ export const MealCard = ({ meal, handleAddClick }) => {
               justifyContent="space-between"
               alignItems="center"
             >
-              {/* <Typography variant="subtitle" color="primary.main">
-                {mealCategory}
-              </Typography> */}
+              <Typography variant="subtitle" color="primary.main">
+                {category.name}
+              </Typography>
               <Typography variant="subtitle" color="text.secondary">
                 ${price}
               </Typography>
@@ -73,6 +73,7 @@ MealCard.defaultProps = {
     name: '',
     price: -1,
     images: [],
+    category: {},
   },
 };
 MealCard.propTypes = {
@@ -82,5 +83,6 @@ MealCard.propTypes = {
     name: propTypes.string,
     price: propTypes.number,
     images: propTypes.arrayOf(propTypes.string),
+    category: propTypes.shape({ name: propTypes.string }),
   }),
 };
