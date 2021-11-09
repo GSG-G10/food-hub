@@ -10,7 +10,7 @@ import { Categories } from './pages/Categories';
 import { Category } from './pages/Category';
 import { Restaurants } from './pages/Restaurants';
 import { Restaurant } from './pages/Restaurant';
-import { Cart } from './pages/Cart';
+import { Cart } from './pages/cart';
 import { Meal } from './pages/Meal';
 import { CartProvider } from './context/CartContext';
 

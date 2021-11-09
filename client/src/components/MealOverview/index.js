@@ -13,7 +13,6 @@ export const MealOverview = ({ mealData }) => {
   );
 };
 
-
 MealOverview.propTypes = {
   mealData: propTypes.shape({
     id: propTypes.number,
