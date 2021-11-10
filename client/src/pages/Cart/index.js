@@ -14,6 +14,7 @@ export const Cart = () => {
   const { token } = useAuthContext();
   const [promocode, setCode] = useState('');
   const [codeError, setCodeError] = useState('');
+  const [newPrice, setNewPrice] = useState(null);
 
   const totalPrice = cart.reduce(
     (acc, curr) => acc + curr.price * curr.quantity,
@@ -26,10 +27,10 @@ export const Cart = () => {
       Authorization: `Bearer ${token}`,
     };
     try {
-      await api.post('/promo/redeem', info, { headers });
+      const { data } = await api.post('/promo/redeem', info, { headers });
       setCodeError('');
+      setNewPrice(data.data);
     } catch (err) {
-      console.log(err);
       setCodeError(err.response.data.message);
     }
   };
@@ -117,20 +118,46 @@ export const Cart = () => {
         </Box>
       </Box>
       <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
         my={3}
         py={2}
         px={6}
         sx={{ backgroundColor: 'rgba(255, 90,0, 0.14)' }}
       >
-        <Typography variant="h2" fontWeight="400">
-          Total
-        </Typography>
-        <Typography variant="h2" fontWeight="400" color="primary">
-          ${totalPrice}
-        </Typography>
+        {newPrice ? (
+          <Box>
+            <Box display="flex" justifyContent="space-evenly">
+              <Typography variant="h2" fontWeight="400">
+                Total price
+              </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="400"
+                color="primary"
+                sx={{ textDecoration: 'line-through' }}
+              >
+                ${totalPrice}
+              </Typography>
+            </Box>
+
+            <Box display="flex" justifyContent="space-evenly">
+              <Typography variant="h2" fontWeight="400">
+                New price
+              </Typography>
+              <Typography variant="h2" fontWeight="400" color="primary">
+                ${newPrice}
+              </Typography>
+            </Box>
+          </Box>
+        ) : (
+          <Box display="flex" justifyContent="space-evenly">
+            <Typography variant="h2" fontWeight="400">
+              Total price
+            </Typography>
+            <Typography variant="h2" fontWeight="400" color="primary">
+              ${totalPrice}
+            </Typography>
+          </Box>
+        )}
       </Box>
       <Button
         variant="contained"

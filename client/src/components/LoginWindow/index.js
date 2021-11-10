@@ -50,7 +50,10 @@ export const LoginWindow = ({ open, handleClose }) => {
       history.push('/');
     } catch (err) {
       if (!isIgnorableError(err))
-        enqueueSnackbar(err.message, { variant: 'error' });
+        enqueueSnackbar(
+          err.message.split('/')[1].split(')')[0].replace('-', ' '),
+          { variant: 'error' }
+        );
     }
   };
 

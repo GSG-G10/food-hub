@@ -23,6 +23,6 @@ router.get('/meals/:mealid', getMealById);
 router.get('/restaurants/:id', getRestaurant);
 router.get('/restaurants', getRestaurants);
 router.get('/category', getCategories);
-router.post('/user', isAuth, addUser);
+router.post('/user', addUser);
 
 module.exports = router;
