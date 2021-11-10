@@ -29,6 +29,7 @@ export const Cart = () => {
       await api.post('/promo/redeem', info, { headers });
       setCodeError('');
     } catch (err) {
+      console.log(err);
       setCodeError(err.response.data.message);
     }
   };
