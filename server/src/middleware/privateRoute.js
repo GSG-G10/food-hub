@@ -13,6 +13,6 @@ exports.isAuth = async (req, res, next) => {
     if (decodevalue) return next();
     throw new HttpError(400, 'You are not authorized !');
   } catch (err) {
-    next(new HttpError(400, 'You have to login in first !'));
+    next(new HttpError(400, 'You have to login in first!'));
   }
 };
