@@ -1,0 +1,7 @@
+.cat-swiper {
+  height: 450px;
+  width: 100%;
+}
+.cat-swiper .swiper-slide img {
+  height: 380px;
+}
