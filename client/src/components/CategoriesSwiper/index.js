@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link as RouterLink } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
 import './style.css';
 import 'swiper/modules/pagination/pagination';
@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import SwiperCore, { Navigation } from 'swiper';
+import Link from '@mui/material/Link';
 import { api } from '../../api/axios';
 
 import 'swiper/modules/navigation/navigation';
@@ -28,12 +29,13 @@ export const CategoriesSwiper = () => {
   }, [item]);
 
   return (
-    <>
-      <Typography
-        variant="h1"
-        textAlign="center"
-        sx={{ mt: '4rem', mb: '2rem' }}
-      >
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Typography variant="h1" sx={{ mt: '4rem', mb: '2rem' }}>
         Browse Categories
       </Typography>
       <Swiper
@@ -74,6 +76,16 @@ export const CategoriesSwiper = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+      <Link
+        component={RouterLink}
+        to="/categories"
+        color="primary"
+        mt={3}
+        mb={6}
+        display="block"
+      >
+        Browse All
+      </Link>
+    </Box>
   );
 };
