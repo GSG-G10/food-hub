@@ -1,6 +1,6 @@
 # FoodHub 🍔
 
-Foodhub is a food delivery website that have a plenty restaurants registered in it so people can go over every restaurant and see all the meals they offer then order any meal from any restaurant they want
+Foodhub is a food delivery website that have a plenty of restaurants registered in it so people can go over every restaurant and see all the meals they offer then order any meal from any restaurant they want
 
 ## [Live Demo](http://food-hub-gsg.herokuapp.com/) 📺
 
