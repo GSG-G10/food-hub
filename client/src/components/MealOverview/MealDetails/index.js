@@ -26,9 +26,10 @@ export const MealDetails = ({ meal }) => {
     <Box
       display="flex"
       flexDirection="column"
-      ml={4}
+      pl={{ md: '2rem' }}
       py={1.8}
       justifyContent="space-between"
+      width={{ xs: '100%', md: '50%' }}
     >
       <Typography variant="h2">{name}</Typography>
       <Box display="flex" justifyContent="space-between" my={3}>

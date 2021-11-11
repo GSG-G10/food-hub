@@ -18,7 +18,7 @@ export const MealSwiper = ({ meal }) => {
   images.push(images[0]);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
-    <Box width="50%" height="100%">
+    <Box width={{ xs: '100%', md: '50%' }} height="100%">
       <Swiper
         style={{
           '--swiper-navigation-color': '#fff',
