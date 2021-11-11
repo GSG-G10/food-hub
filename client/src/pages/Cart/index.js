@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { CartRow } from '../../components/CartRow';
 import { CartContext } from '../../context/CartContext';
 import { useAuthContext } from '../../firebase/firebaseHook';
