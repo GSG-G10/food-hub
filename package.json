@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "cd server && npm start",
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm ls && npm run build && npm ls",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:client": "cd client && npm start",
     "dev:server": "cd server && npm run dev",
