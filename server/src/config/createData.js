@@ -3,6 +3,7 @@ const { join } = require('path');
 const faker = require('faker');
 const { randomUUID } = require('crypto');
 const sourceData = require('./sourcedata.json');
+const restaurantsData = require('./restaurantsData.json');
 
 const createRandomData = () => {
   const users = [];
@@ -52,13 +53,12 @@ const createRandomData = () => {
   }
 
   for (let i = 10; i < 20; i += 1) {
-    const restaurantName = faker.company.companyName();
+    const { restaurantName, logoUrl } = restaurantsData.restaurants[i - 10];
     const description = faker.lorem.paragraph();
     const restaurantCity = faker.address.cityName();
     const restaurantStreetName = faker.address.streetName();
     const restaurantStreetAddress = faker.address.streetAddress();
     const restaurantFullAddress = `${restaurantCity}, ${restaurantStreetName}, ${restaurantStreetAddress}`;
-    const logoUrl = faker.image.business();
     const lat = faker.address.latitude();
     const lon = faker.address.longitude();
     const contactEmail = faker.internet.email();

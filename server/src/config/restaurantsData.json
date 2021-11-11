@@ -1,0 +1,44 @@
+{
+    "restaurants": [
+        {
+            "restaurantName": "Burger King",
+            "logoUrl": "https://pbs.twimg.com/profile_images/1300733740809846784/WxzYnc_r_400x400.jpg"
+        },
+        {
+            "restaurantName": "Pizza Hut",
+            "logoUrl": "https://yt3.ggpht.com/ytc/AKedOLSTP4cPU2cs1Zg-hxYggqMMUEJfT82A6atYmuKNzw=s900-c-k-c0x00ffffff-no-rj"
+        },
+        {
+            "restaurantName": "KFC",
+            "logoUrl": "https://wikiforschool.com/ad/uploads/1261021200px-kfc_logo.svg.png"
+        },
+        {
+            "restaurantName": "Olive Garden",
+            "logoUrl": "https://pbs.twimg.com/profile_images/1351629188122484738/2d2fDGqO_400x400.jpg"
+        },
+        {
+            "restaurantName": "Chick-fill-A",
+            "logoUrl": "https://pbs.twimg.com/profile_images/1148729107406041088/emlH0Rv4_400x400.png"
+        },
+        {
+            "restaurantName": "SUBWAY",
+            "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Subway_restaurant.svg/2560px-Subway_restaurant.svg.png"
+        },
+        {
+            "restaurantName": "Al Taboon",
+            "logoUrl": "https://scontent.fgza9-1.fna.fbcdn.net/v/t1.6435-9/69540025_1606920992776349_2212732413203709952_n.png?_nc_cat=107&ccb=1-5&_nc_sid=973b4a&_nc_ohc=FUULGzgiS-sAX8uLNVe&_nc_ht=scontent.fgza9-1.fna&oh=c9783b4c45f8830a7d429d356b47dc62&oe=61B13C5A"
+        },
+        {
+            "restaurantName": "Chicken Broast",
+            "logoUrl": "https://scontent.fgza9-1.fna.fbcdn.net/v/t1.6435-9/102318117_160951795435717_4683754221034536960_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=973b4a&_nc_ohc=KSdIsWzORL8AX8fcXm0&_nc_ht=scontent.fgza9-1.fna&oh=f0ea278bf456af8948e37bb4f06b458c&oe=61B48725"
+        },
+        {
+            "restaurantName": "Palmera",
+            "logoUrl": "https://scontent.fgza9-1.fna.fbcdn.net/v/t39.30808-6/244547723_1762141773994011_726848193161932089_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=973b4a&_nc_ohc=enBJcWORIHcAX9pXla6&_nc_ht=scontent.fgza9-1.fna&oh=a8b44aa6682343a2cf919fd4168fb6c2&oe=61919067"
+        },
+        {
+            "restaurantName": "Italiano",
+            "logoUrl": "https://scontent.fgza9-1.fna.fbcdn.net/v/t1.6435-9/145775554_5255610064464275_5707569470569901820_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=973b4a&_nc_ohc=JdjSoTKI6bgAX-Bm_JD&_nc_ht=scontent.fgza9-1.fna&oh=2083174bb7ae05a5b61cd4d25a33b4b2&oe=61B13F0B"
+        }
+    ]
+}
