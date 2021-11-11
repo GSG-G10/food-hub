@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src",
     "dev": "nodemon ./src",
     "postinstall": "npm run build:fakedata",
     "test": "NODE_ENV=testing jest --runInBand --verbose ",
@@ -46,5 +47,6 @@
     "node-fetch": "^3.0.0",
     "pg": "^8.7.1",
     "sequelize": "^6.8.0"
-  }
+  },
+  "engines": { "node" : "14.18.1" }
 }
