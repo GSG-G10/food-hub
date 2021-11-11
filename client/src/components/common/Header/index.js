@@ -41,7 +41,7 @@ export const Header = () => {
         }}
       >
         <Box>
-          <Link component={RouterLink} to="/">
+          <Link to="/" component={RouterLink}>
             <img src={Logo} alt="site-logo" />
           </Link>
         </Box>

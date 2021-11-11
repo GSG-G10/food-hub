@@ -40,7 +40,3 @@ exports.redeemCode = async (req, res, next) => {
     next(err);
   }
 };
-
-// code.discountType === 'flat'
-//   ? (newPrice = totalPrice - code.discountAmount)
-//   : (newPrice = newPrice = totalPrice * (code.discountAmount / 100));

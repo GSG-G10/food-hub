@@ -1,6 +1,7 @@
 const { writeFileSync } = require('fs');
 const { join } = require('path');
 const faker = require('faker');
+const { randomUUID } = require('crypto');
 const sourceData = require('./sourcedata.json');
 
 const createRandomData = () => {
@@ -19,7 +20,7 @@ const createRandomData = () => {
   );
 
   for (let i = 1; i <= 20; i += 1) {
-    const id = i;
+    const id = randomUUID();
     const username = faker.internet.userName();
     const password = faker.internet.password();
     const email = faker.internet.email();

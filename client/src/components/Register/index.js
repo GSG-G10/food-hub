@@ -28,12 +28,16 @@ export const Register = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [passwordError, setPasswordError] = useState(false);
   // eslint-disable-next-line no-unused-vars
-  const [authError, setAuthError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const { username, email, password, confirmPassword } = formValues;
   const [open, setOpen] = useState(false);
-  const { signUpWithEmail, loginWithGoogle, loginWithFacebook, error } =
-    useAuthContext();
+  const {
+    signUpWithEmail,
+    loginWithGoogle,
+    loginWithFacebook,
+    error,
+    isIgnorableError,
+  } = useAuthContext();
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -48,13 +52,43 @@ export const Register = () => {
       setConfirmPasswordError(true);
     }
     try {
-      await signUpWithEmail(email, password);
-      enqueueSnackbar('Your account has been created successfully !', {
+      await signUpWithEmail(formValues);
+      enqueueSnackbar('Your account has been created successfully!', {
+        variant: 'success',
+      });
+      enqueueSnackbar(`Welcome to Foodhub, ${username}!`, {
         variant: 'success',
       });
       history.push('/');
     } catch (err) {
-      setAuthError(error);
+      if (!isIgnorableError(err))
+        enqueueSnackbar(err.message, { variant: 'error' });
+    }
+  };
+
+  const handleGoogle = async () => {
+    try {
+      const user = await loginWithGoogle();
+      enqueueSnackbar(`Welcome to Foodhub ${user.displayName}!`, {
+        variant: 'success',
+      });
+      history.push('/');
+    } catch (err) {
+      if (!isIgnorableError(err))
+        enqueueSnackbar(err.message, { variant: 'error' });
+    }
+  };
+
+  const handleFacebook = async () => {
+    try {
+      const user = await loginWithFacebook();
+      enqueueSnackbar(`Welcome to Foodhub, ${user.displayName}!`, {
+        variant: 'success',
+      });
+      history.push('/');
+    } catch (err) {
+      if (!isIgnorableError(err))
+        enqueueSnackbar(err.message, { variant: 'error' });
     }
   };
 
@@ -83,8 +117,8 @@ export const Register = () => {
               Create an Account
             </Typography>
             <AuthButtons
-              loginWithGoogle={loginWithGoogle}
-              loginWithFacebook={loginWithFacebook}
+              loginWithGoogle={handleGoogle}
+              loginWithFacebook={handleFacebook}
             />
             <Divider width="100%" my={4} sx={{ my: 1.6 }} />
             <form onSubmit={handleSubmit}>
@@ -167,9 +201,9 @@ export const Register = () => {
                     onChange={handleChange}
                   >
                     <FormControlLabel
-                      value="user"
+                      value="customer"
                       control={<Radio />}
-                      label="User"
+                      label="Customer"
                     />
                     <FormControlLabel
                       value="restaurant"
