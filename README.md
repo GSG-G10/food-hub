@@ -56,7 +56,7 @@ The user can register/login to the website through many options, username & pass
 
 ## Database Schema
 
-![](https://drive.google.com/file/d/13-77sORbvcnxeFzk-UiicnpAtOFHkRk0/view?usp=sharing)
+![](https://drive.google.com/file/d/13-77sORbvcnxeFzk-UiicnpAtOFHkRk0/view)
 
 ## How To Run The App locally
 
