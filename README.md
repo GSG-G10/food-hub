@@ -56,7 +56,7 @@ The user can register/login to the website through many options, username & pass
 
 ## Database Schema
 
-![](https://drive.google.com/file/d/13-77sORbvcnxeFzk-UiicnpAtOFHkRk0/view)
+![](https://github.com/M7Mansour/Calculator/blob/master/opengraph.jpeg)
 
 ## How To Run The App locally
 
