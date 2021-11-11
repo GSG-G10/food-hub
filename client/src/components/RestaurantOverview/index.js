@@ -74,9 +74,8 @@ export const RestaurantOverview = ({
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          width="80%"
+          mt={1.5}
         >
-          <Box />
           <Box>
             <Link href={`mailto:${email}`} target="_blank">
               <IconButton aria-label="email" size="small">

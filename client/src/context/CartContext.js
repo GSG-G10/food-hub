@@ -46,13 +46,22 @@ export const CartProvider = ({ children }) => {
     [cart]
   );
 
+  const deleteMeal = useCallback(
+    ({ id }) => {
+      setCart([...cart.filter((meal) => meal.id !== id)]);
+    },
+    [cart]
+  );
+
   const sortedCart = useMemo(
     () => cart.sort((a, b) => a.order - b.order),
     [cart]
   );
 
   return (
-    <CartContext.Provider value={{ cart: sortedCart, addMeal, changeQty }}>
+    <CartContext.Provider
+      value={{ cart: sortedCart, addMeal, changeQty, deleteMeal }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -11,7 +11,7 @@ import { useAuthContext } from '../../firebase/firebaseHook';
 import { api } from '../../api/axios';
 
 export const Cart = () => {
-  const { cart, changeQty } = useContext(CartContext);
+  const { cart, changeQty, deleteMeal } = useContext(CartContext);
   const { token } = useAuthContext();
   const [promocode, setCode] = useState('');
   const [codeError, setCodeError] = useState('');
@@ -84,6 +84,9 @@ export const Cart = () => {
               id: meal.id,
               quantity: +e.target.value,
             });
+          }}
+          handleDeleteMeal={() => {
+            deleteMeal(meal);
           }}
         />
       ))}

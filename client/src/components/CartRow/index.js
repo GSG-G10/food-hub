@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import propTypes from 'prop-types';
 
-export const CartRow = ({ handleQtyChange, meal }) => {
+export const CartRow = ({ handleQtyChange, meal, handleDeleteMeal }) => {
   const { name, price, quantity, category } = meal;
 
   return (
@@ -44,7 +44,7 @@ export const CartRow = ({ handleQtyChange, meal }) => {
         <Typography variant="h4" width="15%">
           ${price * quantity}
         </Typography>
-        <IconButton aria-label="delete">
+        <IconButton aria-label="delete" onClick={handleDeleteMeal}>
           <DeleteIcon />
         </IconButton>
       </Box>
@@ -54,6 +54,7 @@ export const CartRow = ({ handleQtyChange, meal }) => {
 
 CartRow.defaultProps = {
   handleQtyChange: () => {},
+  handleDeleteMeal: () => {},
   meal: {
     id: -1,
     name: '',
@@ -64,6 +65,7 @@ CartRow.defaultProps = {
 };
 CartRow.propTypes = {
   handleQtyChange: propTypes.func,
+  handleDeleteMeal: propTypes.func,
   meal: propTypes.shape({
     id: propTypes.number,
     name: propTypes.string,
