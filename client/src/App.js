@@ -13,6 +13,7 @@ import { Restaurant } from './pages/Restaurant';
 import { Cart } from './pages/Cart';
 import { Meal } from './pages/Meal';
 import { CartProvider } from './context/CartContext';
+import { LandingPage } from './pages/LandingPage';
 
 const theme = createTheme({
   palette: {
@@ -73,7 +74,9 @@ export const App = () => (
             <ThemeProvider theme={theme}>
               <Header />
               <Switch>
-                <Route exact path="/" />
+                <Route exact path="/">
+                  <LandingPage />
+                </Route>
                 <Route exact path="/register">
                   <Register />
                 </Route>

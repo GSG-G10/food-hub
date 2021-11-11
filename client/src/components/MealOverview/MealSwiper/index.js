@@ -27,7 +27,7 @@ export const MealSwiper = ({ meal }) => {
         spaceBetween={15}
         navigation
         thumbs={{ swiper: thumbsSwiper }}
-        className="mySwiper2"
+        className="meal-swiper"
       >
         {images.map((img) => (
           <SwiperSlide>
