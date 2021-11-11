@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import { useHistory } from 'react-router';
 import { CartRow } from '../../components/CartRow';
 import { CartContext } from '../../context/CartContext';
 import { useAuthContext } from '../../firebase/firebaseHook';
@@ -15,6 +16,8 @@ export const Cart = () => {
   const [promocode, setCode] = useState('');
   const [codeError, setCodeError] = useState('');
   const [newPrice, setNewPrice] = useState(null);
+
+  const history = useHistory();
 
   const totalPrice = cart.reduce(
     (acc, curr) => acc + curr.price * curr.quantity,
@@ -37,6 +40,10 @@ export const Cart = () => {
 
   const handleChange = (event) => {
     setCode(event.target.value);
+  };
+
+  const handleClick = () => {
+    history.goBack();
   };
 
   return (
@@ -87,6 +94,7 @@ export const Cart = () => {
           color="secondary"
           disableElevation
           sx={{ opacity: '0.7' }}
+          onClick={handleClick}
         >
           Continue shopping
         </Button>

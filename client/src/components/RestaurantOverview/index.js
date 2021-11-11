@@ -76,7 +76,7 @@ export const RestaurantOverview = ({
           alignItems="center"
           width="80%"
         >
-          <Box>Rating</Box>
+          <Box />
           <Box>
             <Link href={`mailto:${email}`} target="_blank">
               <IconButton aria-label="email" size="small">
