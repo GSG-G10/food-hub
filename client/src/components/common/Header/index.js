@@ -17,7 +17,7 @@ import { CartContext } from '../../../context/CartContext';
 const navItems = [
   { label: 'Restaurants', to: '/restaurants' },
   { label: 'Categories', to: '/categories' },
-  { label: 'About Us', to: '/aboutus' },
+  { label: 'About Us', to: '/' },
 ];
 
 export const Header = () => {
@@ -82,14 +82,29 @@ export const Header = () => {
               </Button>
             </>
           ) : (
-            <Button
-              variant="outlined"
-              color="white"
-              sx={{ borderColor: 'common.white' }}
-              onClick={handleOpen}
-            >
-              Login
-            </Button>
+            <>
+              <Link
+                to="/cart"
+                component={RouterLink}
+                color="common.white"
+                ml={2}
+                display="flex"
+                alignItems="center"
+                underline="none"
+                pr={2}
+              >
+                <ShoppingCartOutlinedIcon />
+                {cart.length}
+              </Link>
+              <Button
+                variant="outlined"
+                color="white"
+                sx={{ borderColor: 'common.white' }}
+                onClick={handleOpen}
+              >
+                Login
+              </Button>
+            </>
           )}
 
           <LoginWindow
