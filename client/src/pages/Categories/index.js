@@ -18,11 +18,13 @@ export const Categories = () => {
   const [count, setCount] = useState(1);
   const items = 10;
   useEffect(() => {
-    api.get(`/category?items=${items}&page=${page}`).then((response) => {
-      setCount(response.data.pagination.count);
-      setCategories(response.data.data);
-    });
-  }, [items, page]);
+    api
+      .get(`/category?items=${items}&page=${page}&search=${searchValue}`)
+      .then((response) => {
+        setCount(response.data.pagination.count);
+        setCategories(response.data.data);
+      });
+  }, [items, page, searchValue]);
   const handleChange = (e) => {
     setSearchValue(e.target.value);
   };
