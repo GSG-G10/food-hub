@@ -15,7 +15,7 @@ export const CategoryCard = ({ categoryId, categoryImage, categoryName }) => {
   return (
     <Card sx={{ height: '300px' }}>
       <CardActionArea onClick={handleClick}>
-        <Box sx={{ filter: 'brightness(0.5)' }}>
+        <Box sx={{ filter: 'brightness(0.7)' }}>
           <CardMedia
             component="img"
             height="300"

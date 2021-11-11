@@ -23,7 +23,7 @@ const Meal = sequelize.define('meals', {
     allowNull: false,
   },
   restaurantId: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
   },
   price: {
     type: Sequelize.DOUBLE,

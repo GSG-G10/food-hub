@@ -1,14 +1,50 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import { useHistory } from 'react-router-dom';
 import { CartRow } from '../../components/CartRow';
 import { CartContext } from '../../context/CartContext';
+import { useAuthContext } from '../../firebase/firebaseHook';
+import { api } from '../../api/axios';
 
 export const Cart = () => {
   const { cart, changeQty } = useContext(CartContext);
+  const { token } = useAuthContext();
+  const [promocode, setCode] = useState('');
+  const [codeError, setCodeError] = useState('');
+  const [newPrice, setNewPrice] = useState(null);
+
+  const history = useHistory();
+
+  const totalPrice = cart.reduce(
+    (acc, curr) => acc + curr.price * curr.quantity,
+    0
+  );
+
+  const redeem = async () => {
+    const info = { promocode, totalPrice };
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    try {
+      const { data } = await api.post('/promo/redeem', info, { headers });
+      setCodeError('');
+      setNewPrice(data.data);
+    } catch (err) {
+      setCodeError(err.response.data.message);
+    }
+  };
+
+  const handleChange = (event) => {
+    setCode(event.target.value);
+  };
+
+  const handleClick = () => {
+    history.goBack();
+  };
 
   return (
     <Container
@@ -58,6 +94,7 @@ export const Cart = () => {
           color="secondary"
           disableElevation
           sx={{ opacity: '0.7' }}
+          onClick={handleClick}
         >
           Continue shopping
         </Button>
@@ -72,28 +109,63 @@ export const Cart = () => {
               label="Enter promo code"
               variant="outlined"
               sx={{ mr: '0.5rem' }}
+              onChange={handleChange}
+              error={codeError}
+              helperText={codeError}
             />
-            <Button variant="contained" color="secondary" disableElevation>
+
+            <Button
+              variant="contained"
+              color="secondary"
+              disableElevation
+              onClick={redeem}
+            >
               Apply
             </Button>
           </Box>
         </Box>
       </Box>
       <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
         my={3}
         py={2}
         px={6}
         sx={{ backgroundColor: 'rgba(255, 90,0, 0.14)' }}
       >
-        <Typography variant="h2" fontWeight="400">
-          Total
-        </Typography>
-        <Typography variant="h2" fontWeight="400" color="primary">
-          ${cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
-        </Typography>
+        {newPrice ? (
+          <Box>
+            <Box display="flex" justifyContent="space-evenly">
+              <Typography variant="h2" fontWeight="400">
+                Total price
+              </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="400"
+                color="primary"
+                sx={{ textDecoration: 'line-through' }}
+              >
+                ${totalPrice}
+              </Typography>
+            </Box>
+
+            <Box display="flex" justifyContent="space-evenly">
+              <Typography variant="h2" fontWeight="400">
+                New price
+              </Typography>
+              <Typography variant="h2" fontWeight="400" color="primary">
+                ${newPrice}
+              </Typography>
+            </Box>
+          </Box>
+        ) : (
+          <Box display="flex" justifyContent="space-evenly">
+            <Typography variant="h2" fontWeight="400">
+              Total price
+            </Typography>
+            <Typography variant="h2" fontWeight="400" color="primary">
+              ${totalPrice}
+            </Typography>
+          </Box>
+        )}
       </Box>
       <Button
         variant="contained"
