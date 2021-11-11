@@ -8,7 +8,7 @@ import { CartRow } from '../../components/CartRow';
 import { CartContext } from '../../context/CartContext';
 
 export const Cart = () => {
-  const { cart, changeQty } = useContext(CartContext);
+  const { cart, changeQty, setCart } = useContext(CartContext);
 
   return (
     <Container
@@ -48,6 +48,9 @@ export const Cart = () => {
               id: meal.id,
               quantity: +e.target.value,
             });
+          }}
+          handleDeleteMeal={() => {
+            setCart(cart.filter((mealCart) => mealCart.id !== meal.id));
           }}
         />
       ))}
