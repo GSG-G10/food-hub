@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import Container from '@mui/material/Container';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useSnackbar } from 'notistack';
@@ -11,6 +11,7 @@ import { CartContext } from '../../context/CartContext';
 
 export const Meal = () => {
   const { addMeal } = useContext(CartContext);
+  const history = useHistory();
   const { id } = useParams();
   const [mealData, setMealData] = useState({
     id: -1,
@@ -30,10 +31,10 @@ export const Meal = () => {
           .get(`/meals/restaurant/${res.data.data[0].restaurantId}`)
           .then((result) => setRelatedMeals(result.data.data));
       } else {
-        // here I want to redirect to NotFound page
+        history.push('/notfound');
       }
     });
-  }, [id]);
+  }, [id, history]);
 
   return (
     <Container

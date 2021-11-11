@@ -14,6 +14,7 @@ import { Cart } from './pages/Cart';
 import { Meal } from './pages/Meal';
 import { CartProvider } from './context/CartContext';
 import { LandingPage } from './pages/LandingPage';
+import { NotFound } from './pages/NotFound';
 
 const theme = createTheme({
   palette: {
@@ -98,9 +99,13 @@ export const App = () => (
                 <Route exact path="/cart">
                   <Cart />
                 </Route>
+                <Route exact path="*">
+                  <NotFound />
+                </Route>
                 <Route path="/about-us" />
                 <Route path="/login" />
               </Switch>
+
               <Footer />
             </ThemeProvider>
           </CartProvider>
