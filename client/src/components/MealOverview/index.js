@@ -4,7 +4,7 @@ import { MealSwiper } from './MealSwiper';
 import { MealDetails } from './MealDetails';
 
 export const MealOverview = ({ meal }) => (
-  <Box display="flex">
+  <Box display="flex" flexWrap="wrap">
     <MealSwiper meal={meal} />
     <MealDetails meal={meal} />
   </Box>
