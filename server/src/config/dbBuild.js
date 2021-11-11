@@ -17,12 +17,12 @@ const importDataToDatabase = async () => {
     await sequelize.sync({ force: true });
 
     await Promise.all([
-      data.users.map((item) => User.create(item)),
-      data.categories.map((item) => Category.create(item)),
+      ...data.users.map((item) => User.create(item)),
+      ...data.categories.map((item) => Category.create(item)),
     ]);
     await Promise.all([
-      data.customers.map((item) => Customer.create(item)),
-      data.restaurants.map((item) => Restaurant.create(item)),
+      ...data.customers.map((item) => Customer.create(item)),
+      ...data.restaurants.map((item) => Restaurant.create(item)),
     ]);
     await Promise.all(data.meals.map((item) => Meal.create(item)));
     await Promise.all(
